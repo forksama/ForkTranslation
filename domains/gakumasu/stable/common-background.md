@@ -317,7 +317,7 @@
 以下事件在 2 周年前主线中反复被提及但情节相对独立，只列名单：
 
 - **十王星南 × 十王龍正 父女修复**（N.I.A 决战现场父亲声援）——见 [`relationships.md 十王邦夫 × 十王龍正 × 十王星南`](relationships.md#十王邦夫--十王龍正--十王星南)。
-- **葛城 Lilja × 紫云清夏 挚友约定**（"一起同台"）——见 [`relationships.md 葛城リーリヤ × 紫云清夏`](relationships.md#葛城リーリヤ--紫云清夏)。
+- **葛城莉莉娅 × 紫云清夏 挚友约定**（"一起同台"）——见 [`relationships.md 葛城リーリヤ × 紫云清夏`](relationships.md#葛城リーリヤ--紫云清夏)。
 - **1 年 2 组补习组形成**（篠泽広 × 花海佑芽 × 倉本千奈 × 秦谷美铃）——见 [`relationships.md 六、1 年 2 组补习组`](relationships.md#六1-年-2-组补习组)。
 - **花海姐妹の宿敌构造**（咲季 vs 佑芽）——见 [`relationships.md 花海咲季 × 花海佑芽`](relationships.md#花海咲季--花海佑芽)。
 
