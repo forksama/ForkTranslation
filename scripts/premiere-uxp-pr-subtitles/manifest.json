@@ -1,0 +1,23 @@
+{
+  "manifestVersion": 5,
+  "id": "com.forktranslation.prsubtitles.incremental",
+  "name": "ForkTranslation PR Subtitles",
+  "version": "0.1.0",
+  "host": {
+    "app": "premierepro",
+    "minVersion": "25.6.0"
+  },
+  "main": "index.html",
+  "entrypoints": [
+    {
+      "type": "command",
+      "id": "generateIncrementalSrt",
+      "label": {
+        "default": "ForkTranslation: Generate Incremental Subtitle SRT"
+      }
+    }
+  ],
+  "requiredPermissions": {
+    "localFileSystem": "fullAccess"
+  }
+}
