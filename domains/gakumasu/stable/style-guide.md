@@ -1,9 +1,5 @@
 # 学马仕翻译风格指南
 
-- 建档日期：2026-07-13
-- 状态：首版
-- 上游规格：[Research-004 §2](../../../docs/research-004-gakumas-thread-translation-formats-and-knowledge-layout.md#2-翻译产品优先级) 与 [Research-005 §6](../../../docs/research-005-gakumas-stable-knowledge-first-version-spec.md#6-style-guidemd-首版规格)
-
 本文档定义 `domains/gakumasu/` 领域内所有翻译（B 完整译文、C 字幕 cue）都必须遵守的风格约束。规则冲突时按 §1 优先级判定。
 
 ## 1. 忠实度优先级
@@ -23,7 +19,10 @@
 ## 2. 语感基线
 
 - 译文中文语感**向日语宅圈 / 汉化组风格靠**。允许保留少量日式表达和宅圈术语不译，允许必要时加译注。
+- **不要为了保留日语结构而让译文变生硬**。对话句优先写成中文日常会说出口的话；在不改变含义和人物距离感的前提下，可以调整语序、补足自然的主语或省略机械重复。
+- **不被原文句子分段绑死**。在不加戏、不删信息、不改变情绪走向的前提下，可以合并、拆分或重排相邻句子，让中文读起来符合自然语感；尤其避免把日语短句、倒装和省略机械映射成生硬中文。
 - **不追求脱日化的自然中文**。翻译对象是学马仕日文社区讨论，脱日化会丢掉原本的圈层氛围。
+- 判断标准：如果一句中文读起来像“按日语语序硬搬过来”，应先改成更顺的中文表达，再检查是否仍保留原文的口吻、情绪和信息。
 - **不采用 B 站弹幕 / 微博风格**。避免"绝绝子""芭比 Q 了""破防了"等强中文互联网时代梗——它们会替原文加戏。
 - 简体中文优先。术语与人名与 [`glossary.csv`](glossary.csv) 一致。
 
@@ -31,9 +30,8 @@
 
 ### 3.1 P 的称呼
 
-- `プロデューサー / P → 学P`（作为角色称呼固定）。所有 C 字幕的 role 字段中制作人角色统一写作 `学P`，不要出现 `P` 或 `制作人` 作为 role 名。
+- `プロデューサー / P / 学P`（作为角色称呼固定）。所有 C 字幕的 role 字段中制作人角色与原文相符。
 - 对话正文中角色以名字或亲近方式称呼 P 时，可用 `制作人` 或原文昵称对应译法。
-- P 自称、旁白提及、以及其他角色以泛称提及 P 时，一律用 `学P`。
 
 ### 3.2 日文后缀
 
@@ -43,7 +41,7 @@
 - `〇〇様` → `〇〇大人` / `〇〇小姐` / 敬体表达
 - `〇〇ちゃん` → `小〇〇` / `〇〇酱`（后者仅在角色本人在原文中用了明显的宅圈风撒娇口吻时才使用）
 - `〇〇先輩` → `〇〇前辈`
-- `〇〇君` → `〇〇` / `小〇〇`（视上下文）
+- `〇〇君` → `〇〇君`
 
 上述映射不是硬性表；具体取舍以"角色关系与情绪距离"为准，允许在 `translation-decisions.md` 中登记角色对特定人的固定称呼。
 
@@ -83,10 +81,7 @@
 
 ### 6.2 省略号
 
-统一使用中文全宽 `……`（U+2026 × 2）。
-
-- 不使用日文单字符 `…`（U+2026 × 1）。
-- 不拓展为 `…………` 等长省略号；如需表达特别长的沉默，改用文字描述或 `……(长时间沉默)……` 类叙述性表达。
+按照原文翻译。
 
 ### 6.3 中黑符号
 
@@ -122,23 +117,189 @@
 
 ## 9. B 与 C 的差异
 
-- **B（`translation-B.md`）**：审校版。允许一句话译得较长、较完整，允许分段和插入`备注`。
-- **C（`pr-subtitles-C.jsonl`）**：字幕 cue。必须按 [Research-004 §5.4](../../../docs/research-004-gakumas-thread-translation-formats-and-knowledge-layout.md#54-c-的分行与拆分规则) 切分，默认每 cue 1 行、最多 2 行；每行 15–20 个中文字符。
+- **B（`translation-B.md`）**：审校版。允许一句话译得较长、较完整，允许分段和插入 `备注`。B 必须保留逐句审计线索：每一句中文译文的下一行都要附带对应日语原文，便于人工核对。
+- **C（`pr-subtitles-C.md`）**：字幕 cue 草稿。C 不再使用 JSONL，而是使用 Markdown；agent 只负责生成便于人工检查的 cue，不直接生成 PR 脚本读取的最终机器格式。
+- **S（转换脚本）**：负责将 C 转换为 D，并在转换时做 C 的格式与完整性校验。
+- **D（`pr-subtitles-D.json`，PR 脚本输入）**：由 S 生成，使用稳定 JSON；PR 导入脚本只读取 D，不直接解析 C。agent 不手写 D。
 - **同一处翻译，B 和 C 可以措辞不同**：B 追求准确完整，C 追求节拍和可读性。C 允许在保留原意的前提下调整语序、去掉冗余助词。
+- **B/C 都允许相邻句重编排**：不要求完全按 A 的原句分段逐句对应；只要 B 的 `原：` 行能追溯覆盖原文，C 的 cue 能追溯到对应楼层，就可以为了中文语感合并、拆开或调整相邻句顺序。
 - 从 B 到 C 的角色拆分：楼主正文中的叙述句拆为 `旁白`，角色台词拆为具体角色；同一 cue 内不混入多个角色。
 
-### 9.1 B/C 对照实例
+### 9.1 B 的逐句对照格式
 
-**首版留白。** 在第一个真实翻译项目完成后，回填一段完整实例：一段日文原文 + 对应的 B 版译文 + 对应的 C 版字幕 cue。这段实例作为"审校版 vs 字幕版"差异的锚点样例。
+B 以中文译句为主，每个译句下一行紧跟对应日语原文。推荐使用固定前缀：
 
-## 10. 与其他文件的分工
+```markdown
+译：去年解散的中等部顶级组合 SyngUp!，她就是队长贺阳燐羽。
+原：去年解散した中等部トップユニットSyngUp!、そのリーダーが賀陽燐羽だ。
+```
 
-| 内容类型 | 归属 |
+- 一句中文译文对应多个日语短句时，`原：` 行可以收纳完整对应原文。
+- 一个日语长句拆成多句中文时，每句中文后仍要放对应的日语片段；不要只在段落末尾集中贴原文。
+- `备注` 可以插在对应译句组之后，但不能打断 `译：` 与下一行 `原：` 的相邻关系。
+
+### 9.2 C 的 Markdown cue 格式
+
+C 使用标题 + 正文行的 Markdown cue。默认每 cue 1 行，最多 2 行；每行 15–20 个中文字符。推荐格式：
+
+```markdown
+## C0001 | 旁白 | P0001
+去年解散的中等部顶级组合 SyngUp!，
+她就是队长贺阳燐羽。
+
+## C0002 | 学园长 | P0001
+没错，就是那位贺阳燐羽。
+```
+
+- 标题格式为 `## <cue_id> | <role> | <source>`；`source` 指向 A/B 中可追溯的位置，如 `P0001`、`thread.title`。
+- 标题下方的非空正文行就是屏幕字幕行；同一 cue 最多 2 行。
+- cue ID 按播放顺序递增，建议使用 `C0001`、`C0002`。
+- 一个 cue 内不混入多个角色；需要换角色时必须拆成新 cue。
+- C 是人工可读的字幕草稿，不承载复杂转义、JSON 字段或 PR 工程细节。
+
+### 9.3 D 的 JSON 格式与 S 的转换职责
+
+S 从 `pr-subtitles-C.md` 读取 Markdown cue，输出 `pr-subtitles-D.json`。D 是给 PR 导入脚本读取的稳定结构，推荐 schema：
+
+```json
+{
+  "schema": "fork-pr-subtitles-d/v1",
+  "domain": "gakumasu",
+  "source": {
+    "format": "pr-subtitles-C.md",
+    "path": "domains/gakumasu/threads/board-xxx/pr-subtitles-C.md"
+  },
+  "cueCount": 2,
+  "cues": [
+    {
+      "id": "C0001",
+      "order": 1,
+      "role": "旁白",
+      "source": "P0001",
+      "sourceRefs": ["P0001"],
+      "line1": "去年还在中等部顶级组合里的贺阳燐羽，",
+      "line2": "好像要来初星学园了。",
+      "lines": [
+        "去年还在中等部顶级组合里的贺阳燐羽，",
+        "好像要来初星学园了。"
+      ],
+      "text": "去年还在中等部顶级组合里的贺阳燐羽，\n好像要来初星学园了。"
+    }
+  ]
+}
+```
+
+字段约定：
+
+- `schema` 固定为 `fork-pr-subtitles-d/v1`。
+- `cues` 按播放顺序排列；PR 脚本应优先按数组顺序读取，也可用 `order` 交叉检查。
+- `role` 是 PR 样式匹配用的角色名。
+- `source` 保留 C 标题中的原始 source 字段；`sourceRefs` 是 S 拆出的可追溯引用数组。
+- `line1` / `line2` 方便 PR 脚本直接取字幕行；`lines` 和 `text` 用于通用处理与调试。
+
+当前 S 脚本路径为 `scripts/convert-pr-subtitles.js`。基本用法：
+
+```powershell
+node scripts/convert-pr-subtitles.js domains/gakumasu/threads/board-xxx/pr-subtitles-C.md
+```
+
+默认输出同目录的 `pr-subtitles-D.json`。也可以显式指定输出和可选校验输入：
+
+```powershell
+node scripts/convert-pr-subtitles.js domains/gakumasu/threads/board-xxx/pr-subtitles-C.md `
+  --output domains/gakumasu/threads/board-xxx/pr-subtitles-D.json `
+  --source-a domains/gakumasu/threads/board-xxx/source-A.md `
+  --translation-b domains/gakumasu/threads/board-xxx/translation-B.md
+```
+
+S 至少应校验：
+
+- C 的 cue 标题是否符合 `## <cue_id> | <role> | <source>`。
+- cue ID 是否唯一并按顺序递增。
+- 每个 cue 是否 1–2 行字幕，每行是否大致落在 15–20 个中文字符范围。行长偏离属于警告；使用 `--strict` 时警告提升为错误。
+- `role` 是否非空，并符合本领域角色命名约定。
+- `source` 是否能追溯到 A/B 中的楼层、标题或备注位置；提供 `--source-a` 或 `--translation-b` 后执行交叉检查。
+- C 是否覆盖 B 中应上屏的内容；提供 `--translation-b` 后，S 会提示未被任何 cue 引用的 B 章节。不适合上屏的删减必须能追溯到 B 的 `备注`。
+- 是否存在同一 cue 混入多个角色、空 cue、过短无意义 cue、明显超长行等问题。
+
+### 9.4 B/C 对照实例
+
+以下为**虚构示例**，只用于说明格式和拆分尺度，不代表作品事实。
+
+**A 原文片段**
+
+```markdown
+## post: P0001
+role: 楼主
+
+去年まで中等部のトップユニットにいた賀陽燐羽が、初星学園に来るらしい。
+学園長「彼女には、まだステージに立つ理由があります」
+学P「……本人がそれを望むなら、話を聞きます」
+
+## post: P0002
+role: 回复者1
+
+急に重い話になったな。
+```
+
+**B（`translation-B.md`）示例**
+
+```markdown
+## P0001 楼主
+
+译：去年还在中等部顶级组合里的贺阳燐羽，好像要来初星学园了。
+原：去年まで中等部のトップユニットにいた賀陽燐羽が、初星学園に来るらしい。
+
+译：学园长「她还有必须站上舞台的理由。」
+原：学園長「彼女には、まだステージに立つ理由があります」
+
+译：学P「……如果那是她自己的意愿，我会听她说的。」
+原：学P「……本人がそれを望むなら、話を聞きます」
+
+## P0002 回复者1
+
+译：怎么突然变成这么沉重的话题了。
+原：急に重い話になったな。
+```
+
+**C（`pr-subtitles-C.md`）示例**
+
+```markdown
+## C0001 | 旁白 | P0001
+去年还在中等部顶级组合里的贺阳燐羽，
+好像要来初星学园了。
+
+## C0002 | 学园长 | P0001
+她还有必须站上舞台的理由。
+
+## C0003 | 学P | P0001
+……如果那是她自己的意愿，
+我会听她说的。
+
+## C0004 | 回复者1 | P0002
+怎么突然变成这么沉重的话题了。
+```
+
+这个例子体现三点：B 保留完整译文和逐句日文原文；C 为字幕节拍改写和换行；楼主正文中的叙述句进 `旁白`，角色台词进具体角色。
+
+## 10. 上下文加载
+
+默认翻译上下文只放会直接改变译文的规则：
+
+| 默认加载 | 用途 |
 |---|---|
-| 全项目通用译名 | [`glossary.csv`](glossary.csv) |
-| 已作出的具体翻译决策（含冲突裁决） | [`translation-decisions.md`](translation-decisions.md) |
-| 角色说话风格与固定口癖 | [`characters.md`](characters.md) / `character-profiles/*.md` |
-| 社区表达、黑话、梗 | [`community-expressions.md`](community-expressions.md) |
-| 单串专用称呼与临时决策 | 对应 `threads/*/context-pack.md` |
+| [`style-guide.md`](style-guide.md) | 通用风格与格式 |
+| [`translation-decisions.md`](translation-decisions.md) | 最终裁决速查 |
+| [`characters.md`](characters.md) / `character-profiles/*.md` | 角色口吻 |
+| `relationships.md` 的相关条目 | 本串实际涉及的人物关系 |
+| `glossary.csv` 的命中条目 | 本串实际出现的术语 |
 
-本文件**不重复登记**已在上述文件中的具体条目。凡是 style-guide 内容与其他文件冲突时，具体条目优先，style-guide 兜底。
+按需查询，不默认加载：
+
+| 按需文件 | 触发条件 |
+|---|---|
+| [`common-background.md`](common-background.md) | 原文提到事件、系统词、学园结构或世界线约束 |
+| [`community-expressions.md`](community-expressions.md) | 原文出现社区绰号、黑话、梗或二创流派名 |
+| `threads/*/context-pack.md` | 单串专用称呼、临时决策、补充背景 |
+
+凡是本文件内容与具体条目冲突时，具体条目优先，style-guide 兜底。
