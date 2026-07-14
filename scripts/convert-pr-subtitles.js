@@ -5,6 +5,7 @@ const path = require("node:path");
 
 const CUE_HEADING_RE = /^##\s+(C(\d{4,}))\s*\|\s*([^|]+?)\s*\|\s*(.+?)\s*$/;
 const POST_REF_RE = /^P\d{4,}$/;
+const IGNORED_FENCE_INFOS = new Set(["ja-read", "jp-read", "read-ja"]);
 const SOFT_MIN_CHARS = 15;
 const SOFT_MAX_CHARS = 20;
 
@@ -20,6 +21,9 @@ function usage() {
     "      --translation-b <file>  Optional translation-B.md for source reference and coverage checks.",
     "      --strict                Treat warnings as errors.",
     "  -h, --help                  Show this help.",
+    "",
+    "Every cue must include at least one reference fenced block marked ```ja-read, ```jp-read, or ```read-ja.",
+    "These blocks are validated for presence, then ignored when building D subtitle text.",
     "",
     "Use '-' as the input path to read C from stdin.",
   ].join("\n");
@@ -119,11 +123,36 @@ function parseCueMarkdown(text) {
   const cues = [];
   const issues = [];
   let current = null;
+  let ignoredFence = null;
 
   for (let index = 0; index < lines.length; index += 1) {
     const raw = lines[index];
     const trimmed = raw.trim();
     const lineNumber = index + 1;
+
+    if (ignoredFence != null) {
+      if (isFenceClose(trimmed, ignoredFence)) {
+        if (ignoredFence.cue == null) {
+          issues.push(issue("error", "orphan-reference-block", "Reference fenced block must appear inside a cue.", { lineNumber: ignoredFence.lineNumber }));
+        } else {
+          ignoredFence.cue.referenceBlocks.push({
+            info: ignoredFence.info,
+            lineNumber: ignoredFence.lineNumber,
+            text: ignoredFence.lines.join("\n"),
+          });
+        }
+        ignoredFence = null;
+      } else {
+        ignoredFence.lines.push(raw);
+      }
+      continue;
+    }
+
+    const ignoredFenceStart = parseIgnoredFenceStart(trimmed);
+    if (ignoredFenceStart != null) {
+      ignoredFence = { ...ignoredFenceStart, lineNumber, cue: current, lines: [] };
+      continue;
+    }
 
     if (trimmed.length === 0) {
       continue;
@@ -143,6 +172,7 @@ function parseCueMarkdown(text) {
         source: match[4].trim(),
         sourceRefs: splitSourceRefs(match[4]),
         lines: [],
+        referenceBlocks: [],
         lineNumber,
       };
       cues.push(current);
@@ -162,7 +192,28 @@ function parseCueMarkdown(text) {
     current.lines.push(trimmed);
   }
 
+  if (ignoredFence != null) {
+    issues.push(issue("error", "unterminated-reference-block", "Reference fenced block is missing its closing fence.", { lineNumber: ignoredFence.lineNumber }));
+  }
+
   return { cues, issues };
+}
+
+function parseIgnoredFenceStart(trimmed) {
+  const match = trimmed.match(/^(`{3,}|~{3,})\s*([A-Za-z0-9_-]+)\s*$/u);
+  if (!match || !IGNORED_FENCE_INFOS.has(match[2].toLowerCase())) {
+    return null;
+  }
+  return {
+    char: match[1][0],
+    length: match[1].length,
+    info: match[2].toLowerCase(),
+  };
+}
+
+function isFenceClose(trimmed, fence) {
+  const match = trimmed.match(/^(`{3,}|~{3,})\s*$/u);
+  return Boolean(match && match[1][0] === fence.char && match[1].length >= fence.length);
 }
 
 function splitSourceRefs(source) {
@@ -223,6 +274,14 @@ function validateCues(cues, options, referenceSets) {
     if (cue.lines.length > 2) {
       issues.push(issue("error", "too-many-lines", `Cue has ${cue.lines.length} lines; maximum is 2.`, cueContext(cue)));
     }
+    if (cue.referenceBlocks.length === 0) {
+      issues.push(issue("error", "missing-reference-block", "Cue must include at least one ja-read reference fenced block.", cueContext(cue)));
+    }
+    cue.referenceBlocks.forEach((block) => {
+      if (block.text.trim().length === 0) {
+        issues.push(issue("error", "empty-reference-block", "Reference fenced block cannot be empty.", { ...cueContext(cue), lineNumber: block.lineNumber }));
+      }
+    });
 
     cue.lines.forEach((line, lineIndex) => {
       if (line.length === 0) {
