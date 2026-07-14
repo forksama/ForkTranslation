@@ -105,7 +105,7 @@ async function run() {
     log(`Selected tracks: ${trackIndexes.map((index) => `V${index + 1}`).join(", ")}`);
     log(`Base scale override: ${options.baseScaleOverride === null ? "auto" : options.baseScaleOverride}`);
     log(`Height multiplier: ${options.heightMultiplier}`);
-    log(`Recovery seconds: ${options.recoverySeconds}`);
+    log(`Pulse duration seconds: ${options.pulseSeconds}`);
     log(`Rate curve: cubic-bezier(${options.curve.join(", ")})`);
     log(`Curve samples: ${options.curveSamples}`);
 
@@ -129,22 +129,13 @@ async function run() {
 }
 
 function readOptions() {
-  const heightMultiplier = Number($("heightMultiplier").value);
-  const recoverySeconds = Number($("recoverySeconds").value);
+  const heightMultiplier = parsePositiveNumber($("heightMultiplier").value, "Start height");
+  const pulseSeconds = parsePositiveSeconds($("pulseSeconds").value, "Pulse duration");
   const baseText = $("baseScale").value.trim();
-  const baseScaleOverride = baseText.length > 0 ? Number(baseText) : null;
+  const baseScaleOverride = baseText.length > 0 ? parsePositiveNumber(baseText, "Base scale") : null;
   const curve = parseCurveSpec($("curveSpec").value.trim());
-  const curveSamples = Number($("curveSamples").value);
+  const curveSamples = parsePositiveNumber($("curveSamples").value, "Curve samples");
 
-  if (!Number.isFinite(heightMultiplier) || heightMultiplier <= 0) {
-    throw new Error("Start height must be a positive number.");
-  }
-  if (!Number.isFinite(recoverySeconds) || recoverySeconds <= 0) {
-    throw new Error("Recovery seconds must be a positive number.");
-  }
-  if (baseText.length > 0 && (!Number.isFinite(baseScaleOverride) || baseScaleOverride <= 0)) {
-    throw new Error("Base scale must be blank or a positive number.");
-  }
   if (!Number.isFinite(curveSamples) || Math.floor(curveSamples) !== curveSamples || curveSamples < 2 || curveSamples > 30) {
     throw new Error("Curve samples must be an integer from 2 to 30.");
   }
@@ -152,12 +143,29 @@ function readOptions() {
   return {
     trackSpec: $("trackSpec").value.trim(),
     heightMultiplier,
-    recoverySeconds,
+    pulseSeconds,
     baseScaleOverride,
     curve,
     curveSamples,
     tryUnknown: $("tryUnknown").checked
   };
+}
+
+function parsePositiveSeconds(value, label) {
+  const seconds = parsePositiveNumber(value, label);
+
+  return seconds;
+}
+
+function parsePositiveNumber(value, label) {
+  const text = String(value || "").trim().replace(",", ".");
+  const number = Number(text);
+
+  if (!Number.isFinite(number) || number <= 0) {
+    throw new Error(`${label} must be a positive number.`);
+  }
+
+  return number;
 }
 
 async function processTrack(project, sequence, trackIndex, frameSize, options, summary) {
@@ -213,18 +221,18 @@ async function applyPulse(project, sequence, clip, frameSize, options) {
   log(`    start/end seconds: ${start.seconds} / ${end.seconds}`);
   log(`    clip in point seconds: ${inPoint.seconds}`);
 
-  if (duration.seconds < options.recoverySeconds) {
-    throw new Error(`Clip is shorter than ${options.recoverySeconds}s.`);
+  if (duration.seconds < options.pulseSeconds) {
+    throw new Error(`Clip is shorter than ${options.pulseSeconds}s.`);
   }
 
   const chain = await clip.getComponentChain();
   const motion = findMotionComponent(chain);
   const params = getMotionParams(motion);
   const localStartTime = ppro.TickTime.createWithSeconds(0);
-  const localEndTime = ppro.TickTime.createWithSeconds(options.recoverySeconds);
+  const localEndTime = ppro.TickTime.createWithSeconds(options.pulseSeconds);
   const startTime = addTickTimes(localStartTime, inPoint);
   const endTime = addTickTimes(localEndTime, inPoint);
-  const midpoint = addTickTimes(ppro.TickTime.createWithSeconds(options.recoverySeconds / 2), inPoint);
+  const midpoint = addTickTimes(ppro.TickTime.createWithSeconds(options.pulseSeconds / 2), inPoint);
   const beforeKeys = keyList(params.scaleHeight);
   const positionValue = await params.position.getValueAtTime(startTime);
   const anchorValue = await params.anchorPoint.getValueAtTime(startTime);
@@ -235,12 +243,12 @@ async function applyPulse(project, sequence, clip, frameSize, options) {
   const positionTarget = bottomCenterPoint(positionValue, frameSize);
   const anchorTarget = bottomCenterPoint(anchorValue, frameSize);
   const removeTimes = keyTimesInRanges(params.scaleHeight, [
-    { start: -0.001, end: options.recoverySeconds + 0.001 },
-    { start: inPoint.seconds - 0.001, end: inPoint.seconds + options.recoverySeconds + 0.001 }
+    { start: -0.001, end: options.pulseSeconds + 0.001 },
+    { start: inPoint.seconds - 0.001, end: inPoint.seconds + options.pulseSeconds + 0.001 }
   ]);
   const scaleKeyframes = buildScaleCurveKeyframes(
     inPoint,
-    options.recoverySeconds,
+    options.pulseSeconds,
     targetScale,
     baseScale,
     options.curve,
@@ -248,7 +256,7 @@ async function applyPulse(project, sequence, clip, frameSize, options) {
   );
 
   log(`    motion: ${await motion.getDisplayName()} matchName=${await motion.getMatchName()} props=${motion.getParamCount()}`);
-  log(`    key times local/actual: 0s/${startTime.seconds}s, ${options.recoverySeconds}s/${endTime.seconds}s`);
+  log(`    key times local/actual: 0s/${startTime.seconds}s, ${options.pulseSeconds}s/${endTime.seconds}s`);
   log(`    position: ${params.position.displayName} ${valueToString(positionValue)} -> ${valueToString(positionTarget)}`);
   log(`    anchor: ${params.anchorPoint.displayName} ${valueToString(anchorValue)} -> ${valueToString(anchorTarget)}`);
   log(`    width scale: ${params.scaleWidth.displayName} ${valueToString(widthValue)}`);
@@ -395,12 +403,12 @@ function createAddKeyframeAction(param, time, value) {
   return param.createAddKeyframeAction(keyframe);
 }
 
-function buildScaleCurveKeyframes(inPoint, recoverySeconds, targetScale, baseScale, curve, samples) {
+function buildScaleCurveKeyframes(inPoint, pulseSeconds, targetScale, baseScale, curve, samples) {
   const keyframes = [];
 
   for (let index = 0; index <= samples; index += 1) {
     const progress = index / samples;
-    const localSeconds = recoverySeconds * progress;
+    const localSeconds = pulseSeconds * progress;
     const eased = cubicBezierYForX(progress, curve[0], curve[1], curve[2], curve[3]);
     const value = targetScale + (baseScale - targetScale) * eased;
 
