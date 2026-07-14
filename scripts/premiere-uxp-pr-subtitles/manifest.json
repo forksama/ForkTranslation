@@ -1,8 +1,8 @@
 {
   "manifestVersion": 5,
-  "id": "com.forktranslation.prsubtitles.incremental",
+  "id": "com.forktranslation.prsubtitles",
   "name": "ForkTranslation PR Subtitles",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "host": {
     "app": "premierepro",
     "minVersion": "25.6.0"
@@ -11,9 +11,9 @@
   "entrypoints": [
     {
       "type": "command",
-      "id": "generateIncrementalSrt",
+      "id": "generateRoleSrts",
       "label": {
-        "default": "ForkTranslation: Generate Incremental Subtitle SRT"
+        "default": "ForkTranslation: Generate Role Subtitle SRTs"
       }
     }
   ],

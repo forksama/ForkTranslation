@@ -6,10 +6,7 @@ It can:
 
 - choose a `pr-subtitles-D.json` file;
 - read the active sequence markers;
-- read existing caption track count and caption item count;
-- generate only the next missing cue range when markers are incomplete;
-- save a ranged SRT file;
-- import that SRT into the Project panel.
+- generate one SRT per cue role and import those SRTs into the Project panel.
 
 It cannot currently:
 
@@ -19,8 +16,7 @@ It cannot currently:
 - append new caption items to an existing track.
 
 Those operations are not exposed in the current public Premiere UXP API. The
-plugin therefore uses the existing caption item count only to decide which cue
-range to generate next.
+plugin therefore stops at generating and importing role-split SRT files.
 
 ## Install For Testing
 
@@ -32,7 +28,17 @@ range to generate next.
    `scripts/premiere-uxp-pr-subtitles`
 6. Load the plugin into Premiere Pro 25.6 or newer.
 7. In Premiere, run:
-   `ForkTranslation: Generate Incremental Subtitle SRT`
+   `ForkTranslation: Generate Role Subtitle SRTs`
+
+That command asks for:
+
+1. A `pr-subtitles-D.json` file.
+2. An output folder for the generated SRT files.
+
+It groups cues by `role`, writes one SRT per role, keeps the original sequence
+timecodes from the marker intervals, and imports all generated SRT files into
+the Project panel. Create one Subtitle track from each SRT manually, then apply
+the matching Track Style to each track.
 
 If UDT says `No applications are connected to the service`, Premiere has not
 connected to UDT yet. Check the Premiere version, Developer Mode, and whether

@@ -2,15 +2,14 @@ const premiere = require("premierepro");
 const { entrypoints, storage } = require("uxp");
 
 const localFileSystem = storage.localFileSystem;
-const CLIP_TRACK_ITEM_TYPE = 1;
 
 entrypoints.setup({
   commands: {
-    generateIncrementalSrt: runCommand
+    generateRoleSrts: runRoleSrtsCommand
   }
 });
 
-async function runCommand() {
+async function runRoleSrtsCommand() {
   try {
     const project = await premiere.Project.getActiveProject();
     if (!project) {
@@ -22,6 +21,10 @@ async function runCommand() {
       throw new Error("Make a sequence active first.");
     }
 
+    if (typeof localFileSystem.getFolder !== "function") {
+      throw new Error("localFileSystem.getFolder() is unavailable in this UXP host.");
+    }
+
     const jsonFile = await localFileSystem.getFileForOpening({
       allowMultiple: false,
       types: ["json"]
@@ -30,12 +33,16 @@ async function runCommand() {
       return;
     }
 
+    const outputFolder = await localFileSystem.getFolder();
+    if (!outputFolder) {
+      return;
+    }
+
     const data = parseJson(await readTextFile(jsonFile), jsonFile.name);
     const cues = getOrderedCues(data);
     const markers = await getSequenceMarkers(sequence);
-    const captionStats = await getCaptionStats(sequence);
-
     const markerCoveredCueCount = Math.max(0, markers.length - 1);
+
     if (markerCoveredCueCount < 1) {
       throw new Error(
         "The active sequence has " + markers.length +
@@ -44,54 +51,45 @@ async function runCommand() {
     }
 
     const usableCueCount = Math.min(cues.length, markerCoveredCueCount);
-    const alreadyImportedCount = captionStats.itemCount;
+    validateMarkerIntervals(markers, 0, usableCueCount);
 
-    if (alreadyImportedCount > usableCueCount) {
-      throw new Error(
-        "Existing caption item count is " + alreadyImportedCount +
-          ", but current markers only cover " + usableCueCount +
-          " cue interval(s). Add more markers or remove unrelated caption " +
-          "tracks before generating an incremental SRT."
+    const roleGroups = groupCuesByRole(cues, markers, usableCueCount);
+    if (roleGroups.length === 0) {
+      throw new Error("No role groups were generated.");
+    }
+
+    const writtenFiles = [];
+    const timestamp = timestampForFileName();
+
+    for (const group of roleGroups) {
+      const srtText = buildRoleSrt(group.entries);
+      const fileName = buildRoleSrtFileName(
+        jsonFile.name,
+        group.role,
+        1,
+        usableCueCount,
+        timestamp
       );
+      const srtFile = await outputFolder.createFile(fileName, { overwrite: true });
+
+      await writeTextFile(srtFile, "\uFEFF" + srtText);
+      writtenFiles.push({
+        role: group.role,
+        cueCount: group.entries.length,
+        file: srtFile,
+        path: getNativePath(srtFile)
+      });
     }
 
-    const importCount = usableCueCount - alreadyImportedCount;
-    if (importCount < 1) {
-      await showMessage(
-        "Nothing to generate.\n\n" +
-          "Detected caption tracks: " + captionStats.trackCount + "\n" +
-          "Detected caption items: " + alreadyImportedCount + "\n" +
-          "Markers currently cover cue count: " + usableCueCount
-      );
-      return;
-    }
-
-    validateMarkerIntervals(markers, alreadyImportedCount, importCount);
-
-    const rangeStartOrder = alreadyImportedCount + 1;
-    const rangeEndOrder = alreadyImportedCount + importCount;
-    const srtText = buildSrt(cues, markers, alreadyImportedCount, importCount);
-    const suggestedName = buildSrtFileName(
-      jsonFile.name,
-      rangeStartOrder,
-      rangeEndOrder
-    );
-
-    const srtFile = await localFileSystem.getFileForSaving(suggestedName, {
-      types: ["srt"]
-    });
-    if (!srtFile) {
-      return;
-    }
-
-    await writeTextFile(srtFile, "\uFEFF" + srtText);
-
+    const importPaths = writtenFiles
+      .map((entry) => entry.path)
+      .filter((path) => path);
     let importedToProject = false;
-    const srtPath = getNativePath(srtFile);
-    if (srtPath) {
+
+    if (importPaths.length > 0) {
       const rootItem = await project.getRootItem();
       importedToProject = await project.importFiles(
-        [srtPath],
+        importPaths,
         true,
         rootItem,
         false
@@ -99,21 +97,18 @@ async function runCommand() {
     }
 
     await showMessage(
-      "Generated cue order " + rangeStartOrder + "-" + rangeEndOrder +
-        " (" + importCount + " cue(s)).\n\n" +
-        "Detected caption tracks: " + captionStats.trackCount + "\n" +
-        "Detected existing caption items: " + alreadyImportedCount + "\n" +
-        "Timeline markers: " + markers.length + "\n" +
-        "SRT: " + (srtPath || srtFile.name) + "\n" +
-        "Imported to Project panel: " + (importedToProject ? "yes" : "no") +
-        "\n\nCurrent public UXP APIs can read caption tracks/items, but do " +
-        "not expose create/delete/clear/append caption-track operations. " +
-        "Create the Subtitle track from the generated SRT manually unless " +
-        "Adobe adds those APIs in a future Premiere build."
+      "Generated role subtitle SRTs.\n\n" +
+        "Cue range: C" + pad4(1) + "-C" + pad4(usableCueCount) + "\n" +
+        "Role files: " + writtenFiles.length + "\n" +
+        "Imported to Project panel: " + (importedToProject ? "yes" : "no") + "\n\n" +
+        writtenFiles
+          .map((entry) => entry.role + ": " + entry.cueCount + " cue(s)")
+          .join("\n") +
+        "\n\nCreate one Subtitle track from each SRT manually, then apply the matching Track Style."
     );
   } catch (error) {
     await showMessage(
-      "ForkTranslation PR Subtitles failed:\n\n" +
+      "ForkTranslation Role Subtitle SRTs failed:\n\n" +
         (error && error.message ? error.message : String(error))
     );
   }
@@ -168,6 +163,7 @@ function getOrderedCues(data) {
     byOrder.set(order, {
       order: order,
       id: cue.id ? String(cue.id) : "order " + order,
+      role: normalizeRole(cue.role),
       lines: extractCueLines(cue)
     });
   }
@@ -181,6 +177,13 @@ function getOrderedCues(data) {
   }
 
   return ordered;
+}
+
+function normalizeRole(value) {
+  const role = String(value === undefined || value === null ? "" : value)
+    .trim()
+    .replace(/学\s+P/g, "学P");
+  return role.length > 0 ? role : "未分组";
 }
 
 function extractCueLines(cue) {
@@ -223,6 +226,53 @@ function addSubtitleLine(lines, value) {
   }
 }
 
+function groupCuesByRole(cues, markers, cueCount) {
+  const byRole = new Map();
+  const groups = [];
+
+  for (let cueIndex = 0; cueIndex < cueCount; cueIndex += 1) {
+    const cue = cues[cueIndex];
+    const role = normalizeRole(cue.role);
+    let group = byRole.get(role);
+
+    if (!group) {
+      group = {
+        role,
+        entries: []
+      };
+      byRole.set(role, group);
+      groups.push(group);
+    }
+
+    group.entries.push({
+      cue,
+      order: cueIndex + 1,
+      startSeconds: markers[cueIndex].seconds,
+      endSeconds: markers[cueIndex + 1].seconds
+    });
+  }
+
+  return groups;
+}
+
+function buildRoleSrt(entries) {
+  const parts = [];
+
+  for (let index = 0; index < entries.length; index += 1) {
+    const entry = entries[index];
+
+    parts.push(String(index + 1));
+    parts.push(
+      formatSrtTime(entry.startSeconds) + " --> " +
+        formatSrtTime(entry.endSeconds)
+    );
+    parts.push(entry.cue.lines.join("\r\n"));
+    parts.push("");
+  }
+
+  return parts.join("\r\n");
+}
+
 async function getSequenceMarkers(sequence) {
   if (!premiere.Markers || typeof premiere.Markers.getMarkers !== "function") {
     throw new Error("premiere.Markers.getMarkers() is unavailable.");
@@ -248,64 +298,6 @@ async function getSequenceMarkers(sequence) {
   return markers;
 }
 
-async function getCaptionStats(sequence) {
-  const stats = {
-    trackCount: 0,
-    itemCount: 0,
-    perTrack: []
-  };
-
-  if (typeof sequence.getCaptionTrackCount !== "function") {
-    return stats;
-  }
-
-  stats.trackCount = Number(await sequence.getCaptionTrackCount()) || 0;
-
-  for (let index = 0; index < stats.trackCount; index += 1) {
-    const track = await sequence.getCaptionTrack(index);
-    const items = await getCaptionTrackItems(track);
-
-    stats.perTrack.push({
-      index: index,
-      name: track && track.name ? String(track.name) : "",
-      itemCount: items.length
-    });
-    stats.itemCount += items.length;
-  }
-
-  return stats;
-}
-
-async function getCaptionTrackItems(track) {
-  if (!track || typeof track.getTrackItems !== "function") {
-    return [];
-  }
-
-  try {
-    const items = await track.getTrackItems(getClipTrackItemType(), false);
-    return Array.isArray(items) ? items : [];
-  } catch (firstError) {
-    const items = await track.getTrackItems(CLIP_TRACK_ITEM_TYPE, false);
-    return Array.isArray(items) ? items : [];
-  }
-}
-
-function getClipTrackItemType() {
-  try {
-    if (
-      premiere.Constants &&
-      premiere.Constants.TrackItemType &&
-      premiere.Constants.TrackItemType.CLIP !== undefined
-    ) {
-      return premiere.Constants.TrackItemType.CLIP;
-    }
-  } catch (error) {
-    // Fall back below.
-  }
-
-  return CLIP_TRACK_ITEM_TYPE;
-}
-
 function validateMarkerIntervals(markers, startCueIndex, cueCount) {
   for (let index = 0; index < cueCount; index += 1) {
     const markerIndex = startCueIndex + index;
@@ -322,30 +314,25 @@ function validateMarkerIntervals(markers, startCueIndex, cueCount) {
   }
 }
 
-function buildSrt(cues, markers, startCueIndex, cueCount) {
-  const parts = [];
-
-  for (let index = 0; index < cueCount; index += 1) {
-    const cueIndex = startCueIndex + index;
-    parts.push(String(index + 1));
-    parts.push(
-      formatSrtTime(markers[cueIndex].seconds) + " --> " +
-        formatSrtTime(markers[cueIndex + 1].seconds)
-    );
-    parts.push(cues[cueIndex].lines.join("\r\n"));
-    parts.push("");
-  }
-
-  return parts.join("\r\n");
-}
-
-function buildSrtFileName(jsonFileName, rangeStartOrder, rangeEndOrder) {
+function buildRoleSrtFileName(jsonFileName, role, rangeStartOrder, rangeEndOrder, timestamp) {
   const stem = String(jsonFileName || "pr-subtitles-D")
     .replace(/\.json$/i, "")
     .replace(/[\\/:*?"<>|]/g, "_");
+  const safeRole = sanitizeFileNamePart(role || "未分组");
 
-  return stem + "-premiere-C" + pad4(rangeStartOrder) + "-C" +
-    pad4(rangeEndOrder) + "-" + timestampForFileName() + ".srt";
+  return stem + "-role-" + safeRole + "-C" + pad4(rangeStartOrder) + "-C" +
+    pad4(rangeEndOrder) + "-" + (timestamp || timestampForFileName()) + ".srt";
+}
+
+function sanitizeFileNamePart(value) {
+  const text = String(value || "")
+    .replace(/[\\/:*?"<>|]/g, "_")
+    .replace(/\s+/g, "_")
+    .replace(/^\.+/, "")
+    .replace(/\.+$/, "")
+    .trim();
+
+  return text.length > 0 ? text : "untitled";
 }
 
 function formatSrtTime(seconds) {
