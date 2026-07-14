@@ -64,7 +64,7 @@
 1. **调研源优先级**（[[feedback-translation-source-priorities]]）：译名调研不以 B 站 UP 主为中心，优先多渠道文字语料——萌娘百科、Pixiv 百科、贴吧、NGA、gakumas.cn、Seesaa wiki、あにまん。
 2. **角色/剧情用日文源**（[[feedback-prefer-japanese-sources-for-content]]）：内容层调研优先看日文百科（Nicovideo/Pixiv/Seesaa）和官方角色页；日文侧的性格分析/讨论/二手总结同样可用；不必执着于第一手官方。
 3. **官方优先，二创只举例**（[[feedback-official-over-fanwork-content]]）：character-profiles 以官方设定为主，二创只举 2-3 个代表性简例。**relationships.md 完全不写二创关系**。字数受限时先砍二创。Profile 字数 800-1500 字推荐，允许略超到 2000。
-4. **学P × 偶像是并行世界线**（[[project-p-idol-parallel-worldlines]]）：一个 playthrough 只培育一位偶像；不同"学P × 偶像"关系不同时成立。翻译具体串时按其"当前担当偶像"选相应条目。
+4. **学P×偶像是并行世界线**（[[project-p-idol-parallel-worldlines]]）：一个 playthrough 只培育一位偶像；不同"学P×偶像"关系不同时成立。翻译具体串时按其"当前担当偶像"选相应条目。
 
 ## 4. 项目核心决策（要在文件里落地的）
 
