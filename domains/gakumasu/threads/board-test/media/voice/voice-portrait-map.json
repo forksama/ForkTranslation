@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "threadPathBase": "thread",
+  "audioPathBase": "workdir",
   "portraitPathBase": "repo",
   "items": [
     {
@@ -101,6 +101,15 @@
       "role": "1.立绘/10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "えええええ"
+    },
+    {
+      "order": 12,
+      "audioFileName": "12-12-四国めたん（ノーマル）_121212.wav",
+      "audioRelPath": "media/voice/audio/12-12-四国めたん（ノーマル）_121212.wav",
+      "portraitRelPath": "1.立绘/1-咲季立绘.1/其他-自然-特殊-开心.png",
+      "role": "四国めたん（ノーマル）",
+      "engine": "voicevox",
+      "text": "121212"
     }
   ]
 }
