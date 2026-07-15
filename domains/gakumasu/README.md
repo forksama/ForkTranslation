@@ -41,6 +41,7 @@ gakumasu/
 - 稳定知识变动统一走 `stable/`；本次翻译才需要的信息进 `threads/<xxx>/context-pack.md`，不要污染 stable。
 - 术语增删和译名冲突登记在 `stable/glossary.csv` 与 `stable/translation-decisions.md` 之间闭环。
 - `character-profiles/` 只为当前或短期内的翻译项目主人公新建；其他角色出现时靠 `characters.md` 提供最小可翻译信息。
+- 最终产物统一落在 `threads/board-<boardId>-<short>/`，并使用目录结构中的规范文件名；用户提供的外部源目录、图源目录或临时目录只作为输入来源，交付前必须检查没有把 A/B/C/D 留在外部目录。
 
 ## 调研资料
 
