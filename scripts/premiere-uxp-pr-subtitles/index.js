@@ -1,30 +1,165 @@
+/* global require */
+
 const premiere = require("premierepro");
 const { entrypoints, storage } = require("uxp");
 
 const localFileSystem = storage.localFileSystem;
 
+const state = {
+  busy: false,
+  jsonFile: null,
+  outputFolder: null,
+  previewText: "Choose a subtitle JSON file.",
+  logLines: []
+};
+
 entrypoints.setup({
   commands: {
     generateRoleSrts: runRoleSrtsCommand
+  },
+  panels: {
+    prSubtitlesPanel: {
+      show() {
+        renderPanelState();
+      }
+    }
   }
 });
 
+function $(id) {
+  return document.getElementById(id);
+}
+
+function log(message) {
+  state.logLines.push(String(message));
+  $("log").textContent = state.logLines.join("\n");
+  $("log").scrollTop = $("log").scrollHeight;
+}
+
+function setStatus(message) {
+  $("status").textContent = message;
+}
+
+function setBusy(busy) {
+  state.busy = busy;
+  $("chooseJsonButton").disabled = busy;
+  $("chooseOutputButton").disabled = busy;
+  $("runButton").disabled = busy;
+  $("saveLogButton").disabled = busy;
+}
+
+function renderPanelState() {
+  $("jsonPath").textContent = state.jsonFile
+    ? getNativePath(state.jsonFile) || state.jsonFile.name
+    : "No JSON selected";
+  $("outputPath").textContent = state.outputFolder
+    ? getNativePath(state.outputFolder) || state.outputFolder.name
+    : "No output folder selected";
+  $("preview").textContent = state.previewText;
+  $("log").textContent = state.logLines.join("\n");
+}
+
+async function chooseJsonFile() {
+  if (state.busy) {
+    return;
+  }
+
+  try {
+    const file = await localFileSystem.getFileForOpening({
+      allowMultiple: false,
+      types: ["json"]
+    });
+    if (!file) {
+      return;
+    }
+
+    state.previewText = await buildJsonPreview(file);
+    state.jsonFile = file;
+    renderPanelState();
+    setStatus(`Loaded ${file.name}.`);
+  } catch (error) {
+    setStatus("Failed to load JSON");
+    log(errorToString(error));
+  }
+}
+
+async function chooseOutputFolder() {
+  if (state.busy) {
+    return;
+  }
+
+  try {
+    ensureFolderPickerAvailable();
+    const folder = await localFileSystem.getFolder();
+    if (!folder) {
+      return;
+    }
+
+    state.outputFolder = folder;
+    renderPanelState();
+    setStatus("Output folder selected.");
+  } catch (error) {
+    setStatus("Failed to choose output folder");
+    log(errorToString(error));
+  }
+}
+
+async function buildJsonPreview(file) {
+  const data = parseJson(await readTextFile(file), file.name);
+  const cues = getOrderedCues(data);
+  const roleCounts = new Map();
+
+  for (const cue of cues) {
+    roleCounts.set(cue.role, (roleCounts.get(cue.role) || 0) + 1);
+  }
+
+  const lines = [
+    `File: ${file.name}`,
+    `Cues: ${cues.length}`,
+    `Roles: ${roleCounts.size}`
+  ];
+
+  for (const [role, count] of roleCounts) {
+    lines.push(`  ${role}: ${count}`);
+  }
+
+  return lines.join("\n");
+}
+
+async function runPanelGeneration() {
+  if (state.busy) {
+    return;
+  }
+
+  setBusy(true);
+  setStatus("Generating");
+
+  try {
+    if (!state.jsonFile) {
+      throw new Error("Choose a subtitle JSON file first.");
+    }
+    if (!state.outputFolder) {
+      throw new Error("Choose an output folder first.");
+    }
+
+    const result = await generateRoleSrts(state.jsonFile, state.outputFolder, log);
+    state.previewText = buildGenerationPreview(result);
+    renderPanelState();
+    setStatus(
+      `Generated ${result.writtenFiles.length} SRT file(s); ` +
+        `Project import ${result.importedToProject ? "succeeded" : "did not run"}.`
+    );
+  } catch (error) {
+    setStatus("Generation failed");
+    log(errorToString(error));
+  } finally {
+    setBusy(false);
+  }
+}
+
 async function runRoleSrtsCommand() {
   try {
-    const project = await premiere.Project.getActiveProject();
-    if (!project) {
-      throw new Error("Open a Premiere Pro project first.");
-    }
-
-    const sequence = await project.getActiveSequence();
-    if (!sequence) {
-      throw new Error("Make a sequence active first.");
-    }
-
-    if (typeof localFileSystem.getFolder !== "function") {
-      throw new Error("localFileSystem.getFolder() is unavailable in this UXP host.");
-    }
-
+    ensureFolderPickerAvailable();
     const jsonFile = await localFileSystem.getFileForOpening({
       allowMultiple: false,
       types: ["json"]
@@ -38,80 +173,148 @@ async function runRoleSrtsCommand() {
       return;
     }
 
-    const data = parseJson(await readTextFile(jsonFile), jsonFile.name);
-    const cues = getOrderedCues(data);
-    const markers = await getSequenceMarkers(sequence);
-    const markerCoveredCueCount = Math.max(0, markers.length - 1);
-
-    if (markerCoveredCueCount < 1) {
-      throw new Error(
-        "The active sequence has " + markers.length +
-          " marker(s). At least 2 markers are needed for 1 subtitle cue."
-      );
-    }
-
-    const usableCueCount = Math.min(cues.length, markerCoveredCueCount);
-    validateMarkerIntervals(markers, 0, usableCueCount);
-
-    const roleGroups = groupCuesByRole(cues, markers, usableCueCount);
-    if (roleGroups.length === 0) {
-      throw new Error("No role groups were generated.");
-    }
-
-    const writtenFiles = [];
-    const timestamp = timestampForFileName();
-
-    for (const group of roleGroups) {
-      const srtText = buildRoleSrt(group.entries);
-      const fileName = buildRoleSrtFileName(
-        jsonFile.name,
-        group.role,
-        1,
-        usableCueCount,
-        timestamp
-      );
-      const srtFile = await outputFolder.createFile(fileName, { overwrite: true });
-
-      await writeTextFile(srtFile, "\uFEFF" + srtText);
-      writtenFiles.push({
-        role: group.role,
-        cueCount: group.entries.length,
-        file: srtFile,
-        path: getNativePath(srtFile)
-      });
-    }
-
-    const importPaths = writtenFiles
-      .map((entry) => entry.path)
-      .filter((path) => path);
-    let importedToProject = false;
-
-    if (importPaths.length > 0) {
-      const rootItem = await project.getRootItem();
-      importedToProject = await project.importFiles(
-        importPaths,
-        true,
-        rootItem,
-        false
-      );
-    }
-
-    await showMessage(
-      "Generated role subtitle SRTs.\n\n" +
-        "Cue range: C" + pad4(1) + "-C" + pad4(usableCueCount) + "\n" +
-        "Role files: " + writtenFiles.length + "\n" +
-        "Imported to Project panel: " + (importedToProject ? "yes" : "no") + "\n\n" +
-        writtenFiles
-          .map((entry) => entry.role + ": " + entry.cueCount + " cue(s)")
-          .join("\n") +
-        "\n\nCreate one Subtitle track from each SRT manually, then apply the matching Track Style."
-    );
+    const result = await generateRoleSrts(jsonFile, outputFolder, (message) => {
+      console.log(message);
+    });
+    await showMessage(formatGenerationResult(result));
   } catch (error) {
     await showMessage(
       "ForkTranslation Role Subtitle SRTs failed:\n\n" +
         (error && error.message ? error.message : String(error))
     );
   }
+}
+
+async function generateRoleSrts(jsonFile, outputFolder, writeLog) {
+  const report = typeof writeLog === "function" ? writeLog : () => {};
+  const project = await premiere.Project.getActiveProject();
+  if (!project) {
+    throw new Error("Open a Premiere Pro project first.");
+  }
+
+  const sequence = await project.getActiveSequence();
+  if (!sequence) {
+    throw new Error("Make a sequence active first.");
+  }
+
+  const data = parseJson(await readTextFile(jsonFile), jsonFile.name);
+  const cues = getOrderedCues(data);
+  const markers = await getSequenceMarkers(sequence);
+  const markerCoveredCueCount = Math.max(0, markers.length - 1);
+
+  report("");
+  report("Script: ForkTranslation PR Subtitles");
+  report(`Project: ${project.path || project.name || "(unsaved)"}`);
+  report(`Sequence: ${sequence.name || "(unnamed)"}`);
+  report(`Subtitle JSON: ${getNativePath(jsonFile) || jsonFile.name}`);
+  report(`Output folder: ${getNativePath(outputFolder) || outputFolder.name}`);
+  report(`JSON cues: ${cues.length}`);
+  report(`Sequence markers: ${markers.length}`);
+
+  if (markerCoveredCueCount < 1) {
+    throw new Error(
+      "The active sequence has " + markers.length +
+        " marker(s). At least 2 markers are needed for 1 subtitle cue."
+    );
+  }
+
+  const usableCueCount = Math.min(cues.length, markerCoveredCueCount);
+  validateMarkerIntervals(markers, 0, usableCueCount);
+
+  const roleGroups = groupCuesByRole(cues, markers, usableCueCount);
+  if (roleGroups.length === 0) {
+    throw new Error("No role groups were generated.");
+  }
+
+  report(`Usable cues: ${usableCueCount}`);
+  report(`Role groups: ${roleGroups.length}`);
+
+  const writtenFiles = [];
+  const timestamp = timestampForFileName();
+
+  for (const group of roleGroups) {
+    const srtText = buildRoleSrt(group.entries);
+    const fileName = buildRoleSrtFileName(
+      jsonFile.name,
+      group.role,
+      1,
+      usableCueCount,
+      timestamp
+    );
+    const srtFile = await outputFolder.createFile(fileName, { overwrite: true });
+
+    await writeTextFile(srtFile, "\uFEFF" + srtText);
+    writtenFiles.push({
+      role: group.role,
+      cueCount: group.entries.length,
+      file: srtFile,
+      fileName,
+      path: getNativePath(srtFile)
+    });
+    report(`  ${group.role}: ${group.entries.length} cue(s) -> ${fileName}`);
+  }
+
+  const importPaths = writtenFiles
+    .map((entry) => entry.path)
+    .filter((path) => path);
+  let importedToProject = false;
+
+  if (importPaths.length > 0) {
+    const rootItem = await project.getRootItem();
+    importedToProject = await project.importFiles(
+      importPaths,
+      true,
+      rootItem,
+      false
+    );
+  }
+
+  report(`Imported to Project panel: ${importedToProject ? "yes" : "no"}`);
+  report("Done.");
+
+  return {
+    cueCount: cues.length,
+    markerCount: markers.length,
+    usableCueCount,
+    writtenFiles,
+    importedToProject
+  };
+}
+
+function buildGenerationPreview(result) {
+  const lines = [
+    `Cue range: C${pad4(1)}-C${pad4(result.usableCueCount)}`,
+    `Sequence markers: ${result.markerCount}`,
+    `Role files: ${result.writtenFiles.length}`,
+    `Imported to Project panel: ${result.importedToProject ? "yes" : "no"}`
+  ];
+
+  for (const entry of result.writtenFiles) {
+    lines.push(`  ${entry.role}: ${entry.cueCount}`);
+  }
+
+  return lines.join("\n");
+}
+
+function formatGenerationResult(result) {
+  return "Generated role subtitle SRTs.\n\n" +
+    "Cue range: C" + pad4(1) + "-C" + pad4(result.usableCueCount) + "\n" +
+    "Role files: " + result.writtenFiles.length + "\n" +
+    "Imported to Project panel: " + (result.importedToProject ? "yes" : "no") + "\n\n" +
+    result.writtenFiles
+      .map((entry) => entry.role + ": " + entry.cueCount + " cue(s)")
+      .join("\n") +
+    "\n\nCreate one Subtitle track from each SRT manually, then apply the matching Track Style.";
+}
+
+function ensureFolderPickerAvailable() {
+  if (typeof localFileSystem.getFolder !== "function") {
+    throw new Error("localFileSystem.getFolder() is unavailable in this UXP host.");
+  }
+}
+
+function errorToString(error) {
+  return error && error.stack ? error.stack : String(error);
 }
 
 async function readTextFile(file) {
@@ -401,3 +604,32 @@ async function showMessage(message) {
     }
   }
 }
+
+async function savePanelLog() {
+  try {
+    const file = await localFileSystem.getFileForSaving(
+      `pr-subtitles-${timestampForFileName()}.log`,
+      { types: ["log", "txt"] }
+    );
+    if (!file) {
+      return;
+    }
+
+    await writeTextFile(file, state.logLines.join("\n") + "\n");
+    setStatus(`Saved log: ${getNativePath(file) || file.name}`);
+  } catch (error) {
+    setStatus("Failed to save log");
+    log(errorToString(error));
+  }
+}
+
+$("chooseJsonButton").addEventListener("click", chooseJsonFile);
+$("chooseOutputButton").addEventListener("click", chooseOutputFolder);
+$("runButton").addEventListener("click", runPanelGeneration);
+$("clearButton").addEventListener("click", () => {
+  state.logLines = [];
+  $("log").textContent = "";
+});
+$("saveLogButton").addEventListener("click", savePanelLog);
+
+renderPanelState();

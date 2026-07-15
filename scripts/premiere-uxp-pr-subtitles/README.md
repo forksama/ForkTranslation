@@ -1,6 +1,6 @@
 # ForkTranslation PR Subtitles UXP
 
-This is a Premiere Pro UXP experiment for the PR subtitle workflow.
+This is a Premiere Pro UXP panel for the PR subtitle workflow.
 
 It can:
 
@@ -18,7 +18,7 @@ It cannot currently:
 Those operations are not exposed in the current public Premiere UXP API. The
 plugin therefore stops at generating and importing role-split SRT files.
 
-## Install For Testing
+## Load
 
 1. Open Adobe UXP Developer Tool.
 2. Make sure Premiere Pro 25.6 or newer is running.
@@ -27,13 +27,17 @@ plugin therefore stops at generating and importing role-split SRT files.
 5. Add this folder as a plugin:
    `scripts/premiere-uxp-pr-subtitles`
 6. Load the plugin into Premiere Pro 25.6 or newer.
-7. In Premiere, run:
-   `ForkTranslation: Generate Role Subtitle SRTs`
+7. Open the panel named `PR Subtitles`.
 
-That command asks for:
+## Use
 
-1. A `pr-subtitles-D.json` file.
-2. An output folder for the generated SRT files.
+1. Click `Choose Subtitle JSON` and select a `pr-subtitles-D.json` file.
+2. Click `Choose Output Folder` and select the generated SRT destination.
+3. Activate the Premiere sequence whose markers define subtitle intervals.
+4. Click `Generate SRTs`.
+
+The original `ForkTranslation: Generate Role Subtitle SRTs` command remains
+available and uses the same generation logic with file-picker dialogs.
 
 It groups cues by `role`, writes one SRT per role, keeps the original sequence
 timecodes from the marker intervals, and imports all generated SRT files into
@@ -47,7 +51,7 @@ UDT is running with administrator privileges.
 The plugin will save an SRT such as:
 
 ```text
-pr-subtitles-D-premiere-C0080-C0119-20260714-153000.srt
+pr-subtitles-D-role-旁白-C0001-C0255-20260714-153000.srt
 ```
 
 Create the Subtitle track from that SRT manually unless Adobe adds public UXP

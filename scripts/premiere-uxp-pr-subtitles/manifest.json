@@ -2,13 +2,34 @@
   "manifestVersion": 5,
   "id": "com.forktranslation.prsubtitles",
   "name": "ForkTranslation PR Subtitles",
-  "version": "0.3.0",
-  "host": {
-    "app": "premierepro",
-    "minVersion": "25.6.0"
-  },
+  "version": "0.4.0",
+  "host": [
+    {
+      "app": "premierepro",
+      "minVersion": "25.6.0"
+    }
+  ],
   "main": "index.html",
   "entrypoints": [
+    {
+      "type": "panel",
+      "id": "prSubtitlesPanel",
+      "label": {
+        "default": "PR Subtitles"
+      },
+      "minimumSize": {
+        "width": 320,
+        "height": 440
+      },
+      "preferredDockedSize": {
+        "width": 430,
+        "height": 660
+      },
+      "preferredFloatingSize": {
+        "width": 480,
+        "height": 700
+      }
+    },
     {
       "type": "command",
       "id": "generateRoleSrts",
