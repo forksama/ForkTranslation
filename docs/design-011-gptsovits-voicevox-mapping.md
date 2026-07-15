@@ -38,7 +38,7 @@ scripts/voice_mapping/
 - `upsert(item)` —— 替换同 `order` 的条目，否则追加；随后按 `order` 排序。
 - `next_order()` —— `max(order) + 1`。
 
-> 注意：当前库写出的 schema 早于 v2 标记。改动此文件时，应对齐 plan-010 的 v2 schema（`schemaVersion: 2`、`audioPathBase: "workdir"`、`portraitPathBase: "portraitDir"`）。较早的测试文件可能仍是 v1（`threadPathBase`/`portraitPathBase: "repo"`）。
+> 注意：部分测试文件仍标记为 `schemaVersion: 1`，但实际字段已经使用当前 UXP 所需的相对路径契约（`audioPathBase`、`audioRelPath`、`portraitRelPath`、`audioFileName`）。改动此文件时，应继续保持这些字段稳定，不要让读取端按版本号硬分支。
 
 > 历史说明：原设计曾有一个 `roles.py`（基于 `怪文书素材/1.立绘/` 子文件夹名解析角色名）。最终 UI 改为**解耦的文件夹浏览器**后该模块不再被使用，已删除。
 
@@ -146,8 +146,10 @@ Electron 沙箱原本缺少目录列举方法，因此新增了一条贯通的 I
 
 ---
 
-## Part D：Premiere UXP 插件（Machine B）—— 待实现
+## Part D：Premiere UXP 插件（Machine B）—— MVP 已实现
 
-尚未实现。它将选择工作目录 + 立绘目录，按 `audioFileName` 匹配序列中的音频片段，通过 `立绘目录 + portraitRelPath` 定位立绘，把立绘片段摆放/裁剪到视频轨。详见 plan-010「Machine B Plan」。
+插件路径：`scripts/premiere-uxp-portrait-map-importer/`。
 
-**参考数据**：`domains/gakumasu/threads/board-test/` 是一次端到端测试的产物（含 GPT-SoVITS 与 VOICEVOX 两种引擎生成的音频 + 一个 `voice-portrait-map.json`），提交入库作为编写 UXP 插件时的真实样例。注意该测试文件的 schema 可能为 v1（早期产物），UXP 端应兼容 v1/v2 两种 base 标记，只依赖 `audioRelPath` / `portraitRelPath` 两个相对路径字段。
+它会选择 `voice-portrait-map.json`、工作目录与立绘目录，按 `audioFileName` 匹配当前序列指定音频轨中的音频片段，通过 `立绘目录 + portraitRelPath` 定位立绘，把立绘片段摆放/裁剪到目标视频轨。目标视频轨默认使用 `new`；若指定已有轨，则要求该轨为空，避免覆盖已有画面。
+
+**参考数据**：`domains/gakumasu/threads/board-test/` 是一次端到端测试的产物（含 GPT-SoVITS 与 VOICEVOX 两种引擎生成的音频 + 一个 `voice-portrait-map.json`），提交入库作为编写 UXP 插件时的真实样例。该测试文件仍标记为 `schemaVersion: 1`，但实际字段已经使用当前 UXP 所需的相对路径契约；UXP 端只依赖 `audioRelPath` / `portraitRelPath` / `audioFileName`。

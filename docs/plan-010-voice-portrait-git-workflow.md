@@ -1,7 +1,7 @@
 # 计划 010：语音立绘映射 Git 工作流
 
 - 日期：2026-07-15
-- 状态：Machine A 侧工具已实现；Machine B（Premiere UXP）待做
+- 状态：Machine A 侧工具已实现；Machine B（Premiere UXP）MVP 已实现
 - 范围：按 thread 的语音生成、立绘映射、Git 同步、以及 Premiere UXP 导入
 
 ## 背景
@@ -115,7 +115,7 @@ Premiere 时间线匹配应使用 `audioFileName` 而非绝对音频路径，因
 - 若已存在相同 `audioFileName` 的条目，除非是同一 `order`，否则替换前应警告。
 - 写入后保持数组按 `order` 排序。
 
-> 兼容性说明：早期实现写出的是 schema v1（`schemaVersion: 1`、`threadPathBase: "thread"`、`portraitPathBase: "repo"`）。`domains/gakumasu/threads/board-test/` 里的测试映射即为 v1。UXP 端应兼容 v1/v2 两种 base 标记，实际只依赖 `audioRelPath` / `portraitRelPath` 两个相对路径字段。
+> 兼容性说明：`domains/gakumasu/threads/board-test/` 里的测试映射仍标记为 `schemaVersion: 1`，但实际字段已经使用当前 UXP 所需的相对路径契约（`audioPathBase`、`audioRelPath`、`portraitRelPath`、`audioFileName`）。UXP 端不应按版本号硬分支；实际只依赖 `audioRelPath` / `portraitRelPath` / `audioFileName` 这些字段。
 
 ## Machine A 计划
 
@@ -153,17 +153,17 @@ B 机器负责 Premiere Pro 合成。
 新的 Premiere UXP 插件应：
 
 1. 让用户选择 `voice-portrait-map.json`（其父目录的父目录即工作目录），或让用户直接选择工作目录。
-2. 让用户选择**立绘目录**（必须与 A 机器所用的相同逻辑基准——需提醒操作者这一点）。
+2. 让用户选择**立绘目录**（必须与 GPT-SoVITS、VOICEVOX 所用的相同逻辑基准——需提醒操作者这一点）。
 3. 让用户选择当前序列里的源音频轨。
 4. 读取该轨上的音频片段，按 basename 与 `audioFileName` 匹配。
 5. 通过 `工作目录 + audioRelPath` 定位音频、`立绘目录 + portraitRelPath` 定位立绘；校验二者都存在。
 6. 把去重后的立绘图片导入 Project 面板。
 7. 创建或选择目标视频轨。
 8. 把每个立绘片段摆放到对应音频片段的起始时间。
-9. 把每个立绘片段裁剪到对应音频片段的结束时间。
+9. 每个立绘从对应音频头持续到下一段音频头；最后一个立绘持续到自身音频尾。
 10. 报告未匹配的音频片段、未使用的映射行、缺失的立绘文件、以及重复文件名。
 
-因为基准目录是按机器选择的，操作者**必须**确保 B 机器上选的立绘目录与 A 机器所用的立绘根相对应，否则 `portraitRelPath` 无法解析。
+因为基准目录是按工具运行环境选择的，操作者**必须**确保 Premiere UXP 里选的立绘目录与 GPT-SoVITS、VOICEVOX 所用的立绘根相对应，否则 `portraitRelPath` 无法解析。
 
 摆放插件稳定后，合并或复用现有的图片底部脉冲逻辑，使一个操作既能摆放立绘又能施加弹跳动画。
 
@@ -208,11 +208,12 @@ B 机器开始 Premiere 工作前，确认期望的 `.wav` 是真实媒体文件
    - 给 VOICEVOX 增加批量 + 单个立绘选择与映射写入。
    - 使用共享映射 schema（v2，双基准目录）。
 
-3. Machine B UXP MVP
+3. Machine B UXP MVP —— **已实现**
    - 读取映射 JSON。
    - 按文件名匹配已有音频片段。
    - 导入并把立绘摆放到一条新视频轨。
-   - 把立绘片段裁剪到音频片段边界。
+   - 前一立绘延续到下一段音频头，最后一个立绘结束于自身音频尾。
+   - 插件路径：`scripts/premiere-uxp-portrait-map-importer/`
 
 4. Machine B UXP 完善
    - 增加校验汇总和保存日志。
