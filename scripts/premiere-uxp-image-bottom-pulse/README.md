@@ -14,7 +14,7 @@ on selected Premiere Pro video tracks.
 
 ## Use
 
-- `Video tracks`: `1`, `1,3`, `1-3`, or `all`.
+- `Video tracks`: `V1`, `V1,V3`, `V1-V3`, or `all`.
 - `Start height`: default `1.035`, meaning 103.5% of the base height.
 - `Pulse duration (s)`: the first N seconds of the clip used for the height
   pulse. Default `0.5`; supports decimals such as `0.15`, `0.5`, or `1.25`. Longer values

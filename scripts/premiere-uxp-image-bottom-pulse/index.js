@@ -666,20 +666,20 @@ function parseTrackSpec(spec, maxTracks) {
   }
 
   for (const rawToken of text.split(/[,\s]+/)) {
-    const token = rawToken.trim().replace(/^v/i, "");
+    const token = rawToken.trim();
     if (!token) {
       continue;
     }
 
-    const range = token.match(/^(\d+)-(\d+)$/);
+    const range = token.match(/^v?(\d+)-v?(\d+)$/i);
     if (range) {
       addTrackRange(indexes, seen, Number(range[1]), Number(range[2]), maxTracks);
       continue;
     }
 
-    const number = Number(token);
-    if (Number.isFinite(number)) {
-      addTrackIndex(indexes, seen, number, maxTracks);
+    const single = token.match(/^v?(\d+)$/i);
+    if (single) {
+      addTrackIndex(indexes, seen, Number(single[1]), maxTracks);
       continue;
     }
 
@@ -704,7 +704,7 @@ function addTrackRange(indexes, seen, start, end, maxTracks) {
 
 function addTrackIndex(indexes, seen, trackNumber, maxTracks) {
   if (Math.floor(trackNumber) !== trackNumber || trackNumber < 1 || trackNumber > maxTracks) {
-    throw new Error(`Track ${trackNumber} is out of range. Available: 1-${maxTracks}.`);
+    throw new Error(`Track V${trackNumber} is out of range. Available: V1-V${maxTracks}.`);
   }
 
   const index = trackNumber - 1;

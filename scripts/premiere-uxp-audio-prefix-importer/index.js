@@ -174,7 +174,7 @@ async function run() {
 function readOptions() {
   return {
     intervalSeconds: parseNonNegativeSeconds($("intervalSeconds").value, "Gap seconds"),
-    trackSpec: $("audioTrackSpec").value.trim() || "auto"
+    trackSpec: $("audioTrackSpec").value.trim() || "new"
   };
 }
 
@@ -263,7 +263,7 @@ async function getSequencePlayerPosition(sequence) {
 
 async function resolveTargetAudioTrack(sequence, spec) {
   const audioTrackCount = await sequence.getAudioTrackCount();
-  const text = String(spec || "auto").trim().toLowerCase();
+  const text = String(spec || "new").trim().toLowerCase();
 
   if (text === "auto") {
     for (let index = 0; index < audioTrackCount; index += 1) {
@@ -296,7 +296,7 @@ async function resolveTargetAudioTrack(sequence, spec) {
 
   const match = text.match(/^a?\s*(\d+)$/);
   if (!match) {
-    throw new Error("Target audio track must be auto, new, A1, or a track number.");
+    throw new Error("Target audio track must be auto, new, or use A1 format.");
   }
 
   const trackNumber = Number(match[1]);

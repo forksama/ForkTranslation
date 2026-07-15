@@ -34,16 +34,13 @@ sequence markers:
    file.
 3. Choose the folder containing `number-*.wav` files.
 4. Set `Gap seconds`, such as `0`, `0.25`, or `1.5`.
-5. Set `Target audio track`:
-   - `auto`: use the first empty audio track, or create the next track if none
-     are empty.
+5. Choose `Target audio track`:
    - `new`: create/use the next audio track.
-   - `A1`, `A2`, or `1`, `2`: use that existing empty audio track. Entering the
-     next track number also creates that new track.
+   - `auto`: use the first existing audio track with no clip items, or create
+     the next track if none are empty.
 6. Click `Import To Track`.
 
-The selected existing target track must be empty. The panel does not remove or
-replace existing clips.
+The panel does not remove or replace existing clips.
 
 ## Notes
 
