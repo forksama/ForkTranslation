@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "threadPathBase": "thread",
+  "portraitPathBase": "repo",
+  "items": [
+    {
+      "order": 1,
+      "audioFileName": "1-1707_聴いてください.wav",
+      "audioRelPath": "media/voice/audio/1-1707_聴いてください.wav",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/开心 (3).png",
+      "role": "1.立绘/10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "聴いてください"
+    },
+    {
+      "order": 2,
+      "audioFileName": "2-1234_あんだのことずっとずっと忘れてない.wav",
+      "audioRelPath": "media/voice/audio/2-1234_あんだのことずっとずっと忘れてない.wav",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/开心-害羞.png",
+      "role": "1.立绘/10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "あんだのことずっとずっと忘れてない"
+    },
+    {
+      "order": 3,
+      "audioFileName": "3-3-四国めたん（ノーマル）_1.wav",
+      "audioRelPath": "media/voice/audio/3-3-四国めたん（ノーマル）_1.wav",
+      "portraitRelPath": "1.立绘/1-咲季立绘.1/其他-困惑-不满.png",
+      "role": "四国めたん（ノーマル）",
+      "engine": "voicevox",
+      "text": "1"
+    },
+    {
+      "order": 4,
+      "audioFileName": "4-4-四国めたん（ノーマル）_2.wav",
+      "audioRelPath": "media/voice/audio/4-4-四国めたん（ノーマル）_2.wav",
+      "portraitRelPath": "1.立绘/1-咲季立绘.1/其他-困惑-害羞 (2).png",
+      "role": "四国めたん（ノーマル）",
+      "engine": "voicevox",
+      "text": "2"
+    },
+    {
+      "order": 5,
+      "audioFileName": "5-5-四国めたん（ノーマル）_3.wav",
+      "audioRelPath": "media/voice/audio/5-5-四国めたん（ノーマル）_3.wav",
+      "portraitRelPath": "1.立绘/1-咲季立绘.1/其他-困惑-不满 (3).png",
+      "role": "四国めたん（ノーマル）",
+      "engine": "voicevox",
+      "text": "3"
+    },
+    {
+      "order": 6,
+      "audioFileName": "6-1439_しってるんでしょ.wav",
+      "audioRelPath": "media/voice/audio/6-1439_しってるんでしょ.wav",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/不满-害羞.png",
+      "role": "1.立绘/10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "しってるんでしょ？"
+    },
+    {
+      "order": 7,
+      "audioFileName": "7-1707_聴いてください.wav",
+      "audioRelPath": "media/voice/audio/7-1707_聴いてください.wav",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/困惑 (5).png",
+      "role": "1.立绘/10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "聴いてください"
+    },
+    {
+      "order": 8,
+      "audioFileName": "8-8-四国めたん（ノーマル）_4.wav",
+      "audioRelPath": "media/voice/audio/8-8-四国めたん（ノーマル）_4.wav",
+      "portraitRelPath": "1.立绘/1-咲季立绘.1/其他-困惑-害羞 (2).png",
+      "role": "四国めたん（ノーマル）",
+      "engine": "voicevox",
+      "text": "4"
+    },
+    {
+      "order": 9,
+      "audioFileName": "9-2936_えっとなんていうか.wav",
+      "audioRelPath": "media/voice/audio/9-2936_えっとなんていうか.wav",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/特殊-生气-害羞-侧视 (2).png",
+      "role": "1.立绘/10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "えっと…なんていうか"
+    },
+    {
+      "order": 10,
+      "audioFileName": "10-2812_なんか言い難いな.wav",
+      "audioRelPath": "media/voice/audio/10-2812_なんか言い難いな.wav",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/特殊-困惑-失望 (3).png",
+      "role": "1.立绘/10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "なんか言い難いな"
+    },
+    {
+      "order": 11,
+      "audioFileName": "11-4151_えええええ.wav",
+      "audioRelPath": "media/voice/audio/11-4151_えええええ.wav",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/困惑 (2).png",
+      "role": "1.立绘/10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "えええええ"
+    }
+  ]
+}
