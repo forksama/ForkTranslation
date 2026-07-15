@@ -1,2 +1,3 @@
-# Per-thread translation workspaces are local drafting artifacts.
-domains/*/threads/
+# Per-thread translation workspaces are tracked intentionally.
+# They contain B/C/D subtitle artifacts plus voice media and mapping files that
+# are shared between the voice-generation machine and the Premiere machine.
