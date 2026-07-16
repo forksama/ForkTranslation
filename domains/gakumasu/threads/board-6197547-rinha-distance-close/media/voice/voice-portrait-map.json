@@ -1,0 +1,935 @@
+{
+  "schemaVersion": 1,
+  "audioPathBase": "workdir",
+  "portraitPathBase": "repo",
+  "items": [
+    {
+      "order": 1,
+      "audioFileName": "1-1-青山龍星（ノーマル）_【SS】かやりんは….wav",
+      "audioRelPath": "media/voice/audio/1-1-青山龍星（ノーマル）_【SS】かやりんは….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "【SS】かやりんはは距離が近い"
+    },
+    {
+      "order": 2,
+      "audioFileName": "2-2342_2228_遅かったわねプロデューサー.wav",
+      "audioRelPath": "media/voice/audio/2-2342_2228_遅かったわねプロデューサー.wav",
+      "portraitRelPath": "10 燐羽立绘/生气 (3).png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "遅かったわね、プロデューサー"
+    },
+    {
+      "order": 3,
+      "audioFileName": "3-3-青山龍星（ノーマル）_俺の担当アイドル、….wav",
+      "audioRelPath": "media/voice/audio/3-3-青山龍星（ノーマル）_俺の担当アイドル、….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "俺の担当アイドル、かやさんは、既に待っていた。"
+    },
+    {
+      "order": 4,
+      "audioFileName": "4-4-青山龍星（ノーマル）_すいません、ちょっ….wav",
+      "audioRelPath": "media/voice/audio/4-4-青山龍星（ノーマル）_すいません、ちょっ….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "すいません、ちょっと仕事が長引いてしまって"
+    },
+    {
+      "order": 5,
+      "audioFileName": "5-2635_まったくこの私を待たせるんじゃないわよ次遅れたら殺すから.wav",
+      "audioRelPath": "media/voice/audio/5-2635_まったくこの私を待たせるんじゃないわよ次遅れたら殺すから.wav",
+      "portraitRelPath": "10 燐羽立绘/特殊-生气-害羞-侧视 (2).png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "まったく…この私を待たせるんじゃないわよ、次遅れたら、殺すから"
+    },
+    {
+      "order": 6,
+      "audioFileName": "6-6-青山龍星（ノーマル）_申し訳ありません.wav",
+      "audioRelPath": "media/voice/audio/6-6-青山龍星（ノーマル）_申し訳ありません.wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "申し訳ありません"
+    },
+    {
+      "order": 7,
+      "audioFileName": "7-2754_さお弁当食べるわよあなたが遅れるからちょっと冷めちゃったじゃない.wav",
+      "audioRelPath": "media/voice/audio/7-2754_さお弁当食べるわよあなたが遅れるからちょっと冷めちゃったじゃない.wav",
+      "portraitRelPath": "10 燐羽立绘/自然-开心 (4).png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "さ、お弁当、食べるわよ。あなたが遅れるからちょっと冷めちゃったじゃない"
+    },
+    {
+      "order": 8,
+      "audioFileName": "8-8-青山龍星（ノーマル）_俺は毎日かやさんに….wav",
+      "audioRelPath": "media/voice/audio/8-8-青山龍星（ノーマル）_俺は毎日かやさんに….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "俺は毎日かやさんにお弁当を作って貰っている。"
+    },
+    {
+      "order": 9,
+      "audioFileName": "9-9-青山龍星（ノーマル）_本当は毎日のはずで….wav",
+      "audioRelPath": "media/voice/audio/9-9-青山龍星（ノーマル）_本当は毎日のはずで….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "本当は毎日のはずでは無かったのだが、一度食べて凄く美味しかったと言ったら、"
+    },
+    {
+      "order": 10,
+      "audioFileName": "10-10-青山龍星（ノーマル）_「そう？だったら毎….wav",
+      "audioRelPath": "media/voice/audio/10-10-青山龍星（ノーマル）_「そう？だったら毎….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "「そう？だったら毎日作るわね」と言われこうなっている。"
+    },
+    {
+      "order": 11,
+      "audioFileName": "11-3347_ふふ今日のは自信作よ.wav",
+      "audioRelPath": "media/voice/audio/11-3347_ふふ今日のは自信作よ.wav",
+      "portraitRelPath": "10 燐羽立绘/自然-开心-害羞 (2).png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "ふふ、今日のは自信作よ？"
+    },
+    {
+      "order": 12,
+      "audioFileName": "12-12-青山龍星（ノーマル）_いつもなら一緒に食….wav",
+      "audioRelPath": "media/voice/audio/12-12-青山龍星（ノーマル）_いつもなら一緒に食….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "いつもなら一緒に食べ始めるのだが、今日は違った。"
+    },
+    {
+      "order": 13,
+      "audioFileName": "13-3859_あーーーむ.wav",
+      "audioRelPath": "media/voice/audio/13-3859_あーーーむ.wav",
+      "portraitRelPath": "10 燐羽立绘/特殊-自然-困惑-撒娇.png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "あーーーむ"
+    },
+    {
+      "order": 14,
+      "audioFileName": "14-14-青山龍星（ノーマル）_は？.wav",
+      "audioRelPath": "media/voice/audio/14-14-青山龍星（ノーマル）_は？.wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "は？"
+    },
+    {
+      "order": 15,
+      "audioFileName": "15-4223_今日は全部私が食べさせてあげるわ.wav",
+      "audioRelPath": "media/voice/audio/15-4223_今日は全部私が食べさせてあげるわ.wav",
+      "portraitRelPath": "10 燐羽立绘/困惑-无奈.png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "今日は全部私が食べさせてあげるわ"
+    },
+    {
+      "order": 16,
+      "audioFileName": "16-16-青山龍星（ノーマル）_えっと、その、なぜ….wav",
+      "audioRelPath": "media/voice/audio/16-16-青山龍星（ノーマル）_えっと、その、なぜ….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "えっと、その、なぜですか？"
+    },
+    {
+      "order": 17,
+      "audioFileName": "17-4322_私を待たせた罰みたいな物かしら私がしたい事をさせて貰おうと思って.wav",
+      "audioRelPath": "media/voice/audio/17-4322_私を待たせた罰みたいな物かしら私がしたい事をさせて貰おうと思って.wav",
+      "portraitRelPath": "10 燐羽立绘/不满-害羞.png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "私を待たせた罰、みたいな物かしら。私がしたい事をさせて貰おうと思って。"
+    },
+    {
+      "order": 18,
+      "audioFileName": "18-4517_あー拒否権はないわよ.wav",
+      "audioRelPath": "media/voice/audio/18-4517_あー拒否権はないわよ.wav",
+      "portraitRelPath": "10 燐羽立绘/特殊-生气.png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "あー、拒否権はないわよ？"
+    },
+    {
+      "order": 19,
+      "audioFileName": "19-19-青山龍星（ノーマル）_は、はい….wav",
+      "audioRelPath": "media/voice/audio/19-19-青山龍星（ノーマル）_は、はい….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "は、はい…"
+    },
+    {
+      "order": 20,
+      "audioFileName": "20-4713_じゃああーーむ.wav",
+      "audioRelPath": "media/voice/audio/20-4713_じゃああーーむ.wav",
+      "portraitRelPath": "10 燐羽立绘/开心-自信 (5).png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "じゃあ、あーーむ"
+    },
+    {
+      "order": 21,
+      "audioFileName": "21-21-青山龍星（ノーマル）_カヤさんにお弁当を….wav",
+      "audioRelPath": "media/voice/audio/21-21-青山龍星（ノーマル）_カヤさんにお弁当を….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "カヤさんにお弁当を食べさせられる。"
+    },
+    {
+      "order": 22,
+      "audioFileName": "22-22-青山龍星（ノーマル）_本人が自信作と言う….wav",
+      "audioRelPath": "media/voice/audio/22-22-青山龍星（ノーマル）_本人が自信作と言う….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "本人が自信作と言うだけあって、かなり美味しかった。"
+    },
+    {
+      "order": 23,
+      "audioFileName": "23-23-青山龍星（ノーマル）_しかしそう感じたの….wav",
+      "audioRelPath": "media/voice/audio/23-23-青山龍星（ノーマル）_しかしそう感じたの….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "しかしそう感じたのは、かやさんが直接食べさせてくれたのも原因の一つだろう。"
+    },
+    {
+      "order": 24,
+      "audioFileName": "24-24-青山龍星（ノーマル）_美味しかったです.wav",
+      "audioRelPath": "media/voice/audio/24-24-青山龍星（ノーマル）_美味しかったです.wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "美味しかったです"
+    },
+    {
+      "order": 25,
+      "audioFileName": "25-4841_そうそれは良かったわそれにしてもあなたが一切拒否しなかったのは意外だったわ.wav",
+      "audioRelPath": "media/voice/audio/25-4841_そうそれは良かったわそれにしてもあなたが一切拒否しなかったのは意外だったわ.wav",
+      "portraitRelPath": "10 燐羽立绘/自然.png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "そう、それは良かったわ。それにしても、あなたが一切拒否しなかったのは意外だったわ"
+    },
+    {
+      "order": 26,
+      "audioFileName": "26-26-青山龍星（ノーマル）_カヤさんが拒否権が….wav",
+      "audioRelPath": "media/voice/audio/26-26-青山龍星（ノーマル）_カヤさんが拒否権が….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "カヤさんが拒否権が無いって言ったんじゃないですか"
+    },
+    {
+      "order": 27,
+      "audioFileName": "27-5018_4911_まあそれはそうねでも嫌じゃないのかしら.wav",
+      "audioRelPath": "media/voice/audio/27-5018_4911_まあそれはそうねでも嫌じゃないのかしら.wav",
+      "portraitRelPath": "10 燐羽立绘/开心-害羞 (2).png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "まあ、それはそうね。でも、嫌じゃないのかしら？"
+    },
+    {
+      "order": 28,
+      "audioFileName": "28-28-青山龍星（ノーマル）_まあ正直に言うとか….wav",
+      "audioRelPath": "media/voice/audio/28-28-青山龍星（ノーマル）_まあ正直に言うとか….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "まあ正直に言うとかやさんにお世話されるのは本望なので"
+    },
+    {
+      "order": 29,
+      "audioFileName": "29-5323_ふふっ素直でよろしいあなた本当に私の事が好きなのね.wav",
+      "audioRelPath": "media/voice/audio/29-5323_ふふっ素直でよろしいあなた本当に私の事が好きなのね.wav",
+      "portraitRelPath": "10 燐羽立绘/困惑-无奈.png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "ふふっ、素直でよろしい。あなた、本当に私の事が好きなのね。"
+    },
+    {
+      "order": 30,
+      "audioFileName": "30-5529_分かったわこれからも徹底的にお世話してあげる.wav",
+      "audioRelPath": "media/voice/audio/30-5529_分かったわこれからも徹底的にお世話してあげる.wav",
+      "portraitRelPath": "10 燐羽立绘/开心-害羞.png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "分かったわ。これからも徹底的にお世話してあげる"
+    },
+    {
+      "order": 31,
+      "audioFileName": "31-31-青山龍星（ノーマル）_最近、かやさんとの….wav",
+      "audioRelPath": "media/voice/audio/31-31-青山龍星（ノーマル）_最近、かやさんとの….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "最近、かやさんとの距離が近づいている。"
+    },
+    {
+      "order": 32,
+      "audioFileName": "32-32-青山龍星（ノーマル）_というより、カヤさ….wav",
+      "audioRelPath": "media/voice/audio/32-32-青山龍星（ノーマル）_というより、カヤさ….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "というより、カヤさんが距離を近づけてきているのだが。"
+    },
+    {
+      "order": 33,
+      "audioFileName": "33-33-青山龍星（ノーマル）_まあ俺自身がそれを….wav",
+      "audioRelPath": "media/voice/audio/33-33-青山龍星（ノーマル）_まあ俺自身がそれを….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "まあ俺自身がそれを望んだからなので問題はない。"
+    },
+    {
+      "order": 34,
+      "audioFileName": "34-34-青山龍星（ノーマル）_次の日、俺がプロデ….wav",
+      "audioRelPath": "media/voice/audio/34-34-青山龍星（ノーマル）_次の日、俺がプロデ….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "次の日、俺がプロデューサー室に向かうと、なぜかかやさんが待っていた。"
+    },
+    {
+      "order": 35,
+      "audioFileName": "35-5819_プロデューサーこれはどういうことかしら.wav",
+      "audioRelPath": "media/voice/audio/35-5819_プロデューサーこれはどういうことかしら.wav",
+      "portraitRelPath": "10 燐羽立绘/特殊-生气.png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "プロデューサー？これはどういうことかしら？"
+    },
+    {
+      "order": 36,
+      "audioFileName": "36-36-青山龍星（ノーマル）_かやさん！？なんで….wav",
+      "audioRelPath": "media/voice/audio/36-36-青山龍星（ノーマル）_かやさん！？なんで….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "かやさん！？なんでここにいるんですか！？あなたの事ずっと探してたんですけど？"
+    },
+    {
+      "order": 37,
+      "audioFileName": "37-0318_まあ過ぎたことはいいわよそれよりもプロデューサー浮気かしら.wav",
+      "audioRelPath": "media/voice/audio/37-0318_まあ過ぎたことはいいわよそれよりもプロデューサー浮気かしら.wav",
+      "portraitRelPath": "10 燐羽立绘/特殊-生气-害羞-侧视.png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "まあ過ぎたことはいいわよ。それよりもプロデューサー？浮気かしら？"
+    },
+    {
+      "order": 38,
+      "audioFileName": "38-38-青山龍星（ノーマル）_浮気！？そんなまさか.wav",
+      "audioRelPath": "media/voice/audio/38-38-青山龍星（ノーマル）_浮気！？そんなまさか.wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "浮気！？そんなまさか"
+    },
+    {
+      "order": 39,
+      "audioFileName": "39-0413_ここにあるのは手毬と美鈴の写真ばっかりじゃない.wav",
+      "audioRelPath": "media/voice/audio/39-0413_ここにあるのは手毬と美鈴の写真ばっかりじゃない.wav",
+      "portraitRelPath": "10 燐羽立绘/特殊-生气-害羞-侧视 (2).png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "ここにあるのは手毬と美鈴の写真ばっかりじゃない"
+    },
+    {
+      "order": 40,
+      "audioFileName": "40-0648_0600_なんで私以外の女の事を考えるわけー.wav",
+      "audioRelPath": "media/voice/audio/40-0648_0600_なんで私以外の女の事を考えるわけー.wav",
+      "portraitRelPath": "10 燐羽立绘/特殊-生气-害羞-侧视 (2).png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "なんで私以外の女の事を考えるわけー？？？"
+    },
+    {
+      "order": 41,
+      "audioFileName": "41-41-青山龍星（ノーマル）_かやさんがゆっくり….wav",
+      "audioRelPath": "media/voice/audio/41-41-青山龍星（ノーマル）_かやさんがゆっくり….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "かやさんがゆっくりと近づいてくる。"
+    },
+    {
+      "order": 42,
+      "audioFileName": "42-42-青山龍星（ノーマル）_小柄なのに凄まじい….wav",
+      "audioRelPath": "media/voice/audio/42-42-青山龍星（ノーマル）_小柄なのに凄まじい….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "小柄なのに凄まじい圧力だ。"
+    },
+    {
+      "order": 43,
+      "audioFileName": "43-43-青山龍星（ノーマル）_これは、その…かや….wav",
+      "audioRelPath": "media/voice/audio/43-43-青山龍星（ノーマル）_これは、その…かや….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "これは、その…かやさんの写真は先に整理したんです。"
+    },
+    {
+      "order": 44,
+      "audioFileName": "44-44-青山龍星（ノーマル）_そのせいでかやさん….wav",
+      "audioRelPath": "media/voice/audio/44-44-青山龍星（ノーマル）_そのせいでかやさん….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "そのせいでかやさん以外の写真が残ってるんですよ"
+    },
+    {
+      "order": 45,
+      "audioFileName": "45-0826_はあそういうことねまだ私の支配が足りてなかったのかもしれないわね.wav",
+      "audioRelPath": "media/voice/audio/45-0826_はあそういうことねまだ私の支配が足りてなかったのかもしれないわね.wav",
+      "portraitRelPath": "10 燐羽立绘/不满-害羞.png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "はあ、そういうことね。まだ私の支配が足りてなかったのかもしれないわね"
+    },
+    {
+      "order": 46,
+      "audioFileName": "46-46-青山龍星（ノーマル）_どうしてそうなるん….wav",
+      "audioRelPath": "media/voice/audio/46-46-青山龍星（ノーマル）_どうしてそうなるん….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "どうしてそうなるんですか"
+    },
+    {
+      "order": 47,
+      "audioFileName": "47-1111_いい事を思いついたわ今夜プロデューサーの家に行ってもいいかしら.wav",
+      "audioRelPath": "media/voice/audio/47-1111_いい事を思いついたわ今夜プロデューサーの家に行ってもいいかしら.wav",
+      "portraitRelPath": "10 燐羽立绘/开心-害羞.png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "いい事を思いついたわ。今夜、プロデューサーの家に行ってもいいかしら？"
+    },
+    {
+      "order": 48,
+      "audioFileName": "48-48-青山龍星（ノーマル）_は？.wav",
+      "audioRelPath": "media/voice/audio/48-48-青山龍星（ノーマル）_は？.wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "は？"
+    },
+    {
+      "order": 49,
+      "audioFileName": "49-1341_前にプロデューサーはお世話されるのは本望って行ってくれたじゃない.wav",
+      "audioRelPath": "media/voice/audio/49-1341_前にプロデューサーはお世話されるのは本望って行ってくれたじゃない.wav",
+      "portraitRelPath": "10 燐羽立绘/开心-害羞.png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "前にプロデューサーはお世話されるのは本望って行ってくれたじゃない。"
+    },
+    {
+      "order": 50,
+      "audioFileName": "50-1802_なら家でもお世話してもっと私のお世話に満たされたらいいと思ったのよ.wav",
+      "audioRelPath": "media/voice/audio/50-1802_なら家でもお世話してもっと私のお世話に満たされたらいいと思ったのよ.wav",
+      "portraitRelPath": "10 燐羽立绘/自然 (7).png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "なら、家でもお世話して、もっと私のお世話に満たされたらいいと思ったのよ"
+    },
+    {
+      "order": 51,
+      "audioFileName": "51-51-青山龍星（ノーマル）_随分と傲慢な理論で….wav",
+      "audioRelPath": "media/voice/audio/51-51-青山龍星（ノーマル）_随分と傲慢な理論で….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "随分と傲慢な理論ですね"
+    },
+    {
+      "order": 52,
+      "audioFileName": "52-1918_美鈴と比べればまだ大したことないわよ.wav",
+      "audioRelPath": "media/voice/audio/52-1918_美鈴と比べればまだ大したことないわよ.wav",
+      "portraitRelPath": "10 燐羽立绘/自然.png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "美鈴と比べればまだ大したことないわよ"
+    },
+    {
+      "order": 53,
+      "audioFileName": "53-53-青山龍星（ノーマル）_ええ…？.wav",
+      "audioRelPath": "media/voice/audio/53-53-青山龍星（ノーマル）_ええ…？.wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "ええ…？"
+    },
+    {
+      "order": 54,
+      "audioFileName": "54-2034_1934_とにかく拒否なんてしたら許さないわよ.wav",
+      "audioRelPath": "media/voice/audio/54-2034_1934_とにかく拒否なんてしたら許さないわよ.wav",
+      "portraitRelPath": "10 燐羽立绘/自然.png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "とにかく、拒否なんてしたら許さないわよ"
+    },
+    {
+      "order": 55,
+      "audioFileName": "55-55-青山龍星（ノーマル）_わ、分かりました….wav",
+      "audioRelPath": "media/voice/audio/55-55-青山龍星（ノーマル）_わ、分かりました….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "わ、分かりました…"
+    },
+    {
+      "order": 56,
+      "audioFileName": "56-2244_ふふ分かってたわよプロデューサーがこの私の誘いを断れないことくらい.wav",
+      "audioRelPath": "media/voice/audio/56-2244_ふふ分かってたわよプロデューサーがこの私の誘いを断れないことくらい.wav",
+      "portraitRelPath": "10 燐羽立绘/开心-自信-撒娇.png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "ふふ、分かってたわよ、プロデューサーがこの私の誘いを断れないことくらい"
+    },
+    {
+      "order": 57,
+      "audioFileName": "57-2335_そもそもプロデューサーのためなんだからしっかり私にお世話されなさい.wav",
+      "audioRelPath": "media/voice/audio/57-2335_そもそもプロデューサーのためなんだからしっかり私にお世話されなさい.wav",
+      "portraitRelPath": "10 燐羽立绘/开心.png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "そもそもプロデューサーのためなんだからしっかり私にお世話されなさい"
+    },
+    {
+      "order": 58,
+      "audioFileName": "58-58-青山龍星（ノーマル）_….wav",
+      "audioRelPath": "media/voice/audio/58-58-青山龍星（ノーマル）_….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "…"
+    },
+    {
+      "order": 59,
+      "audioFileName": "59-2424_こいつ面倒臭いなって思ってそうだけど手毬と比べればまだ大したことないわよ.wav",
+      "audioRelPath": "media/voice/audio/59-2424_こいつ面倒臭いなって思ってそうだけど手毬と比べればまだ大したことないわよ.wav",
+      "portraitRelPath": "10 燐羽立绘/自信-无奈.png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "こいつ面倒臭いなって思ってそうだけど、手毬と比べればまだ大したことないわよ"
+    },
+    {
+      "order": 60,
+      "audioFileName": "60-60-青山龍星（ノーマル）_ええ…？.wav",
+      "audioRelPath": "media/voice/audio/60-60-青山龍星（ノーマル）_ええ…？.wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "ええ…？"
+    },
+    {
+      "order": 61,
+      "audioFileName": "61-61-青山龍星（ノーマル）_SyngUpの恐ろ….wav",
+      "audioRelPath": "media/voice/audio/61-61-青山龍星（ノーマル）_SyngUpの恐ろ….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "SyngUpの恐ろしさに震えながら、自宅へと向かうのだが、"
+    },
+    {
+      "order": 62,
+      "audioFileName": "62-62-青山龍星（ノーマル）_道中かやさんが当た….wav",
+      "audioRelPath": "media/voice/audio/62-62-青山龍星（ノーマル）_道中かやさんが当た….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "道中かやさんが当たり前のように手を繋いできた。"
+    },
+    {
+      "order": 63,
+      "audioFileName": "63-63-青山龍星（ノーマル）_あの、かやさん？.wav",
+      "audioRelPath": "media/voice/audio/63-63-青山龍星（ノーマル）_あの、かやさん？.wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "あの、かやさん？"
+    },
+    {
+      "order": 64,
+      "audioFileName": "64-3127_な何かおかしいことでもあったかしら.wav",
+      "audioRelPath": "media/voice/audio/64-3127_な何かおかしいことでもあったかしら.wav",
+      "portraitRelPath": "10 燐羽立绘/害羞 (4).png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "な、何かおかしいことでもあったかしら"
+    },
+    {
+      "order": 65,
+      "audioFileName": "65-65-青山龍星（ノーマル）_…いえ、何も.wav",
+      "audioRelPath": "media/voice/audio/65-65-青山龍星（ノーマル）_…いえ、何も.wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "…いえ、何も"
+    },
+    {
+      "order": 66,
+      "audioFileName": "66-3537_そそうふふじゃあこのまま行くわよ.wav",
+      "audioRelPath": "media/voice/audio/66-3537_そそうふふじゃあこのまま行くわよ.wav",
+      "portraitRelPath": "10 燐羽立绘/自然-开心-欣慰.png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "そ、そう。ふふ、じゃあこのまま行くわよ。"
+    },
+    {
+      "order": 67,
+      "audioFileName": "67-67-青山龍星（ノーマル）_何も言えない俺を見….wav",
+      "audioRelPath": "media/voice/audio/67-67-青山龍星（ノーマル）_何も言えない俺を見….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "何も言えない俺を見てカヤさんはニヤニヤしていた。"
+    },
+    {
+      "order": 68,
+      "audioFileName": "68-68-青山龍星（ノーマル）_やっぱりかやさんの….wav",
+      "audioRelPath": "media/voice/audio/68-68-青山龍星（ノーマル）_やっぱりかやさんの….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "やっぱりかやさんの距離が近すぎる。"
+    },
+    {
+      "order": 69,
+      "audioFileName": "69-69-青山龍星（ノーマル）_しかし、この距離の….wav",
+      "audioRelPath": "media/voice/audio/69-69-青山龍星（ノーマル）_しかし、この距離の….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "しかし、この距離の近さに何も抵抗がない。"
+    },
+    {
+      "order": 70,
+      "audioFileName": "70-70-青山龍星（ノーマル）_俺はもうかやさんに….wav",
+      "audioRelPath": "media/voice/audio/70-70-青山龍星（ノーマル）_俺はもうかやさんに….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "俺はもうかやさんに支配されているのだろうか？"
+    },
+    {
+      "order": 71,
+      "audioFileName": "71-71-青山龍星（ノーマル）_早速かやさんを俺の….wav",
+      "audioRelPath": "media/voice/audio/71-71-青山龍星（ノーマル）_早速かやさんを俺の….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "早速かやさんを俺の部屋に招いたのだが…"
+    },
+    {
+      "order": 72,
+      "audioFileName": "72-4304_何よこれ散らかしすぎじゃない.wav",
+      "audioRelPath": "media/voice/audio/72-4304_何よこれ散らかしすぎじゃない.wav",
+      "portraitRelPath": "10 燐羽立绘/自信-无奈.png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "何よこれ…散らかしすぎじゃない"
+    },
+    {
+      "order": 73,
+      "audioFileName": "73-73-青山龍星（ノーマル）_す、すいません。基….wav",
+      "audioRelPath": "media/voice/audio/73-73-青山龍星（ノーマル）_す、すいません。基….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "す、すいません。基本的に人を招くことがないので…"
+    },
+    {
+      "order": 74,
+      "audioFileName": "74-4520_まずは部屋の掃除からしてあげるわ.wav",
+      "audioRelPath": "media/voice/audio/74-4520_まずは部屋の掃除からしてあげるわ.wav",
+      "portraitRelPath": "10 燐羽立绘/自然-生气-严肃.png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "まずは部屋の掃除からしてあげるわ"
+    },
+    {
+      "order": 75,
+      "audioFileName": "75-75-青山龍星（ノーマル）_かやさんはそう言っ….wav",
+      "audioRelPath": "media/voice/audio/75-75-青山龍星（ノーマル）_かやさんはそう言っ….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "かやさんはそう言って、あっという間に俺の部屋を綺麗に片付けてしまった。"
+    },
+    {
+      "order": 76,
+      "audioFileName": "76-4646_まあざっとこんな所かしら整理整頓出来ない男はモテないわよ.wav",
+      "audioRelPath": "media/voice/audio/76-4646_まあざっとこんな所かしら整理整頓出来ない男はモテないわよ.wav",
+      "portraitRelPath": "10 燐羽立绘/生气 (3).png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "まあ、ざっとこんな所かしら。整理整頓出来ない男はモテないわよ？"
+    },
+    {
+      "order": 77,
+      "audioFileName": "77-77-青山龍星（ノーマル）_うぐっ…返す言葉も….wav",
+      "audioRelPath": "media/voice/audio/77-77-青山龍星（ノーマル）_うぐっ…返す言葉も….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "うぐっ…返す言葉もございません…"
+    },
+    {
+      "order": 78,
+      "audioFileName": "78-4803_さて先にご飯でいいかしら後でお風呂も入れておくわね.wav",
+      "audioRelPath": "media/voice/audio/78-4803_さて先にご飯でいいかしら後でお風呂も入れておくわね.wav",
+      "portraitRelPath": "10 燐羽立绘/自然 (6).png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "さて、先にご飯でいいかしら？後でお風呂も入れておくわね"
+    },
+    {
+      "order": 79,
+      "audioFileName": "79-79-青山龍星（ノーマル）_はい.wav",
+      "audioRelPath": "media/voice/audio/79-79-青山龍星（ノーマル）_はい.wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "はい"
+    },
+    {
+      "order": 80,
+      "audioFileName": "80-5122_ふふ腕によりをかけて作るわよ.wav",
+      "audioRelPath": "media/voice/audio/80-5122_ふふ腕によりをかけて作るわよ.wav",
+      "portraitRelPath": "10 燐羽立绘/自然 (6).png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "ふふ、腕によりをかけて作るわよ"
+    },
+    {
+      "order": 81,
+      "audioFileName": "81-81-青山龍星（ノーマル）_なんというか、かや….wav",
+      "audioRelPath": "media/voice/audio/81-81-青山龍星（ノーマル）_なんというか、かや….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "なんというか、かやさんは母親みたいですよね。"
+    },
+    {
+      "order": 82,
+      "audioFileName": "82-82-青山龍星（ノーマル）_ここまで丁寧にお世….wav",
+      "audioRelPath": "media/voice/audio/82-82-青山龍星（ノーマル）_ここまで丁寧にお世….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "ここまで丁寧にお世話して貰えるのは久しぶりです"
+    },
+    {
+      "order": 83,
+      "audioFileName": "83-5445_そ嬉しいわ.wav",
+      "audioRelPath": "media/voice/audio/83-5445_そ嬉しいわ.wav",
+      "portraitRelPath": "10 燐羽立绘/困惑 (5).png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "そ、嬉しいわ"
+    },
+    {
+      "order": 84,
+      "audioFileName": "84-84-青山龍星（ノーマル）_そんな会話をしてい….wav",
+      "audioRelPath": "media/voice/audio/84-84-青山龍星（ノーマル）_そんな会話をしてい….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "そんな会話をしている内に、ご飯が完成した。"
+    },
+    {
+      "order": 85,
+      "audioFileName": "85-5619_あーむ.wav",
+      "audioRelPath": "media/voice/audio/85-5619_あーむ.wav",
+      "portraitRelPath": "10 燐羽立绘/自然-开心 (3).png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "あーむ"
+    },
+    {
+      "order": 86,
+      "audioFileName": "86-86-青山龍星（ノーマル）_それ、夜もやるんで….wav",
+      "audioRelPath": "media/voice/audio/86-86-青山龍星（ノーマル）_それ、夜もやるんで….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "それ、夜もやるんですか？"
+    },
+    {
+      "order": 87,
+      "audioFileName": "87-5933_とーぜん.wav",
+      "audioRelPath": "media/voice/audio/87-5933_とーぜん.wav",
+      "portraitRelPath": "10 燐羽立绘/开心-害羞.png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "とーぜん"
+    },
+    {
+      "order": 88,
+      "audioFileName": "88-0056_プロデューサーの家案外居心地がいいわね今日は泊まっていこうかしら.wav",
+      "audioRelPath": "media/voice/audio/88-0056_プロデューサーの家案外居心地がいいわね今日は泊まっていこうかしら.wav",
+      "portraitRelPath": "10 燐羽立绘/不满-害羞.png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "プロデューサーの家、案外居心地がいいわね。今日は泊まっていこうかしら"
+    },
+    {
+      "order": 89,
+      "audioFileName": "89-89-青山龍星（ノーマル）_え？いや、流石にそ….wav",
+      "audioRelPath": "media/voice/audio/89-89-青山龍星（ノーマル）_え？いや、流石にそ….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "え？いや、流石にそれは…"
+    },
+    {
+      "order": 90,
+      "audioFileName": "90-0206_大丈夫よちゃんと代えの服は持ってきてるわ.wav",
+      "audioRelPath": "media/voice/audio/90-0206_大丈夫よちゃんと代えの服は持ってきてるわ.wav",
+      "portraitRelPath": "10 燐羽立绘/特殊-生气-害羞-侧视 (2).png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "大丈夫よ。ちゃんと代えの服は持ってきてるわ"
+    },
+    {
+      "order": 91,
+      "audioFileName": "91-91-青山龍星（ノーマル）_ええ…でもベッド一….wav",
+      "audioRelPath": "media/voice/audio/91-91-青山龍星（ノーマル）_ええ…でもベッド一….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "ええ…でもベッド一つしかないですよ"
+    },
+    {
+      "order": 92,
+      "audioFileName": "92-0524_一緒に寝ればいいだけの話じゃないあプロデューサーも私にお世話されたいでしょう.wav",
+      "audioRelPath": "media/voice/audio/92-0524_一緒に寝ればいいだけの話じゃないあプロデューサーも私にお世話されたいでしょう.wav",
+      "portraitRelPath": "10 燐羽立绘/害羞 (4).png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "一緒に寝ればいいだけの話じゃない。あ、プロデューサーも私にお世話されたいでしょう。"
+    },
+    {
+      "order": 93,
+      "audioFileName": "93-0746_なら毎日ここで暮らしちゃおうかしら.wav",
+      "audioRelPath": "media/voice/audio/93-0746_なら毎日ここで暮らしちゃおうかしら.wav",
+      "portraitRelPath": "10 燐羽立绘/不满-害羞.png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "なら毎日ここで暮らしちゃおうかしら"
+    },
+    {
+      "order": 94,
+      "audioFileName": "94-94-青山龍星（ノーマル）_勝手に話を進めない….wav",
+      "audioRelPath": "media/voice/audio/94-94-青山龍星（ノーマル）_勝手に話を進めない….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "勝手に話を進めないでください。そもそも…んっ！？"
+    },
+    {
+      "order": 95,
+      "audioFileName": "95-95-青山龍星（ノーマル）_突然、俺は唇を奪わ….wav",
+      "audioRelPath": "media/voice/audio/95-95-青山龍星（ノーマル）_突然、俺は唇を奪わ….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "突然、俺は唇を奪われた。"
+    },
+    {
+      "order": 96,
+      "audioFileName": "96-1448_はぁ うるさい口ね.wav",
+      "audioRelPath": "media/voice/audio/96-1448_はぁ うるさい口ね.wav",
+      "portraitRelPath": "10 燐羽立绘/特殊-生气-害羞-侧视 (2).png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "はぁ… うるさい口ね"
+    },
+    {
+      "order": 97,
+      "audioFileName": "97-2057_でも今もう一度聞くわ泊まってもいいかしら.wav",
+      "audioRelPath": "media/voice/audio/97-2057_でも今もう一度聞くわ泊まってもいいかしら.wav",
+      "portraitRelPath": "10 燐羽立绘/开心-自信 (4).png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "でも。今もう一度聞くわ。泊まってもいいかしら"
+    },
+    {
+      "order": 98,
+      "audioFileName": "98-98-青山龍星（ノーマル）_は、はい….wav",
+      "audioRelPath": "media/voice/audio/98-98-青山龍星（ノーマル）_は、はい….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "は、はい…"
+    },
+    {
+      "order": 99,
+      "audioFileName": "99-2246_ふふ効き目は抜群ねこれなら簡単にあなたを支配出来そうだわ私だけのプロデューサー.wav",
+      "audioRelPath": "media/voice/audio/99-2246_ふふ効き目は抜群ねこれなら簡単にあなたを支配出来そうだわ私だけのプロデューサー.wav",
+      "portraitRelPath": "10 燐羽立绘/自然-开心-害羞 (2).png",
+      "role": "10 燐羽立绘",
+      "engine": "gpt-sovits",
+      "text": "ふふ、効き目は抜群ね。これなら、簡単にあなたを支配出来そうだわ、私だけのプロデューサー"
+    },
+    {
+      "order": 100,
+      "audioFileName": "100-100-青山龍星（ノーマル）_俺はかやさんのキス….wav",
+      "audioRelPath": "media/voice/audio/100-100-青山龍星（ノーマル）_俺はかやさんのキス….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "俺はかやさんのキスに脳を支配されていた。"
+    },
+    {
+      "order": 101,
+      "audioFileName": "101-101-青山龍星（ノーマル）_適切な距離を保つど….wav",
+      "audioRelPath": "media/voice/audio/101-101-青山龍星（ノーマル）_適切な距離を保つど….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "適切な距離を保つどころか、より距離を近づけることを望んでしまう。"
+    },
+    {
+      "order": 102,
+      "audioFileName": "102-102-青山龍星（ノーマル）_このまま行けば、好….wav",
+      "audioRelPath": "media/voice/audio/102-102-青山龍星（ノーマル）_このまま行けば、好….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "このまま行けば、好きになりすぎてしまうのも時間の問題だろう。"
+    },
+    {
+      "order": 103,
+      "audioFileName": "103-103-青山龍星（ノーマル）_かやさん…なんて恐….wav",
+      "audioRelPath": "media/voice/audio/103-103-青山龍星（ノーマル）_かやさん…なんて恐….wav",
+      "portraitRelPath": "1.立绘/0.P剪影/86af8a0dd06c49d733f5f1db2ff4ff1c.png",
+      "role": "青山龍星（ノーマル）",
+      "engine": "voicevox",
+      "text": "かやさん…なんて恐ろしい女なんだ。"
+    }
+  ],
+  "threadPathBase": "thread"
+}
