@@ -72,6 +72,7 @@
     }
     setupLogToggles();
     setupPreviewToggles();
+    setupGroupToggles();
 
     entrypoints.setup({
       panels: {
@@ -120,6 +121,24 @@
         const nextHidden = !preview.hidden;
         preview.hidden = nextHidden;
         section.classList.toggle("previewOpen", !nextHidden);
+      });
+    }
+  }
+
+  function setupGroupToggles() {
+    const toggles = Array.from(document.querySelectorAll("[data-group-toggle]"));
+
+    for (const toggle of toggles) {
+      toggle.addEventListener("click", () => {
+        const section = toggle.closest(".collapsibleGroup");
+        const body = section ? section.querySelector(".groupBody") : null;
+        if (!body) {
+          return;
+        }
+
+        const nextHidden = !body.hidden;
+        body.hidden = nextHidden;
+        section.classList.toggle("groupOpen", !nextHidden);
       });
     }
   }

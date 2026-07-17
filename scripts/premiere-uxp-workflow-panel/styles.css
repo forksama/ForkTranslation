@@ -190,7 +190,8 @@ section {
 }
 
 .logToggle,
-.previewToggle {
+.previewToggle,
+.groupToggle {
   width: auto;
   height: 26px;
   margin: 0 0 6px;
@@ -206,13 +207,25 @@ section {
 }
 
 .logToggle::before,
-.previewToggle::before {
+.previewToggle::before,
+.groupToggle::before {
   content: "▸ ";
 }
 
 .logOpen .logToggle::before,
-.previewOpen .previewToggle::before {
+.previewOpen .previewToggle::before,
+.groupOpen .groupToggle::before {
   content: "▾ ";
+}
+
+.groupBody {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.groupBody[hidden] {
+  display: none;
 }
 
 .routingPreview {
