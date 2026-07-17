@@ -1,0 +1,276 @@
+:root {
+  color-scheme: dark;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 13px;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  overflow: auto;
+  color: #efefef;
+  background: #1f1f1f;
+}
+
+main {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 100vh;
+  padding: 14px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 650;
+}
+
+h2 {
+  margin: 0 0 2px;
+  font-size: 15px;
+  font-weight: 650;
+}
+
+h3 {
+  margin: 0 0 6px;
+  color: #d7d7d7;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.tabs {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  border: 1px solid #4a4a4a;
+  border-radius: 6px;
+  padding: 5px;
+  background: #171717;
+}
+
+.tabButton {
+  min-width: 96px;
+  height: 34px;
+  flex: 1 1 120px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 0 8px;
+  color: #d7d7d7;
+  background: #2a2a2a;
+  font-weight: 650;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tabButton.active {
+  border-color: #79a4ff;
+  color: #ffffff;
+  background: #285db8;
+}
+
+.tabPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 0;
+}
+
+.tabPanel[hidden] {
+  display: none;
+}
+
+.workflowGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px solid #333;
+}
+
+.workflowGroup:first-of-type {
+  padding-top: 0;
+  border-top: 0;
+}
+
+label {
+  color: #d7d7d7;
+  font-size: 12px;
+}
+
+input,
+select {
+  box-sizing: border-box;
+  width: 100%;
+  height: 30px;
+  border: 1px solid #555;
+  border-radius: 4px;
+  padding: 0 8px;
+  color: #f5f5f5;
+  background: #2a2a2a;
+}
+
+button {
+  height: 32px;
+  border: 1px solid #666;
+  border-radius: 4px;
+  padding: 0 12px;
+  color: #f4f4f4;
+  background: #3a3a3a;
+}
+
+button.primary {
+  border-color: #5b8def;
+  background: #275ab8;
+}
+
+button:disabled {
+  opacity: 0.55;
+}
+
+.field,
+.fields,
+.outputs {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.check input {
+  width: 16px;
+  height: 16px;
+}
+
+output {
+  min-height: 18px;
+  color: #b9d1ff;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.stageStatus {
+  box-sizing: border-box;
+  display: block;
+  min-height: 88px;
+  border: 1px solid #3f3f3f;
+  border-radius: 6px;
+  padding: 10px;
+  color: #e7e7e7;
+  background: #181818;
+}
+
+section {
+  min-height: 0;
+}
+
+.logSection {
+  min-height: 0;
+}
+
+.previewSection {
+  min-height: 0;
+}
+
+.logToggle,
+.previewToggle {
+  width: auto;
+  height: 26px;
+  margin: 0 0 6px;
+  border: 0;
+  padding: 0;
+  color: #d7d7d7;
+  background: transparent;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: left;
+  user-select: none;
+}
+
+.logToggle::before,
+.previewToggle::before {
+  content: "▸ ";
+}
+
+.logOpen .logToggle::before,
+.previewOpen .previewToggle::before {
+  content: "▾ ";
+}
+
+.routingPreview {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 92px;
+}
+
+.routingTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.routingTable th,
+.routingTable td {
+  border-bottom: 1px solid #333;
+  padding: 6px 4px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.routingTable th {
+  color: #d7d7d7;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.routingTable input {
+  height: 28px;
+}
+
+pre {
+  box-sizing: border-box;
+  min-height: 92px;
+  max-height: 190px;
+  margin: 0;
+  border: 1px solid #3f3f3f;
+  border-radius: 6px;
+  padding: 10px;
+  overflow-x: auto;
+  overflow-y: scroll;
+  color: #e7e7e7;
+  background: #181818;
+  white-space: pre-wrap;
+  user-select: text;
+}
+
+.logSection pre {
+  min-height: 180px;
+  max-height: 320px;
+}
+
+.logSection pre[hidden] {
+  display: none;
+}
+
+.previewSection pre[hidden],
+.previewSection .routingPreview[hidden] {
+  display: none;
+}

@@ -1,0 +1,197 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ForkTranslation Workflow</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main>
+      <h1>ForkTranslation Premiere Workflow 0.3.0</h1>
+
+      <div class="tabs">
+        <button id="tabButtonInput" class="tabButton" data-tab-target="input" type="button">1 输入准备</button>
+        <button id="tabButtonPlan" class="tabButton" data-tab-target="plan" type="button">2 计划预览</button>
+        <button id="tabButtonExecute" class="tabButton" data-tab-target="execute" type="button">3 执行生成</button>
+        <button id="tabButtonPost" class="tabButton" data-tab-target="post" type="button">4 后处理</button>
+      </div>
+
+      <section id="tab-input" class="tabPanel" data-tab-panel="input" data-tab-features="audio portrait subtitles">
+        <h2>1 输入准备</h2>
+
+        <section class="workflowGroup" data-feature-root="audio">
+          <h3>音频</h3>
+
+          <div class="buttons">
+            <button id="audio-chooseFolderButton" class="primary" type="button">选择文件夹</button>
+            <button id="audio-rescanButton" type="button">重新扫描</button>
+          </div>
+
+          <output id="audio-folderPath">No folder selected</output>
+
+          <div class="fields">
+            <label for="audio-intervalSeconds">Gap seconds</label>
+            <input id="audio-intervalSeconds" type="text" value="0.5" placeholder="0.5">
+          </div>
+
+          <output id="audio-status">Idle</output>
+
+          <section class="previewSection">
+            <button class="previewToggle" type="button" data-preview-toggle>Matched Files</button>
+            <pre id="audio-filePreview" hidden></pre>
+          </section>
+          <pre id="audio-log" hidden></pre>
+        </section>
+
+        <section class="workflowGroup" data-feature-root="portrait">
+          <h3>Mapping 和立绘</h3>
+
+          <div class="buttons">
+            <button id="portrait-chooseMappingButton" class="primary" type="button">Choose Mapping File</button>
+            <button id="portrait-chooseWorkdirButton" type="button">Choose Workdir</button>
+            <button id="portrait-choosePortraitDirButton" type="button">Choose Portrait Dir</button>
+          </div>
+
+          <div class="outputs">
+            <label>Mapping</label>
+            <output id="portrait-mappingPath">No mapping selected</output>
+            <label>Workdir</label>
+            <output id="portrait-workdirPath">No workdir selected</output>
+            <label>Portrait Dir</label>
+            <output id="portrait-portraitDirPath">No portrait dir selected</output>
+          </div>
+
+          <output id="portrait-status">Idle</output>
+
+          <section class="previewSection">
+            <button class="previewToggle" type="button" data-preview-toggle>Portrait Preview</button>
+            <pre id="portrait-preview" hidden></pre>
+          </section>
+          <pre id="portrait-log" hidden></pre>
+        </section>
+
+        <section class="workflowGroup" data-feature-root="subtitles">
+          <h3>字幕</h3>
+
+          <div class="buttons">
+            <button id="subtitles-chooseJsonButton" class="primary" type="button">Choose Subtitle JSON</button>
+            <button id="subtitles-chooseOutputButton" type="button">Choose Output Folder</button>
+          </div>
+
+          <div class="outputs">
+            <label>Subtitle JSON</label>
+            <output id="subtitles-jsonPath">No JSON selected</output>
+            <label>Output Folder</label>
+            <output id="subtitles-outputPath">No output folder selected</output>
+          </div>
+
+          <output id="subtitles-status">Idle</output>
+
+          <section class="previewSection">
+            <button class="previewToggle" type="button" data-preview-toggle>Subtitle Preview</button>
+            <pre id="subtitles-preview" hidden>Choose a subtitle JSON file.</pre>
+          </section>
+          <pre id="subtitles-log" hidden></pre>
+        </section>
+      </section>
+
+      <section id="tab-plan" class="tabPanel" data-tab-panel="plan" data-tab-features="audio portrait subtitles plan">
+        <h2>2 计划预览</h2>
+
+        <section class="workflowGroup" data-feature-root="plan">
+          <h3>角色轨道计划</h3>
+
+          <div class="buttons">
+            <button id="plan-scanButton" class="primary" type="button">Scan Plan</button>
+            <button id="plan-clearButton" type="button">Clear</button>
+            <button id="plan-saveLogButton" type="button">Save Log</button>
+          </div>
+
+          <output id="plan-status">Idle</output>
+
+          <section class="previewSection">
+            <button class="previewToggle" type="button" data-preview-toggle>Role Routing</button>
+            <div id="plan-preview" class="routingPreview" hidden>Choose inputs, then scan the plan.</div>
+          </section>
+
+          <section class="logSection">
+            <button class="logToggle" type="button" data-log-toggle>Plan Log</button>
+            <pre id="plan-log" hidden></pre>
+          </section>
+        </section>
+      </section>
+
+      <section id="tab-execute" class="tabPanel" data-tab-panel="execute" data-tab-features="audio portrait subtitles plan">
+        <h2>3 执行生成</h2>
+
+        <section class="workflowGroup" data-feature-root="plan">
+          <h3>按计划执行</h3>
+
+          <div class="buttons">
+            <button id="plan-buildAllButton" class="primary" type="button">Build All</button>
+            <button id="plan-buildAudioButton" type="button">Build Audio + Markers</button>
+            <button id="plan-buildPortraitsButton" type="button">Build Portraits</button>
+            <button id="plan-generateSrtsButton" type="button">Generate Role SRTs</button>
+          </div>
+
+          <output id="plan-stageStatus" class="stageStatus">No plan scanned.</output>
+        </section>
+      </section>
+
+      <section id="tab-post" class="tabPanel" data-tab-panel="post" data-tab-features="pulse">
+        <h2>4 后处理</h2>
+
+        <section class="workflowGroup" data-feature-root="pulse">
+          <h3>Image Pulse</h3>
+
+          <div class="field">
+            <label for="pulse-trackSpec">Video tracks</label>
+            <input id="pulse-trackSpec" type="text" value="V1" placeholder="V1,V3 or V1-V3 or all">
+          </div>
+
+          <div class="fields">
+            <label for="pulse-heightMultiplier">Start height</label>
+            <input id="pulse-heightMultiplier" type="text" value="1.035" placeholder="1.035">
+
+            <label for="pulse-pulseSeconds">Pulse duration (s)</label>
+            <input id="pulse-pulseSeconds" type="text" value="0.5" placeholder="0.5">
+
+            <label for="pulse-baseScale">Base scale %</label>
+            <input id="pulse-baseScale" type="text" placeholder="auto">
+
+            <label for="pulse-curveSpec">Rate curve</label>
+            <input id="pulse-curveSpec" type="text" value="0.19,1,0.22,1" placeholder="x1,y1,x2,y2">
+
+            <label for="pulse-curveSamples">Curve samples</label>
+            <input id="pulse-curveSamples" type="text" value="8" placeholder="8">
+          </div>
+
+          <label class="check">
+            <input id="pulse-tryUnknown" type="checkbox" checked>
+            <span>Try unknown-extension clips</span>
+          </label>
+
+          <div class="buttons">
+            <button id="pulse-runButton" class="primary" type="button">Run</button>
+            <button id="pulse-clearButton" type="button">Clear Log</button>
+            <button id="pulse-saveLogButton" type="button">Save Log</button>
+          </div>
+
+          <output id="pulse-status">Idle</output>
+          <section class="logSection">
+            <button class="logToggle" type="button" data-log-toggle>Pulse Log</button>
+            <pre id="pulse-log" hidden></pre>
+          </section>
+        </section>
+      </section>
+    </main>
+
+    <script src="shared/workflow-app.js"></script>
+    <script src="features/audio-prefix-importer.js"></script>
+    <script src="features/portrait-map-importer.js"></script>
+    <script src="features/pr-subtitles.js"></script>
+    <script src="features/build-plan.js"></script>
+    <script src="features/image-bottom-pulse.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
