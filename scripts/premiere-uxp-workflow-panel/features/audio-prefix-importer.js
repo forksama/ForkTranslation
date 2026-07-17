@@ -69,12 +69,9 @@
             return;
           }
 
-          state.folder = folder;
-          state.files = await scanAudioFolder(folder);
-          renderFolderState();
-          setStatus(`Matched ${state.files.length} WAV file(s).`);
+          await setAudioFolder(folder);
         } catch (error) {
-          setStatus("Failed to choose folder");
+          setStatus("选择音频目录失败");
           log(errorToString(error));
         }
       }
@@ -91,9 +88,9 @@
         try {
           state.files = await scanAudioFolder(state.folder);
           renderFolderState();
-          setStatus(`Matched ${state.files.length} WAV file(s).`);
+          setStatus(`已匹配 ${state.files.length} 个音频文件`);
         } catch (error) {
-          setStatus("Failed to rescan folder");
+          setStatus("重新扫描音频失败");
           log(errorToString(error));
         }
       }
@@ -197,7 +194,7 @@
       function readOptions() {
         const trackSpecInput = optional$("audioTrackSpec");
         return {
-          intervalSeconds: parseNonNegativeSeconds($("intervalSeconds").value, "Gap seconds"),
+          intervalSeconds: parseNonNegativeSeconds($("intervalSeconds").value, "音频间隔（秒）"),
           trackSpec: trackSpecInput ? trackSpecInput.value.trim() || "auto" : "auto"
         };
       }
@@ -254,10 +251,10 @@
       function renderFolderState() {
         $("folderPath").textContent = state.folder
           ? getNativePath(state.folder) || state.folder.name
-          : "No folder selected";
+          : "未选择";
 
         if (!state.files.length) {
-          $("filePreview").textContent = "No files matching number-*.wav";
+          $("filePreview").textContent = "没有匹配 number-*.wav 的音频文件";
           return;
         }
 
@@ -1170,15 +1167,27 @@
 
       async function ensureAudioFiles() {
         if (!state.folder) {
-          throw new Error("Choose an audio folder first.");
+          throw new Error("请先选择 Mapping 文件以推导音频目录。");
         }
 
         state.files = await scanAudioFolder(state.folder);
         renderFolderState();
         if (state.files.length === 0) {
-          throw new Error("No files matching number-*.wav were found.");
+          throw new Error("音频目录中没有找到匹配 number-*.wav 的文件。");
         }
 
+        return state.files;
+      }
+
+      async function setAudioFolder(folder) {
+        if (!folder || !folder.isFolder) {
+          throw new Error("音频目录不可用。");
+        }
+
+        state.folder = folder;
+        state.files = await scanAudioFolder(folder);
+        renderFolderState();
+        setStatus(`已匹配 ${state.files.length} 个音频文件`);
         return state.files;
       }
 
@@ -1316,6 +1325,7 @@
 
       app.setFeatureApi("audio", {
         ensureFiles: ensureAudioFiles,
+        setFolder: setAudioFolder,
         importByRole: importAudioByRole,
         getFiles() {
           return state.files.slice();

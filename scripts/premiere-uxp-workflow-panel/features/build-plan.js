@@ -27,17 +27,23 @@
         state.logLines.push(String(message));
         $("log").textContent = state.logLines.join("\n");
         $("log").scrollTop = $("log").scrollHeight;
+        updateButtons();
       }
 
       function setBusy(busy) {
         state.busy = busy;
-        $("scanButton").disabled = busy;
-        $("buildAllButton").disabled = busy;
-        $("buildAudioButton").disabled = busy;
-        $("buildPortraitsButton").disabled = busy;
-        $("generateSrtsButton").disabled = busy;
-        $("clearButton").disabled = busy;
-        $("saveLogButton").disabled = busy;
+        updateButtons();
+      }
+
+      function updateButtons() {
+        const hasPlan = !!state.plan;
+        $("scanButton").disabled = state.busy;
+        $("buildAllButton").disabled = state.busy || !hasPlan;
+        $("buildAudioButton").disabled = state.busy || !hasPlan;
+        $("buildPortraitsButton").disabled = state.busy || !state.stage.audioBuilt;
+        $("generateSrtsButton").disabled = state.busy || !state.stage.audioBuilt;
+        $("clearButton").disabled = state.busy || !hasPlan;
+        $("saveLogButton").disabled = state.busy || state.logLines.length === 0;
       }
 
       function createEmptyStage() {
@@ -58,7 +64,7 @@
         }
 
         setBusy(true);
-        setStatus("Scanning");
+        setStatus("正在扫描计划");
 
         try {
           const audio = app.getFeatureApi("audio");
@@ -77,11 +83,11 @@
           renderStageStatus();
           writePlanLog(plan);
           setStatus(
-            `Plan ready: ${plan.cueCount} cue(s), ${plan.roles.length} role(s), ` +
-              `${plan.diagnostics.length} diagnostic(s).`
+            `计划已生成：${plan.cueCount} 条，${plan.roles.length} 个角色，` +
+              `${plan.diagnostics.length} 条诊断。`
           );
         } catch (error) {
-          setStatus("Scan failed");
+          setStatus("扫描计划失败");
           log(errorToString(error));
           renderStageStatus();
         } finally {
@@ -90,7 +96,7 @@
       }
 
       async function buildAll() {
-        await runPlanTask("Building all", "Build failed", async () => {
+        await runPlanTask("正在一键生成", "一键生成失败", async () => {
           log("");
           log("Script: ForkTranslation Build Timeline");
           log("Step 1/3: importing audio by role and creating global markers.");
@@ -102,40 +108,40 @@
           log("Step 3/3: generating role subtitle SRTs.");
           await generateSrtsCore();
 
-          setStatus("Build all done.");
+          setStatus("一键生成完成");
           log("Build all done.");
         });
       }
 
       async function buildAudioStage() {
-        await runPlanTask("Building audio + markers", "Audio build failed", async () => {
+        await runPlanTask("正在生成音频 + Marker", "生成音频失败", async () => {
           log("");
           log("Script: ForkTranslation Build Audio + Markers");
           await buildAudioCore();
-          setStatus("Audio + markers done.");
+          setStatus("音频 + Marker 已生成");
           log("Audio + markers done.");
         });
       }
 
       async function buildPortraitsStage() {
-        await runPlanTask("Building portraits", "Portrait build failed", async () => {
+        await runPlanTask("正在生成立绘", "生成立绘失败", async () => {
           log("");
           log("Script: ForkTranslation Build Portraits");
           await buildPortraitsCore();
-          setStatus("Portraits done.");
+          setStatus("立绘已生成");
           log("Portraits done.");
         });
       }
 
       async function generateSrtsStage() {
-        await runPlanTask("Generating role SRTs", "SRT generation failed", async () => {
+        await runPlanTask("正在生成字幕", "生成字幕失败", async () => {
           log("");
           log("Script: ForkTranslation Generate Role SRTs");
           if (!state.stage.audioBuilt) {
             log("Audio stage is not marked done in this session; using current sequence markers.");
           }
           await generateSrtsCore();
-          setStatus("Role SRTs done.");
+          setStatus("字幕已生成");
           log("Role SRTs done.");
         });
       }
@@ -215,7 +221,7 @@
 
       function requirePlan() {
         if (!state.plan) {
-          throw new Error("Scan the timeline plan first.");
+          throw new Error("请先扫描计划。");
         }
 
         return state.plan;
@@ -223,24 +229,24 @@
 
       function renderStageStatus() {
         if (!state.plan) {
-          $("stageStatus").textContent = "Plan: not scanned";
+          $("stageStatus").textContent = "计划：未扫描";
           return;
         }
 
         $("stageStatus").textContent = [
-          `Plan: ${state.plan.cueCount} cue(s), ${state.plan.roles.length} role(s)`,
-          `Audio + markers: ${stageText(state.stage.audioBuilt, state.stage.audioPlacementCount)}`,
-          `Portraits: ${stageText(state.stage.portraitBuilt, state.stage.portraitPlacementCount)}`,
-          `Role SRTs: ${stageText(state.stage.srtGenerated, state.stage.srtFileCount)}`
+          `计划：${state.plan.cueCount} 条，${state.plan.roles.length} 个角色`,
+          `音频 + Marker：${stageText(state.stage.audioBuilt, state.stage.audioPlacementCount)}`,
+          `立绘：${stageText(state.stage.portraitBuilt, state.stage.portraitPlacementCount)}`,
+          `字幕：${stageText(state.stage.srtGenerated, state.stage.srtFileCount)}`
         ].join("\n");
       }
 
       function stageText(done, count) {
         if (!done) {
-          return "pending";
+          return "未完成";
         }
 
-        return Number(count) > 0 ? `done (${count})` : "done";
+        return Number(count) > 0 ? `完成（${count}）` : "完成";
       }
 
       function buildTimelinePlan(audioFiles, mappingItems, cues) {
@@ -355,17 +361,17 @@
 
         const summary = document.createElement("pre");
         summary.textContent = [
-          `Cues: ${plan.cueCount}`,
-          `Audio files: ${plan.audioFileCount}`,
-          `Mapping items: ${plan.mappingItemCount}`,
-          `Subtitle cues: ${plan.subtitleCueCount}`,
-          `Roles: ${plan.roles.length}`
+          `总条数: ${plan.cueCount}`,
+          `音频数量: ${plan.audioFileCount}`,
+          `Mapping 条目: ${plan.mappingItemCount}`,
+          `字幕条数: ${plan.subtitleCueCount}`,
+          `角色数量: ${plan.roles.length}`
         ].join("\n");
         container.appendChild(summary);
 
         const table = document.createElement("table");
         table.className = "routingTable";
-        table.appendChild(row(["Role", "Cues", "Audio", "Portrait"], "th"));
+        table.appendChild(row(["角色", "条数", "音频轨道", "立绘轨道"], "th"));
 
         for (const role of plan.roles) {
           const route = state.routing.get(role.role);
@@ -382,7 +388,7 @@
 
         if (plan.diagnostics.length > 0) {
           const diagnostics = document.createElement("pre");
-          const lines = [`Diagnostics: ${plan.diagnostics.length}`];
+          const lines = [`诊断: ${plan.diagnostics.length}`];
           for (const item of plan.diagnostics.slice(0, 20)) {
             lines.push(`- ${item}`);
           }
@@ -485,14 +491,16 @@
         state.stage = createEmptyStage();
         state.routing = new Map();
         state.logLines = [];
-        $("preview").textContent = "Choose inputs, then scan the plan.";
+        $("preview").textContent = "请选择输入后扫描计划。";
         $("log").textContent = "";
         renderStageStatus();
-        setStatus("Idle");
+        setStatus("未扫描");
+        updateButtons();
       });
       $("saveLogButton").addEventListener("click", saveLog);
 
       renderStageStatus();
+      updateButtons();
 
       app.setFeatureApi("plan", {
         getPlan() {
@@ -512,9 +520,9 @@
           }
 
           await writeTextFile(file, state.logLines.join("\n") + "\n");
-          setStatus(`Saved log: ${getNativePath(file) || file.name}`);
+          setStatus(`日志已保存：${getNativePath(file) || file.name}`);
         } catch (error) {
-          setStatus("Failed to save log");
+          setStatus("保存日志失败");
           log(errorToString(error));
         }
       }

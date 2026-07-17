@@ -7,7 +7,7 @@
   </head>
   <body>
     <main>
-      <h1>ForkTranslation Premiere Workflow 0.3.0</h1>
+      <h1>ForkTranslation Premiere Workflow 0.4.0</h1>
 
       <div class="tabs">
         <button id="tabButtonInput" class="tabButton" data-tab-target="input" type="button">1 输入准备</button>
@@ -19,54 +19,56 @@
       <section id="tab-input" class="tabPanel" data-tab-panel="input" data-tab-features="audio portrait subtitles">
         <h2>1 输入准备</h2>
 
-        <section class="workflowGroup" data-feature-root="audio">
-          <h3>音频</h3>
+        <section class="workflowGroup" data-feature-root="portrait">
+          <h3>工作区</h3>
 
           <div class="buttons">
-            <button id="audio-chooseFolderButton" class="primary" type="button">选择文件夹</button>
-            <button id="audio-rescanButton" type="button">重新扫描</button>
+            <button id="portrait-chooseMappingButton" class="primary" type="button">选择 Mapping 文件</button>
           </div>
 
-          <output id="audio-folderPath">No folder selected</output>
+          <div class="outputs">
+            <label>工作区路径</label>
+            <output id="portrait-workdirPath">未选择</output>
+            <label>Mapping 文件</label>
+            <output id="portrait-mappingPath">未选择</output>
+            <label>音频目录</label>
+            <output id="audio-folderPath">未选择</output>
+            <label>Mapping 条目</label>
+            <output id="portrait-mappingCount">未读取</output>
+            <label>音频数量</label>
+            <output id="audio-status">未读取</output>
+          </div>
 
           <div class="fields">
-            <label for="audio-intervalSeconds">Gap seconds</label>
+            <label for="audio-intervalSeconds">音频间隔（秒）</label>
             <input id="audio-intervalSeconds" type="text" value="0.5" placeholder="0.5">
           </div>
 
-          <output id="audio-status">Idle</output>
-
           <section class="previewSection">
-            <button class="previewToggle" type="button" data-preview-toggle>Matched Files</button>
+            <button class="previewToggle" type="button" data-preview-toggle>音频预览</button>
             <pre id="audio-filePreview" hidden></pre>
+          </section>
+          <section class="previewSection">
+            <button class="previewToggle" type="button" data-preview-toggle>Mapping 预览</button>
+            <pre id="portrait-preview" hidden></pre>
           </section>
           <pre id="audio-log" hidden></pre>
         </section>
 
         <section class="workflowGroup" data-feature-root="portrait">
-          <h3>Mapping 和立绘</h3>
+          <h3>立绘</h3>
 
           <div class="buttons">
-            <button id="portrait-chooseMappingButton" class="primary" type="button">Choose Mapping File</button>
-            <button id="portrait-chooseWorkdirButton" type="button">Choose Workdir</button>
-            <button id="portrait-choosePortraitDirButton" type="button">Choose Portrait Dir</button>
+            <button id="portrait-choosePortraitDirButton" class="primary" type="button">选择立绘绝对目录</button>
           </div>
 
           <div class="outputs">
-            <label>Mapping</label>
-            <output id="portrait-mappingPath">No mapping selected</output>
-            <label>Workdir</label>
-            <output id="portrait-workdirPath">No workdir selected</output>
-            <label>Portrait Dir</label>
-            <output id="portrait-portraitDirPath">No portrait dir selected</output>
+            <label>立绘目录</label>
+            <output id="portrait-portraitDirPath">未选择</output>
+            <label>状态</label>
+            <output id="portrait-status">未读取</output>
           </div>
 
-          <output id="portrait-status">Idle</output>
-
-          <section class="previewSection">
-            <button class="previewToggle" type="button" data-preview-toggle>Portrait Preview</button>
-            <pre id="portrait-preview" hidden></pre>
-          </section>
           <pre id="portrait-log" hidden></pre>
         </section>
 
@@ -74,22 +76,22 @@
           <h3>字幕</h3>
 
           <div class="buttons">
-            <button id="subtitles-chooseJsonButton" class="primary" type="button">Choose Subtitle JSON</button>
-            <button id="subtitles-chooseOutputButton" type="button">Choose Output Folder</button>
+            <button id="subtitles-chooseJsonButton" class="primary" type="button">选择字幕 JSON</button>
+            <button id="subtitles-chooseOutputButton" type="button">选择输出目录</button>
           </div>
 
           <div class="outputs">
-            <label>Subtitle JSON</label>
-            <output id="subtitles-jsonPath">No JSON selected</output>
-            <label>Output Folder</label>
-            <output id="subtitles-outputPath">No output folder selected</output>
+            <label>字幕 JSON</label>
+            <output id="subtitles-jsonPath">未选择</output>
+            <label>输出目录</label>
+            <output id="subtitles-outputPath">未选择</output>
           </div>
 
-          <output id="subtitles-status">Idle</output>
+          <output id="subtitles-status">未读取</output>
 
           <section class="previewSection">
-            <button class="previewToggle" type="button" data-preview-toggle>Subtitle Preview</button>
-            <pre id="subtitles-preview" hidden>Choose a subtitle JSON file.</pre>
+            <button class="previewToggle" type="button" data-preview-toggle>字幕预览</button>
+            <pre id="subtitles-preview" hidden>请选择字幕 JSON。</pre>
           </section>
           <pre id="subtitles-log" hidden></pre>
         </section>
@@ -102,20 +104,20 @@
           <h3>角色轨道计划</h3>
 
           <div class="buttons">
-            <button id="plan-scanButton" class="primary" type="button">Scan Plan</button>
-            <button id="plan-clearButton" type="button">Clear</button>
-            <button id="plan-saveLogButton" type="button">Save Log</button>
+            <button id="plan-scanButton" class="primary" type="button">扫描计划</button>
+            <button id="plan-clearButton" type="button">清空计划</button>
+            <button id="plan-saveLogButton" type="button">保存日志</button>
           </div>
 
-          <output id="plan-status">Idle</output>
+          <output id="plan-status">未扫描</output>
 
           <section class="previewSection">
-            <button class="previewToggle" type="button" data-preview-toggle>Role Routing</button>
-            <div id="plan-preview" class="routingPreview" hidden>Choose inputs, then scan the plan.</div>
+            <button class="previewToggle" type="button" data-preview-toggle>角色轨道</button>
+            <div id="plan-preview" class="routingPreview" hidden>请选择输入后扫描计划。</div>
           </section>
 
           <section class="logSection">
-            <button class="logToggle" type="button" data-log-toggle>Plan Log</button>
+            <button class="logToggle" type="button" data-log-toggle>计划日志</button>
             <pre id="plan-log" hidden></pre>
           </section>
         </section>
@@ -128,13 +130,13 @@
           <h3>按计划执行</h3>
 
           <div class="buttons">
-            <button id="plan-buildAllButton" class="primary" type="button">Build All</button>
-            <button id="plan-buildAudioButton" type="button">Build Audio + Markers</button>
-            <button id="plan-buildPortraitsButton" type="button">Build Portraits</button>
-            <button id="plan-generateSrtsButton" type="button">Generate Role SRTs</button>
+            <button id="plan-buildAllButton" class="primary" type="button">一键生成</button>
+            <button id="plan-buildAudioButton" type="button">生成音频 + Marker</button>
+            <button id="plan-buildPortraitsButton" type="button">生成立绘</button>
+            <button id="plan-generateSrtsButton" type="button">生成字幕</button>
           </div>
 
-          <output id="plan-stageStatus" class="stageStatus">No plan scanned.</output>
+          <output id="plan-stageStatus" class="stageStatus">未扫描计划。</output>
         </section>
       </section>
 
@@ -145,41 +147,41 @@
           <h3>Image Pulse</h3>
 
           <div class="field">
-            <label for="pulse-trackSpec">Video tracks</label>
-            <input id="pulse-trackSpec" type="text" value="V1" placeholder="V1,V3 or V1-V3 or all">
+            <label for="pulse-trackSpec">目标视频轨道</label>
+            <input id="pulse-trackSpec" type="text" value="V1" placeholder="V1,V3 或 V1-V3 或 all">
           </div>
 
           <div class="fields">
-            <label for="pulse-heightMultiplier">Start height</label>
+            <label for="pulse-heightMultiplier">起始高度</label>
             <input id="pulse-heightMultiplier" type="text" value="1.035" placeholder="1.035">
 
-            <label for="pulse-pulseSeconds">Pulse duration (s)</label>
+            <label for="pulse-pulseSeconds">脉冲时长（秒）</label>
             <input id="pulse-pulseSeconds" type="text" value="0.5" placeholder="0.5">
 
-            <label for="pulse-baseScale">Base scale %</label>
+            <label for="pulse-baseScale">基础缩放</label>
             <input id="pulse-baseScale" type="text" placeholder="auto">
 
-            <label for="pulse-curveSpec">Rate curve</label>
+            <label for="pulse-curveSpec">曲线</label>
             <input id="pulse-curveSpec" type="text" value="0.19,1,0.22,1" placeholder="x1,y1,x2,y2">
 
-            <label for="pulse-curveSamples">Curve samples</label>
+            <label for="pulse-curveSamples">曲线采样数</label>
             <input id="pulse-curveSamples" type="text" value="8" placeholder="8">
           </div>
 
           <label class="check">
             <input id="pulse-tryUnknown" type="checkbox" checked>
-            <span>Try unknown-extension clips</span>
+            <span>尝试未知扩展名素材</span>
           </label>
 
           <div class="buttons">
-            <button id="pulse-runButton" class="primary" type="button">Run</button>
-            <button id="pulse-clearButton" type="button">Clear Log</button>
-            <button id="pulse-saveLogButton" type="button">Save Log</button>
+            <button id="pulse-runButton" class="primary" type="button">运行</button>
+            <button id="pulse-clearButton" type="button">清空日志</button>
+            <button id="pulse-saveLogButton" type="button">保存日志</button>
           </div>
 
-          <output id="pulse-status">Idle</output>
+          <output id="pulse-status">待机</output>
           <section class="logSection">
-            <button class="logToggle" type="button" data-log-toggle>Pulse Log</button>
+            <button class="logToggle" type="button" data-log-toggle>后处理日志</button>
             <pre id="pulse-log" hidden></pre>
           </section>
         </section>

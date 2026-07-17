@@ -74,7 +74,7 @@
         }
 
         setBusy(true);
-        setStatus("Running");
+        setStatus("正在运行");
 
         try {
           const options = readOptions();
@@ -124,11 +124,14 @@
             `Done. Processed ${summary.processed} clip(s). ` +
             `Images: ${summary.imagesSeen}, unknown tried: ${summary.unknownSeen}, ` +
             `videos skipped: ${summary.videosSkipped}, skipped: ${summary.skipped}.`;
-          setStatus(text);
+          setStatus(
+            `完成。处理 ${summary.processed} 个片段，` +
+              `跳过 ${summary.skipped + summary.videosSkipped} 个。`
+          );
           log(text);
         } catch (error) {
           const message = error && error.stack ? error.stack : String(error);
-          setStatus("Failed");
+          setStatus("运行失败");
           log(message);
         } finally {
           setBusy(false);
@@ -758,7 +761,7 @@
       $("clearButton").addEventListener("click", () => {
         state.logLines = [];
         $("log").textContent = "";
-        setStatus("Idle");
+        setStatus("待机");
       });
 
       $("saveLogButton").addEventListener("click", async () => {
@@ -778,9 +781,9 @@
           } catch (error) {
             await file.write(text);
           }
-          setStatus(`Saved log: ${file.nativePath || file.name}`);
+          setStatus(`日志已保存：${file.nativePath || file.name}`);
         } catch (error) {
-          setStatus("Failed to save log");
+          setStatus("保存日志失败");
           log(error && error.stack ? error.stack : String(error));
         }
       });

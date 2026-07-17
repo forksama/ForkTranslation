@@ -39,6 +39,7 @@
         mapping: null,
         workdir: null,
         workdirPath: "",
+        audioDirPath: "",
         portraitDir: null,
         portraitDirPath: "",
         lastScan: null,
@@ -101,25 +102,23 @@
           const text = await readTextFile(file);
           const mapping = normalizeMapping(parseJson(text, file.name));
           const mappingPath = getNativePath(file);
-          const inferredWorkdirPath = inferWorkdirPathFromMappingPath(mappingPath);
-          const inferredWorkdir = inferredWorkdirPath
-            ? await getEntryForNativePath(inferredWorkdirPath)
-            : null;
+          const workspace = await resolveWorkspaceFromMapping(mappingPath, mapping);
+          const audio = app.getFeatureApi("audio");
+          const audioFiles = await audio.setFolder(workspace.audioDir);
 
           state.mappingFile = file;
           state.mappingPath = mappingPath;
           state.mapping = mapping;
-          if (inferredWorkdirPath) {
-            state.workdirPath = inferredWorkdirPath;
-            state.workdir = inferredWorkdir && inferredWorkdir.isFolder ? inferredWorkdir : null;
-          }
+          state.workdirPath = workspace.workdirPath;
+          state.workdir = workspace.workdir;
+          state.audioDirPath = workspace.audioDirPath;
           state.lastScan = null;
 
           renderState();
           renderMappingPreview(mapping);
-          setStatus(`Loaded ${mapping.items.length} mapping item(s).`);
+          setStatus(`工作区已读取：${mapping.items.length} 条 Mapping，${audioFiles.length} 个音频`);
         } catch (error) {
-          setStatus("Failed to choose mapping");
+          setStatus("读取 Mapping 失败");
           log(errorToString(error));
         }
       }
@@ -161,9 +160,9 @@
           state.portraitDirPath = getNativePath(folder);
           state.lastScan = null;
           renderState();
-          setStatus("Portrait dir selected.");
+          setStatus("立绘目录已选择");
         } catch (error) {
-          setStatus("Failed to choose portrait dir");
+          setStatus("选择立绘目录失败");
           log(errorToString(error));
         }
       }
@@ -238,13 +237,13 @@
 
       async function buildScan() {
         if (!state.mapping) {
-          throw new Error("Choose a mapping file first.");
+          throw new Error("请先选择 Mapping 文件。");
         }
         if (!state.workdirPath) {
-          throw new Error("Choose a workdir first.");
+          throw new Error("请先选择 Mapping 文件以推导工作区。");
         }
         if (!state.portraitDir || !state.portraitDirPath) {
-          throw new Error("Choose a portrait dir first.");
+          throw new Error("请先选择立绘绝对目录。");
         }
 
         const options = readOptions();
@@ -1697,21 +1696,93 @@
         return "";
       }
 
+      async function resolveWorkspaceFromMapping(mappingPath, mapping) {
+        const workdirPath = inferWorkdirPathFromMappingPath(mappingPath);
+        if (!workdirPath) {
+          throw new Error("无法从 Mapping 文件路径推导工作区。");
+        }
+
+        const workdir = await getEntryForNativePath(workdirPath);
+        if (!workdir || !workdir.isFolder) {
+          throw new Error(`工作区不可用：${workdirPath}`);
+        }
+
+        const audioDirRelPath = inferAudioDirRelPath(mapping);
+        if (!audioDirRelPath) {
+          throw new Error("Mapping 中没有可用于推导音频目录的 audioRelPath。");
+        }
+
+        const audioDirPath = joinNativePath(workdirPath, audioDirRelPath);
+        const audioDir = await getEntryForNativePath(audioDirPath);
+        if (!audioDir || !audioDir.isFolder) {
+          throw new Error(`音频目录不可用：${audioDirPath}`);
+        }
+
+        return {
+          workdir,
+          workdirPath,
+          audioDir,
+          audioDirPath
+        };
+      }
+
+      function inferAudioDirRelPath(mapping) {
+        const dirs = [];
+        const items = mapping && mapping.items ? mapping.items : [];
+        for (const item of items) {
+          const dir = dirname(item.audioRelPath || "");
+          if (dir) {
+            dirs.push(normalizeRelativePath(dir));
+          }
+        }
+
+        return commonRelativePath(dirs);
+      }
+
+      function commonRelativePath(paths) {
+        if (!paths.length) {
+          return "";
+        }
+
+        const firstParts = paths[0].split("/").filter(Boolean);
+        let length = firstParts.length;
+
+        for (let index = 1; index < paths.length; index += 1) {
+          const parts = paths[index].split("/").filter(Boolean);
+          length = Math.min(length, parts.length);
+          for (let partIndex = 0; partIndex < length; partIndex += 1) {
+            if (firstParts[partIndex].toLowerCase() !== parts[partIndex].toLowerCase()) {
+              length = partIndex;
+              break;
+            }
+          }
+        }
+
+        return firstParts.slice(0, length).join("/");
+      }
+
       function renderState() {
-        $("mappingPath").textContent = state.mappingPath || "No mapping selected";
-        $("workdirPath").textContent = state.workdirPath || "No workdir selected";
-        $("portraitDirPath").textContent = state.portraitDirPath || "No portrait dir selected";
+        $("mappingPath").textContent = state.mappingPath || "未选择";
+        $("workdirPath").textContent = state.workdirPath || "未选择";
+        $("portraitDirPath").textContent = state.portraitDirPath || "未选择";
+        const mappingCount = optional$("mappingCount");
+        if (mappingCount) {
+          mappingCount.textContent = state.mapping
+            ? `${state.mapping.items.length} 条`
+            : "未读取";
+        }
       }
 
       function renderMappingPreview(mapping) {
         if (!mapping || !mapping.items.length) {
-          $("preview").textContent = "No mapping items.";
+          $("preview").textContent = "没有 Mapping 条目。";
           return;
         }
 
         const lines = [
           `schemaVersion: ${mapping.schemaVersion}`,
-          `items: ${mapping.items.length}`,
+          `Mapping 条目: ${mapping.items.length}`,
+          `音频目录: ${state.audioDirPath || "未推导"}`,
           ""
         ];
 
@@ -2320,10 +2391,10 @@
       app.setFeatureApi("portrait", {
         async importByRole(plan, routing) {
           if (!state.mapping) {
-            throw new Error("Choose a mapping file first.");
+            throw new Error("请先选择 Mapping 文件。");
           }
           if (!state.portraitDir || !state.portraitDirPath) {
-            throw new Error("Choose a portrait dir first.");
+            throw new Error("请先选择立绘绝对目录。");
           }
 
           const project = await ppro.Project.getActiveProject();
@@ -2378,7 +2449,7 @@
         },
         getMapping() {
           if (!state.mapping) {
-            throw new Error("Choose a mapping file first.");
+            throw new Error("请先选择 Mapping 文件。");
           }
 
           return state.mapping;
@@ -2387,6 +2458,7 @@
           return {
             mappingPath: state.mappingPath,
             workdirPath: state.workdirPath,
+            audioDirPath: state.audioDirPath,
             portraitDirPath: state.portraitDirPath,
             mapping: state.mapping
           };

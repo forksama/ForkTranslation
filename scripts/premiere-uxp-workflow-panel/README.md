@@ -25,13 +25,14 @@ one of the old plugin manifests. The unified tabbed panel only appears from
 
 Workflow:
 
-1. In `1 输入准备`, choose the audio folder, mapping JSON, workdir, portrait
-   directory, subtitle JSON, and SRT output folder.
-2. In `2 计划预览`, run `Scan Plan` to compare the inputs and build the role
+1. In `1 输入准备`, choose the mapping JSON for the board workspace. The panel
+   infers the workspace and audio directory from that mapping file. Then choose
+   the portrait absolute directory, subtitle JSON, and SRT output folder.
+2. In `2 计划预览`, run `扫描计划` to compare the inputs and build the role
    routing table. This step does not require audio, portraits, or subtitles to
    already exist on the Premiere timeline.
-3. In `3 执行生成`, run `Build All` or run the stages separately:
-   `Build Audio + Markers`, `Build Portraits`, then `Generate Role SRTs`.
+3. In `3 执行生成`, run `一键生成` or run the stages separately:
+   `生成音频 + Marker`, `生成立绘`, then `生成字幕`.
 4. In `4 后处理`, run Image Pulse after the timeline has been built.
 
 ## Structure

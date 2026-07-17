@@ -17,7 +17,7 @@
         busy: false,
         jsonFile: null,
         outputFolder: null,
-        previewText: "Choose a subtitle JSON file.",
+        previewText: "请选择字幕 JSON。",
         logLines: []
       };
 
@@ -61,10 +61,10 @@
       function renderPanelState() {
         $("jsonPath").textContent = state.jsonFile
           ? getNativePath(state.jsonFile) || state.jsonFile.name
-          : "No JSON selected";
+          : "未选择";
         $("outputPath").textContent = state.outputFolder
           ? getNativePath(state.outputFolder) || state.outputFolder.name
-          : "No output folder selected";
+          : "未选择";
         $("preview").textContent = state.previewText;
         $("log").textContent = state.logLines.join("\n");
       }
@@ -86,9 +86,9 @@
           state.previewText = await buildJsonPreview(file);
           state.jsonFile = file;
           renderPanelState();
-          setStatus(`Loaded ${file.name}.`);
+          setStatus(`已读取 ${file.name}`);
         } catch (error) {
-          setStatus("Failed to load JSON");
+          setStatus("读取字幕 JSON 失败");
           log(errorToString(error));
         }
       }
@@ -107,9 +107,9 @@
 
           state.outputFolder = folder;
           renderPanelState();
-          setStatus("Output folder selected.");
+          setStatus("输出目录已选择");
         } catch (error) {
-          setStatus("Failed to choose output folder");
+          setStatus("选择输出目录失败");
           log(errorToString(error));
         }
       }
@@ -124,9 +124,9 @@
         }
 
         const lines = [
-          `File: ${file.name}`,
-          `Cues: ${cues.length}`,
-          `Roles: ${roleCounts.size}`
+          `文件: ${file.name}`,
+          `字幕条数: ${cues.length}`,
+          `角色数量: ${roleCounts.size}`
         ];
 
         for (const [role, count] of roleCounts) {
@@ -142,25 +142,25 @@
         }
 
         setBusy(true);
-        setStatus("Generating");
+        setStatus("正在生成字幕");
 
         try {
           if (!state.jsonFile) {
-            throw new Error("Choose a subtitle JSON file first.");
+            throw new Error("请先选择字幕 JSON。");
           }
           if (!state.outputFolder) {
-            throw new Error("Choose an output folder first.");
+            throw new Error("请先选择输出目录。");
           }
 
           const result = await generateRoleSrts(state.jsonFile, state.outputFolder, log);
           state.previewText = buildGenerationPreview(result);
           renderPanelState();
           setStatus(
-            `Generated ${result.writtenFiles.length} SRT file(s); ` +
-              `Project import ${result.importedToProject ? "succeeded" : "did not run"}.`
+            `已生成 ${result.writtenFiles.length} 个 SRT；` +
+              `项目导入${result.importedToProject ? "成功" : "未执行"}。`
           );
         } catch (error) {
-          setStatus("Generation failed");
+          setStatus("生成字幕失败");
           log(errorToString(error));
         } finally {
           setBusy(false);
@@ -302,18 +302,18 @@
 
       function buildGenerationPreview(result) {
         const lines = [
-          `Cue range: C${pad4(1)}-C${pad4(result.usableCueCount)}`,
-          `Sequence markers: ${result.markerCount}`,
-          `Role files: ${result.writtenFiles.length}`,
-          `Imported to Project panel: ${result.importedToProject ? "yes" : "no"}`
+          `字幕范围: C${pad4(1)}-C${pad4(result.usableCueCount)}`,
+          `序列 Marker: ${result.markerCount}`,
+          `角色字幕文件: ${result.writtenFiles.length}`,
+          `导入项目面板: ${result.importedToProject ? "是" : "否"}`
         ];
 
         if (result.duplicateMarkerCount > 0) {
           lines.splice(
             2,
             0,
-            `Raw markers: ${result.rawMarkerCount}`,
-            `Duplicate markers ignored: ${result.duplicateMarkerCount}`
+            `原始 Marker: ${result.rawMarkerCount}`,
+            `已忽略重复 Marker: ${result.duplicateMarkerCount}`
           );
         }
 
@@ -704,7 +704,7 @@
       app.setFeatureApi("subtitles", {
         async readCues() {
           if (!state.jsonFile) {
-            throw new Error("Choose a subtitle JSON file first.");
+            throw new Error("请先选择字幕 JSON。");
           }
 
           return getOrderedCues(
@@ -713,18 +713,18 @@
         },
         async generateSrts() {
           if (!state.jsonFile) {
-            throw new Error("Choose a subtitle JSON file first.");
+            throw new Error("请先选择字幕 JSON。");
           }
           if (!state.outputFolder) {
-            throw new Error("Choose an output folder first.");
+            throw new Error("请先选择输出目录。");
           }
 
           const result = await generateRoleSrts(state.jsonFile, state.outputFolder, log);
           state.previewText = buildGenerationPreview(result);
           renderPanelState();
           setStatus(
-            `Generated ${result.writtenFiles.length} SRT file(s); ` +
-              `Project import ${result.importedToProject ? "succeeded" : "did not run"}.`
+            `已生成 ${result.writtenFiles.length} 个 SRT；` +
+              `项目导入${result.importedToProject ? "成功" : "未执行"}。`
           );
           return result;
         },
