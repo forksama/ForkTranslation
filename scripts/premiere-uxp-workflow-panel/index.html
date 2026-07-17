@@ -140,8 +140,32 @@
         </section>
       </section>
 
-      <section id="tab-post" class="tabPanel" data-tab-panel="post" data-tab-features="pulse">
+      <section id="tab-post" class="tabPanel" data-tab-panel="post" data-tab-features="clipclone pulse">
         <h2>4 后处理</h2>
+
+        <section class="workflowGroup" data-feature-root="clipclone">
+          <h3>批量复制选中片段</h3>
+
+          <div class="fields">
+            <label for="clipclone-sourceTrackSpec">匹配源轨道</label>
+            <input id="clipclone-sourceTrackSpec" type="text" value="V1" placeholder="V1">
+
+            <label for="clipclone-targetTrackSpec">目标视频轨道</label>
+            <input id="clipclone-targetTrackSpec" type="text" value="auto" placeholder="auto 或 V4">
+          </div>
+
+          <div class="buttons">
+            <button id="clipclone-runButton" class="primary" type="button">批量复制</button>
+            <button id="clipclone-clearButton" type="button">清空日志</button>
+            <button id="clipclone-saveLogButton" type="button">保存日志</button>
+          </div>
+
+          <output id="clipclone-status">先选中要复制的视频段</output>
+          <section class="logSection">
+            <button class="logToggle" type="button" data-log-toggle>复制日志</button>
+            <pre id="clipclone-log" hidden></pre>
+          </section>
+        </section>
 
         <section class="workflowGroup" data-feature-root="pulse">
           <h3>Image Pulse</h3>
@@ -193,6 +217,7 @@
     <script src="features/portrait-map-importer.js"></script>
     <script src="features/pr-subtitles.js"></script>
     <script src="features/build-plan.js"></script>
+    <script src="features/track-template-cloner.js"></script>
     <script src="features/image-bottom-pulse.js"></script>
     <script src="index.js"></script>
   </body>

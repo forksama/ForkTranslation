@@ -33,7 +33,8 @@ Workflow:
    already exist on the Premiere timeline.
 3. In `3 执行生成`, run `一键生成` or run the stages separately:
    `生成音频 + Marker`, `生成立绘`, then `生成字幕`.
-4. In `4 后处理`, run Image Pulse after the timeline has been built.
+4. In `4 后处理`, clone the selected template clip across a source video
+   track, or run Image Pulse after the timeline has been built.
 
 ## Structure
 
@@ -47,6 +48,7 @@ premiere-uxp-workflow-panel/
     ├── portrait-map-importer.js   # mapping input and role-routed import API
     ├── pr-subtitles.js            # subtitle input and role SRT generation API
     ├── build-plan.js              # scan plan and staged workflow execution
+    ├── track-template-cloner.js   # clone the selected clip by source-track timing
     └── image-bottom-pulse.js      # post-process section
 ```
 
