@@ -16,7 +16,7 @@
       "order": 2,
       "audioFileName": "2-2342_2228_遅かったわねプロデューサー.wav",
       "audioRelPath": "media/voice/audio/2-2342_2228_遅かったわねプロデューサー.wav",
-      "portraitRelPath": "10 燐羽立绘/生气 (3).png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/生气 (3).png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "遅かったわね、プロデューサー"
@@ -43,7 +43,7 @@
       "order": 5,
       "audioFileName": "5-2635_まったくこの私を待たせるんじゃないわよ次遅れたら殺すから.wav",
       "audioRelPath": "media/voice/audio/5-2635_まったくこの私を待たせるんじゃないわよ次遅れたら殺すから.wav",
-      "portraitRelPath": "10 燐羽立绘/特殊-生气-害羞-侧视 (2).png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/特殊-生气-害羞-侧视 (2).png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "まったく…この私を待たせるんじゃないわよ、次遅れたら、殺すから"
@@ -61,7 +61,7 @@
       "order": 7,
       "audioFileName": "7-2754_さお弁当食べるわよあなたが遅れるからちょっと冷めちゃったじゃない.wav",
       "audioRelPath": "media/voice/audio/7-2754_さお弁当食べるわよあなたが遅れるからちょっと冷めちゃったじゃない.wav",
-      "portraitRelPath": "10 燐羽立绘/自然-开心 (4).png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/自然-开心 (4).png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "さ、お弁当、食べるわよ。あなたが遅れるからちょっと冷めちゃったじゃない"
@@ -97,7 +97,7 @@
       "order": 11,
       "audioFileName": "11-3347_ふふ今日のは自信作よ.wav",
       "audioRelPath": "media/voice/audio/11-3347_ふふ今日のは自信作よ.wav",
-      "portraitRelPath": "10 燐羽立绘/自然-开心-害羞 (2).png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/自然-开心-害羞 (2).png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "ふふ、今日のは自信作よ？"
@@ -115,7 +115,7 @@
       "order": 13,
       "audioFileName": "13-3859_あーーーむ.wav",
       "audioRelPath": "media/voice/audio/13-3859_あーーーむ.wav",
-      "portraitRelPath": "10 燐羽立绘/特殊-自然-困惑-撒娇.png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/特殊-自然-困惑-撒娇.png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "あーーーむ"
@@ -133,7 +133,7 @@
       "order": 15,
       "audioFileName": "15-4223_今日は全部私が食べさせてあげるわ.wav",
       "audioRelPath": "media/voice/audio/15-4223_今日は全部私が食べさせてあげるわ.wav",
-      "portraitRelPath": "10 燐羽立绘/困惑-无奈.png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/困惑-无奈.png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "今日は全部私が食べさせてあげるわ"
@@ -151,7 +151,7 @@
       "order": 17,
       "audioFileName": "17-4322_私を待たせた罰みたいな物かしら私がしたい事をさせて貰おうと思って.wav",
       "audioRelPath": "media/voice/audio/17-4322_私を待たせた罰みたいな物かしら私がしたい事をさせて貰おうと思って.wav",
-      "portraitRelPath": "10 燐羽立绘/不满-害羞.png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/不满-害羞.png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "私を待たせた罰、みたいな物かしら。私がしたい事をさせて貰おうと思って。"
@@ -160,7 +160,7 @@
       "order": 18,
       "audioFileName": "18-4517_あー拒否権はないわよ.wav",
       "audioRelPath": "media/voice/audio/18-4517_あー拒否権はないわよ.wav",
-      "portraitRelPath": "10 燐羽立绘/特殊-生气.png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/特殊-生气.png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "あー、拒否権はないわよ？"
@@ -178,7 +178,7 @@
       "order": 20,
       "audioFileName": "20-4713_じゃああーーむ.wav",
       "audioRelPath": "media/voice/audio/20-4713_じゃああーーむ.wav",
-      "portraitRelPath": "10 燐羽立绘/开心-自信 (5).png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/开心-自信 (5).png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "じゃあ、あーーむ"
@@ -223,7 +223,7 @@
       "order": 25,
       "audioFileName": "25-4841_そうそれは良かったわそれにしてもあなたが一切拒否しなかったのは意外だったわ.wav",
       "audioRelPath": "media/voice/audio/25-4841_そうそれは良かったわそれにしてもあなたが一切拒否しなかったのは意外だったわ.wav",
-      "portraitRelPath": "10 燐羽立绘/自然.png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/自然.png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "そう、それは良かったわ。それにしても、あなたが一切拒否しなかったのは意外だったわ"
@@ -241,7 +241,7 @@
       "order": 27,
       "audioFileName": "27-5018_4911_まあそれはそうねでも嫌じゃないのかしら.wav",
       "audioRelPath": "media/voice/audio/27-5018_4911_まあそれはそうねでも嫌じゃないのかしら.wav",
-      "portraitRelPath": "10 燐羽立绘/开心-害羞 (2).png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/开心-害羞 (2).png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "まあ、それはそうね。でも、嫌じゃないのかしら？"
@@ -259,7 +259,7 @@
       "order": 29,
       "audioFileName": "29-5323_ふふっ素直でよろしいあなた本当に私の事が好きなのね.wav",
       "audioRelPath": "media/voice/audio/29-5323_ふふっ素直でよろしいあなた本当に私の事が好きなのね.wav",
-      "portraitRelPath": "10 燐羽立绘/困惑-无奈.png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/困惑-无奈.png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "ふふっ、素直でよろしい。あなた、本当に私の事が好きなのね。"
@@ -268,7 +268,7 @@
       "order": 30,
       "audioFileName": "30-5529_分かったわこれからも徹底的にお世話してあげる.wav",
       "audioRelPath": "media/voice/audio/30-5529_分かったわこれからも徹底的にお世話してあげる.wav",
-      "portraitRelPath": "10 燐羽立绘/开心-害羞.png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/开心-害羞.png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "分かったわ。これからも徹底的にお世話してあげる"
@@ -313,7 +313,7 @@
       "order": 35,
       "audioFileName": "35-5819_プロデューサーこれはどういうことかしら.wav",
       "audioRelPath": "media/voice/audio/35-5819_プロデューサーこれはどういうことかしら.wav",
-      "portraitRelPath": "10 燐羽立绘/特殊-生气.png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/特殊-生气.png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "プロデューサー？これはどういうことかしら？"
@@ -331,7 +331,7 @@
       "order": 37,
       "audioFileName": "37-0318_まあ過ぎたことはいいわよそれよりもプロデューサー浮気かしら.wav",
       "audioRelPath": "media/voice/audio/37-0318_まあ過ぎたことはいいわよそれよりもプロデューサー浮気かしら.wav",
-      "portraitRelPath": "10 燐羽立绘/特殊-生气-害羞-侧视.png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/特殊-生气-害羞-侧视.png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "まあ過ぎたことはいいわよ。それよりもプロデューサー？浮気かしら？"
@@ -349,7 +349,7 @@
       "order": 39,
       "audioFileName": "39-0413_ここにあるのは手毬と美鈴の写真ばっかりじゃない.wav",
       "audioRelPath": "media/voice/audio/39-0413_ここにあるのは手毬と美鈴の写真ばっかりじゃない.wav",
-      "portraitRelPath": "10 燐羽立绘/特殊-生气-害羞-侧视 (2).png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/特殊-生气-害羞-侧视 (2).png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "ここにあるのは手毬と美鈴の写真ばっかりじゃない"
@@ -358,7 +358,7 @@
       "order": 40,
       "audioFileName": "40-0648_0600_なんで私以外の女の事を考えるわけー.wav",
       "audioRelPath": "media/voice/audio/40-0648_0600_なんで私以外の女の事を考えるわけー.wav",
-      "portraitRelPath": "10 燐羽立绘/特殊-生气-害羞-侧视 (2).png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/特殊-生气-害羞-侧视 (2).png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "なんで私以外の女の事を考えるわけー？？？"
@@ -403,7 +403,7 @@
       "order": 45,
       "audioFileName": "45-0826_はあそういうことねまだ私の支配が足りてなかったのかもしれないわね.wav",
       "audioRelPath": "media/voice/audio/45-0826_はあそういうことねまだ私の支配が足りてなかったのかもしれないわね.wav",
-      "portraitRelPath": "10 燐羽立绘/不满-害羞.png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/不满-害羞.png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "はあ、そういうことね。まだ私の支配が足りてなかったのかもしれないわね"
@@ -421,7 +421,7 @@
       "order": 47,
       "audioFileName": "47-1111_いい事を思いついたわ今夜プロデューサーの家に行ってもいいかしら.wav",
       "audioRelPath": "media/voice/audio/47-1111_いい事を思いついたわ今夜プロデューサーの家に行ってもいいかしら.wav",
-      "portraitRelPath": "10 燐羽立绘/开心-害羞.png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/开心-害羞.png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "いい事を思いついたわ。今夜、プロデューサーの家に行ってもいいかしら？"
@@ -439,7 +439,7 @@
       "order": 49,
       "audioFileName": "49-1341_前にプロデューサーはお世話されるのは本望って行ってくれたじゃない.wav",
       "audioRelPath": "media/voice/audio/49-1341_前にプロデューサーはお世話されるのは本望って行ってくれたじゃない.wav",
-      "portraitRelPath": "10 燐羽立绘/开心-害羞.png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/开心-害羞.png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "前にプロデューサーはお世話されるのは本望って行ってくれたじゃない。"
@@ -448,7 +448,7 @@
       "order": 50,
       "audioFileName": "50-1802_なら家でもお世話してもっと私のお世話に満たされたらいいと思ったのよ.wav",
       "audioRelPath": "media/voice/audio/50-1802_なら家でもお世話してもっと私のお世話に満たされたらいいと思ったのよ.wav",
-      "portraitRelPath": "10 燐羽立绘/自然 (7).png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/自然 (7).png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "なら、家でもお世話して、もっと私のお世話に満たされたらいいと思ったのよ"
@@ -466,7 +466,7 @@
       "order": 52,
       "audioFileName": "52-1918_美鈴と比べればまだ大したことないわよ.wav",
       "audioRelPath": "media/voice/audio/52-1918_美鈴と比べればまだ大したことないわよ.wav",
-      "portraitRelPath": "10 燐羽立绘/自然.png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/自然.png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "美鈴と比べればまだ大したことないわよ"
@@ -484,7 +484,7 @@
       "order": 54,
       "audioFileName": "54-2034_1934_とにかく拒否なんてしたら許さないわよ.wav",
       "audioRelPath": "media/voice/audio/54-2034_1934_とにかく拒否なんてしたら許さないわよ.wav",
-      "portraitRelPath": "10 燐羽立绘/自然.png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/自然.png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "とにかく、拒否なんてしたら許さないわよ"
@@ -502,7 +502,7 @@
       "order": 56,
       "audioFileName": "56-2244_ふふ分かってたわよプロデューサーがこの私の誘いを断れないことくらい.wav",
       "audioRelPath": "media/voice/audio/56-2244_ふふ分かってたわよプロデューサーがこの私の誘いを断れないことくらい.wav",
-      "portraitRelPath": "10 燐羽立绘/开心-自信-撒娇.png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/开心-自信-撒娇.png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "ふふ、分かってたわよ、プロデューサーがこの私の誘いを断れないことくらい"
@@ -511,7 +511,7 @@
       "order": 57,
       "audioFileName": "57-2335_そもそもプロデューサーのためなんだからしっかり私にお世話されなさい.wav",
       "audioRelPath": "media/voice/audio/57-2335_そもそもプロデューサーのためなんだからしっかり私にお世話されなさい.wav",
-      "portraitRelPath": "10 燐羽立绘/开心.png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/开心.png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "そもそもプロデューサーのためなんだからしっかり私にお世話されなさい"
@@ -529,7 +529,7 @@
       "order": 59,
       "audioFileName": "59-2424_こいつ面倒臭いなって思ってそうだけど手毬と比べればまだ大したことないわよ.wav",
       "audioRelPath": "media/voice/audio/59-2424_こいつ面倒臭いなって思ってそうだけど手毬と比べればまだ大したことないわよ.wav",
-      "portraitRelPath": "10 燐羽立绘/自信-无奈.png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/自信-无奈.png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "こいつ面倒臭いなって思ってそうだけど、手毬と比べればまだ大したことないわよ"
@@ -574,7 +574,7 @@
       "order": 64,
       "audioFileName": "64-3127_な何かおかしいことでもあったかしら.wav",
       "audioRelPath": "media/voice/audio/64-3127_な何かおかしいことでもあったかしら.wav",
-      "portraitRelPath": "10 燐羽立绘/害羞 (4).png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/害羞 (4).png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "な、何かおかしいことでもあったかしら"
@@ -592,7 +592,7 @@
       "order": 66,
       "audioFileName": "66-3537_そそうふふじゃあこのまま行くわよ.wav",
       "audioRelPath": "media/voice/audio/66-3537_そそうふふじゃあこのまま行くわよ.wav",
-      "portraitRelPath": "10 燐羽立绘/自然-开心-欣慰.png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/自然-开心-欣慰.png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "そ、そう。ふふ、じゃあこのまま行くわよ。"
@@ -646,7 +646,7 @@
       "order": 72,
       "audioFileName": "72-4304_何よこれ散らかしすぎじゃない.wav",
       "audioRelPath": "media/voice/audio/72-4304_何よこれ散らかしすぎじゃない.wav",
-      "portraitRelPath": "10 燐羽立绘/自信-无奈.png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/自信-无奈.png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "何よこれ…散らかしすぎじゃない"
@@ -664,7 +664,7 @@
       "order": 74,
       "audioFileName": "74-4520_まずは部屋の掃除からしてあげるわ.wav",
       "audioRelPath": "media/voice/audio/74-4520_まずは部屋の掃除からしてあげるわ.wav",
-      "portraitRelPath": "10 燐羽立绘/自然-生气-严肃.png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/自然-生气-严肃.png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "まずは部屋の掃除からしてあげるわ"
@@ -682,7 +682,7 @@
       "order": 76,
       "audioFileName": "76-4646_まあざっとこんな所かしら整理整頓出来ない男はモテないわよ.wav",
       "audioRelPath": "media/voice/audio/76-4646_まあざっとこんな所かしら整理整頓出来ない男はモテないわよ.wav",
-      "portraitRelPath": "10 燐羽立绘/生气 (3).png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/生气 (3).png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "まあ、ざっとこんな所かしら。整理整頓出来ない男はモテないわよ？"
@@ -700,7 +700,7 @@
       "order": 78,
       "audioFileName": "78-4803_さて先にご飯でいいかしら後でお風呂も入れておくわね.wav",
       "audioRelPath": "media/voice/audio/78-4803_さて先にご飯でいいかしら後でお風呂も入れておくわね.wav",
-      "portraitRelPath": "10 燐羽立绘/自然 (6).png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/自然 (6).png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "さて、先にご飯でいいかしら？後でお風呂も入れておくわね"
@@ -718,7 +718,7 @@
       "order": 80,
       "audioFileName": "80-5122_ふふ腕によりをかけて作るわよ.wav",
       "audioRelPath": "media/voice/audio/80-5122_ふふ腕によりをかけて作るわよ.wav",
-      "portraitRelPath": "10 燐羽立绘/自然 (6).png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/自然 (6).png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "ふふ、腕によりをかけて作るわよ"
@@ -745,7 +745,7 @@
       "order": 83,
       "audioFileName": "83-5445_そ嬉しいわ.wav",
       "audioRelPath": "media/voice/audio/83-5445_そ嬉しいわ.wav",
-      "portraitRelPath": "10 燐羽立绘/困惑 (5).png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/困惑 (5).png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "そ、嬉しいわ"
@@ -763,7 +763,7 @@
       "order": 85,
       "audioFileName": "85-5619_あーむ.wav",
       "audioRelPath": "media/voice/audio/85-5619_あーむ.wav",
-      "portraitRelPath": "10 燐羽立绘/自然-开心 (3).png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/自然-开心 (3).png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "あーむ"
@@ -781,7 +781,7 @@
       "order": 87,
       "audioFileName": "87-5933_とーぜん.wav",
       "audioRelPath": "media/voice/audio/87-5933_とーぜん.wav",
-      "portraitRelPath": "10 燐羽立绘/开心-害羞.png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/开心-害羞.png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "とーぜん"
@@ -790,7 +790,7 @@
       "order": 88,
       "audioFileName": "88-0056_プロデューサーの家案外居心地がいいわね今日は泊まっていこうかしら.wav",
       "audioRelPath": "media/voice/audio/88-0056_プロデューサーの家案外居心地がいいわね今日は泊まっていこうかしら.wav",
-      "portraitRelPath": "10 燐羽立绘/不满-害羞.png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/不满-害羞.png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "プロデューサーの家、案外居心地がいいわね。今日は泊まっていこうかしら"
@@ -808,7 +808,7 @@
       "order": 90,
       "audioFileName": "90-0206_大丈夫よちゃんと代えの服は持ってきてるわ.wav",
       "audioRelPath": "media/voice/audio/90-0206_大丈夫よちゃんと代えの服は持ってきてるわ.wav",
-      "portraitRelPath": "10 燐羽立绘/特殊-生气-害羞-侧视 (2).png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/特殊-生气-害羞-侧视 (2).png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "大丈夫よ。ちゃんと代えの服は持ってきてるわ"
@@ -826,7 +826,7 @@
       "order": 92,
       "audioFileName": "92-0524_一緒に寝ればいいだけの話じゃないあプロデューサーも私にお世話されたいでしょう.wav",
       "audioRelPath": "media/voice/audio/92-0524_一緒に寝ればいいだけの話じゃないあプロデューサーも私にお世話されたいでしょう.wav",
-      "portraitRelPath": "10 燐羽立绘/害羞 (4).png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/害羞 (4).png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "一緒に寝ればいいだけの話じゃない。あ、プロデューサーも私にお世話されたいでしょう。"
@@ -835,7 +835,7 @@
       "order": 93,
       "audioFileName": "93-0746_なら毎日ここで暮らしちゃおうかしら.wav",
       "audioRelPath": "media/voice/audio/93-0746_なら毎日ここで暮らしちゃおうかしら.wav",
-      "portraitRelPath": "10 燐羽立绘/不满-害羞.png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/不满-害羞.png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "なら毎日ここで暮らしちゃおうかしら"
@@ -862,7 +862,7 @@
       "order": 96,
       "audioFileName": "96-1448_はぁ うるさい口ね.wav",
       "audioRelPath": "media/voice/audio/96-1448_はぁ うるさい口ね.wav",
-      "portraitRelPath": "10 燐羽立绘/特殊-生气-害羞-侧视 (2).png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/特殊-生气-害羞-侧视 (2).png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "はぁ… うるさい口ね"
@@ -871,7 +871,7 @@
       "order": 97,
       "audioFileName": "97-2057_でも今もう一度聞くわ泊まってもいいかしら.wav",
       "audioRelPath": "media/voice/audio/97-2057_でも今もう一度聞くわ泊まってもいいかしら.wav",
-      "portraitRelPath": "10 燐羽立绘/开心-自信 (4).png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/开心-自信 (4).png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "でも。今もう一度聞くわ。泊まってもいいかしら"
@@ -889,7 +889,7 @@
       "order": 99,
       "audioFileName": "99-2246_ふふ効き目は抜群ねこれなら簡単にあなたを支配出来そうだわ私だけのプロデューサー.wav",
       "audioRelPath": "media/voice/audio/99-2246_ふふ効き目は抜群ねこれなら簡単にあなたを支配出来そうだわ私だけのプロデューサー.wav",
-      "portraitRelPath": "10 燐羽立绘/自然-开心-害羞 (2).png",
+      "portraitRelPath": "1.立绘/10 燐羽立绘/自然-开心-害羞 (2).png",
       "role": "10 燐羽立绘",
       "engine": "gpt-sovits",
       "text": "ふふ、効き目は抜群ね。これなら、簡単にあなたを支配出来そうだわ、私だけのプロデューサー"
