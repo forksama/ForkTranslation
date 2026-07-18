@@ -2,6 +2,19 @@
 
 仓库级辅助脚本说明。
 
+## standing_images/
+
+立绘批处理脚本组。下一次处理 `怪文书素材/1.立绘` 时，优先阅读：
+
+- [standing_images/README.md](standing_images/README.md)：脚本组总览、执行顺序、默认目录和安全约定。
+- [../docs/立绘处理流程.md](../docs/立绘处理流程.md)：完整操作流程和常用命令。
+
+脚本入口：
+
+- `scripts/standing_images/trim_alpha_edges.py`：裁掉 `半身像` 和 `七分像` 外圈透明边。
+- `scripts/standing_images/generate_half_body_2.py`：按 `半身像-2` 示例比例，从 `七分像` 生成审核用 `半身像-2`，并二次裁透明边。
+- `scripts/standing_images/promote_half_body_2.py`：审核后将 `半身像-2` 合并回 `半身像`，目标已存在则跳过，并清空源文件。
+
 ## balance_wav_directory.py
 
 批量平衡一个目录下的 WAV 语音片段响度。脚本适合短对白、台词、语音包一类素材；它使用有效 RMS 近似响度，不依赖 ffmpeg，也不是严格 LUFS 测量。
