@@ -2,6 +2,24 @@
 
 仓库级辅助脚本说明。
 
+## convert-pr-subtitles.js
+
+字幕流程里的 C -> D 转换脚本。它读取 `pr-subtitles-C.md`，校验 cue 顺序、角色、来源引用和 `ja-read` 审校块，然后输出给 Premiere 工具读取的 `pr-subtitles-D.json`。
+
+这个脚本不由 UXP 插件直接调用；通常由 agent 或人工在生成/审校 C 后运行：
+
+```powershell
+node scripts\convert-pr-subtitles.js domains\gakumasu\threads\board-xxx\pr-subtitles-C.md `
+  --source-a domains\gakumasu\threads\board-xxx\source-A.md `
+  --translation-b domains\gakumasu\threads\board-xxx\translation-B.md
+```
+
+## premiere-uxp-workflow-panel/
+
+Premiere Pro UXP 工作流面板。现役面板集中承载音频导入、立绘映射导入、字幕 SRT 生成、时间线计划、轨道模板克隆和图片底部脉冲等功能。旧的分散 JSX 脚本和独立 UXP 试验插件已被删除或并入此面板。
+
+入口文档：[premiere-uxp-workflow-panel/README.md](premiere-uxp-workflow-panel/README.md)
+
 ## standing_images/
 
 立绘批处理脚本组。下一次处理 `怪文书素材/1.立绘` 时，优先阅读：

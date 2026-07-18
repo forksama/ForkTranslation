@@ -1,8 +1,8 @@
 # Research 007: Premiere Pro image bottom pulse script
 
 - Date: 2026-07-14
-- Status: prototype script landed
-- Script: `scripts/apply-pr-image-bottom-pulse.jsx`
+- Status: historical ExtendScript prototype; the script has been removed
+- Current implementation: `scripts/premiere-uxp-workflow-panel/features/image-bottom-pulse.js`
 
 ## Conclusion
 

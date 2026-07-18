@@ -18,25 +18,17 @@ GPT-SoVITS（Gradio WebUI）和 VOICEVOX fork（Electron + Vue 3 + Vuex）都让
 
 ---
 
-## 共享 Python 库：`scripts/voice_mapping/`
+## 映射 JSON 契约
 
-一个被 GPT-SoVITS 桥接模块使用的小型包（也可供任意 Python 侧工具使用）。VOICEVOX **不用**它——它在 TypeScript 侧重新实现了等价逻辑（`src/helpers/voicePortraitMapping.ts`）。
+仓库不再提供共享 Python 映射包。GPT-SoVITS 桥接模块、VOICEVOX fork 和 Premiere UXP 面板分别在各自工程内维护映射读写逻辑，但都遵守同一份 `voice-portrait-map.json` 契约。
 
-```
-scripts/voice_mapping/
-  __init__.py     # 导出 Mapping, MappingItem
-  mapping.py      # Mapping / MappingItem: load / save / upsert / next_order
-```
+条目字段：`order`、`audioFileName`、`audioRelPath`、`portraitRelPath`、`role`、`engine`、`text`。
 
-### `mapping.py`（核心）
-
-`MappingItem` 数据类字段：`order`、`audioFileName`、`audioRelPath`、`portraitRelPath`、`role`、`engine`、`text`。
-
-`Mapping` 类：
-- `load_or_create(path)` —— 读取已有 JSON，无则新建空的。
-- `save(path)` —— 以 `ensure_ascii=False, indent=2` 写入。
-- `upsert(item)` —— 替换同 `order` 的条目，否则追加；随后按 `order` 排序。
-- `next_order()` —— `max(order) + 1`。
+映射文件规则：
+- 位于 `<工作目录>/media/voice/voice-portrait-map.json`。
+- `audioRelPath` 相对工作目录。
+- `portraitRelPath` 相对立绘目录。
+- 工具运行时选择工作目录和立绘目录；真实绝对目录不写入 JSON。
 
 > 注意：部分测试文件仍标记为 `schemaVersion: 1`，但实际字段已经使用当前 UXP 所需的相对路径契约（`audioPathBase`、`audioRelPath`、`portraitRelPath`、`audioFileName`）。改动此文件时，应继续保持这些字段稳定，不要让读取端按版本号硬分支。
 
@@ -47,7 +39,7 @@ scripts/voice_mapping/
 ## Part A：GPT-SoVITS
 
 文件：
-- `GPT_SoVITS/voice_portrait_mapping.py` —— 桥接模块（定位共享库，封装映射读写、文件夹列举、gallery 的 HTML/JS/CSS）。
+- `GPT_SoVITS/voice_portrait_mapping.py` —— 桥接模块（封装映射读写、文件夹列举、gallery 的 HTML/JS/CSS）。
 - `GPT_SoVITS/inference_webui.py` —— 推理页 UI 与事件绑定。
 
 ### A.1 UI（「立绘映射」折叠面板，位于「前三次结果」下方）
@@ -148,7 +140,7 @@ Electron 沙箱原本缺少目录列举方法，因此新增了一条贯通的 I
 
 ## Part D：Premiere UXP 插件（Machine B）—— MVP 已实现
 
-插件路径：`scripts/premiere-uxp-portrait-map-importer/`。
+插件路径：`scripts/premiere-uxp-workflow-panel/`；立绘映射导入功能位于 `features/portrait-map-importer.js`。
 
 它会选择 `voice-portrait-map.json`、工作目录与立绘目录，按 `audioFileName` 匹配当前序列指定音频轨中的音频片段，通过 `立绘目录 + portraitRelPath` 定位立绘，把立绘片段摆放/裁剪到目标视频轨。目标视频轨默认使用 `new`；若指定已有轨，则要求该轨为空，避免覆盖已有画面。
 

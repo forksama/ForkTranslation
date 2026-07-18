@@ -1,8 +1,8 @@
 # Research 008: Premiere UXP image bottom pulse
 
 - Date: 2026-07-14
-- Status: UXP prototype panel landed
-- Plugin path: `scripts/premiere-uxp-image-bottom-pulse/`
+- Status: merged into the Premiere UXP workflow panel
+- Plugin path: `scripts/premiere-uxp-workflow-panel/`
 
 ## Conclusion
 

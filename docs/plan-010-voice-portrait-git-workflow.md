@@ -213,7 +213,7 @@ B 机器开始 Premiere 工作前，确认期望的 `.wav` 是真实媒体文件
    - 按文件名匹配已有音频片段。
    - 导入并把立绘摆放到一条新视频轨。
    - 前一立绘延续到下一段音频头，最后一个立绘结束于自身音频尾。
-   - 插件路径：`scripts/premiere-uxp-portrait-map-importer/`
+   - 插件路径：`scripts/premiere-uxp-workflow-panel/`
 
 4. Machine B UXP 完善
    - 增加校验汇总和保存日志。

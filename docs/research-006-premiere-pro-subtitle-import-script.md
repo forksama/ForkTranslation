@@ -2,8 +2,8 @@
 
 - 档案编号：Research-006
 - 建档日期：2026-07-14
-- 状态：已落地脚本
-- 脚本路径：`scripts/import-pr-subtitles-to-premiere.jsx`
+- 状态：历史 ExtendScript 方案；脚本已删除，现役流程并入 UXP 工作流面板
+- 现役路径：`scripts/premiere-uxp-workflow-panel/features/pr-subtitles.js`
 - PR 2022 兼容性：可生成并导入 SRT，但不能自动创建字幕轨。
 
 ## 目标
@@ -46,7 +46,7 @@ Premiere ExtendScript 的关键可用接口：
 1. 在 Premiere Pro 中打开项目，并激活要导入字幕的序列。
 2. 在时间轴上打 marker。全量导入时，260 条 cue 需要 261 个 marker；分批导入时，有 80 个 marker 就会导入前 79 条 cue。
 3. 如果要替换旧字幕轨，先在时间轴中手动删除旧字幕轨；如果要分批追加，可以保留旧字幕轨。
-4. 运行 `scripts/import-pr-subtitles-to-premiere.jsx`。
+4. 运行 `scripts/premiere-uxp-workflow-panel/` 面板里的字幕生成功能。
 5. 在文件选择弹窗中选择 `pr-subtitles-D.json`。
 6. 脚本会询问已经导入的 cue 数。默认值来自同目录的 `*-premiere-state.json`；如果没有状态文件，默认是 `0`。
 7. 脚本会在 JSON 同目录生成一个 `*-premiere-Cxxxx-Cyyyy-YYYYMMDD-HHMMSS.srt`，导入项目面板，并在支持的 PR 版本中创建 Subtitle 字幕轨。

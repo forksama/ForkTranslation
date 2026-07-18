@@ -2,8 +2,8 @@
 
 - 档案编号：Research-008
 - 建档日期：2026-07-14
-- 状态：已落地试验插件
-- 试验插件路径：`scripts/premiere-uxp-pr-subtitles/`
+- 状态：试验插件已并入 Premiere UXP 工作流面板
+- 现役路径：`scripts/premiere-uxp-workflow-panel/features/pr-subtitles.js`
 
 ## 结论
 

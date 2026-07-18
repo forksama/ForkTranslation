@@ -21,8 +21,7 @@ ForkTranslation/
 │  └─ gakumasu/       ← 学马仕领域
 ├─ docs/              ← 调研档案、交接记录和归档资料
 ├─ scripts/           ← 仓库级格式转换、校验等自动化脚本
-├─ userscripts/       ← 网页抽取、导出等辅助脚本
-└─ test/              ← 临时验证或脚本测试文件
+└─ userscripts/       ← 网页抽取、导出等辅助脚本
 ```
 
 ## 根层约定
