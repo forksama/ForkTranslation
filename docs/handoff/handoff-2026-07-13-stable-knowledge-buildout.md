@@ -1,7 +1,7 @@
 # 交接文档：学马仕稳定知识库首版建设进度
 
 - 交接日期：2026-07-13
-- 上游规格：[Research-004 §6](research-004-gakumas-thread-translation-formats-and-knowledge-layout.md#6-推荐仓库目录结构)（目录结构）+ [Research-005](research-005-gakumas-stable-knowledge-first-version-spec.md)（各文件首版规格，本次会话中已多次修订）
+- 上游规格：[Research-004 §6](../research/research-004-gakumas-thread-translation-formats-and-knowledge-layout.md#6-推荐仓库目录结构)（目录结构）+ [Research-005](../research/research-005-gakumas-stable-knowledge-first-version-spec.md)（各文件首版规格，本次会话中已多次修订）
 - 交接给：新会话（继续 `domains/gakumasu/stable/` 首版建设）
 
 ## 1. 已完成模块（6/9）
@@ -23,7 +23,7 @@
 
 ### Module 7：community-expressions.md 首版
 
-- **规格**：[Research-005 §8](research-005-gakumas-stable-knowledge-first-version-spec.md#8-community-expressionsmd-首版规格)
+- **规格**：[Research-005 §8](../research/research-005-gakumas-stable-knowledge-first-version-spec.md#8-community-expressionsmd-首版规格)
 - **文件路径**：`domains/gakumasu/stable/community-expressions.md`
 - **覆盖**：あにまん 掲示板 + B 站中文圈；5ch / X 不入首版
 - **分层**：学马仕独有 + 偶像大师系列已有共识；泛宅圈通用（如"曇らせ""湿度"）不入首版
@@ -34,7 +34,7 @@
 
 ### Module 8：common-background.md 骨架
 
-- **规格**：[Research-005 §3](research-005-gakumas-stable-knowledge-first-version-spec.md#3-common-backgroundmd-首版规格)
+- **规格**：[Research-005 §3](../research/research-005-gakumas-stable-knowledge-first-version-spec.md#3-common-backgroundmd-首版规格)
 - **文件路径**：`domains/gakumasu/stable/common-background.md`
 - **收录范围**：
   - **骨架**：学园结构、Sense/Logic/Anomaly 三大分支、亲爱度机制、组合与个人活动周期、P 与偶像的契约模型
@@ -47,7 +47,7 @@
 
 ### Module 9：translation-decisions.md 空壳
 
-- **规格**：[Research-005 §9](research-005-gakumas-stable-knowledge-first-version-spec.md#9-translation-decisionsmd-首版规格)
+- **规格**：[Research-005 §9](../research/research-005-gakumas-stable-knowledge-first-version-spec.md#9-translation-decisionsmd-首版规格)
 - **文件路径**：`domains/gakumasu/stable/translation-decisions.md`
 - **预锁定条目**（必须包含）：
   - `SyngUp!` → 保留原文，不中文化（不用"震升!""声扬!"等）
@@ -119,7 +119,7 @@ domains/gakumasu/
 ## 8. 新会话建议启动方式
 
 ```
-读 docs/handoff-2026-07-13-stable-knowledge-buildout.md，理解当前进度和规则。然后从 Module 7（community-expressions.md）继续，按 Research-005 §8 规格执行。
+读 docs/handoff/handoff-2026-07-13-stable-knowledge-buildout.md，理解当前进度和规则。然后从 Module 7（community-expressions.md）继续，按 Research-005 §8 规格执行。
 ```
 
 memory 系统会自动加载 §3 中提到的 4 条 feedback，无需重复说明。

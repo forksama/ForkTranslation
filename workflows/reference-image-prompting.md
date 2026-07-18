@@ -1,8 +1,8 @@
-# Shengtu Reference Image Prompting Notes
+# 多参考图生图提示工作流
 
 Date: 2026-07-17
 
-This note records the prompting pattern that worked well for the Rinha thumbnail generation task. It is meant to be reused for future image-generation tasks with different characters, scenes, or source articles.
+This workflow records the prompting pattern that worked well for the Rinha thumbnail generation task. It is meant to be reused for future image-generation tasks with different characters, scenes, or source articles.
 
 ## Goal
 

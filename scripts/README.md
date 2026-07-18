@@ -25,7 +25,7 @@ Premiere Pro UXP 工作流面板。现役面板集中承载音频导入、立绘
 立绘批处理脚本组。下一次处理 `怪文书素材/1.立绘` 时，优先阅读：
 
 - [standing_images/README.md](standing_images/README.md)：脚本组总览、执行顺序、默认目录和安全约定。
-- [../docs/立绘处理流程.md](../docs/立绘处理流程.md)：完整操作流程和常用命令。
+- [standing_images/RUNBOOK.md](standing_images/RUNBOOK.md)：完整操作流程和常用命令。
 
 脚本入口：
 

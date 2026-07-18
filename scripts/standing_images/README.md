@@ -51,4 +51,4 @@ python scripts/standing_images/promote_half_body_2.py --execute
 - `generate_half_body_2.py` 写入 `半身像-2`；已有同名输出会被重写，重要示例可加 `--backup-dir`。
 - `promote_half_body_2.py` 不覆盖 `半身像` 中已有同名文件；源 `半身像-2` 文件处理后会删除，可加 `--backup-dir` 保留删除前副本。
 
-完整流程见 [docs/立绘处理流程.md](../../docs/立绘处理流程.md)。
+完整流程见 [RUNBOOK.md](RUNBOOK.md)。

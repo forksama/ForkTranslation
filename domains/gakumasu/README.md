@@ -17,6 +17,10 @@ gakumasu/
 │  ├─ community-expressions.md     ← 社区表达与黑话（按需）
 │  ├─ relationships.md             ← 角色关系集中登记（只加载相关条目）
 │  └─ translation-decisions.md     ← 已作出的翻译决策
+├─ workflows/                      ← 本领域可执行流程
+│  └─ thread-translation.md        ← A -> B -> C -> D 翻译与字幕转换流程
+├─ reference/                      ← 按需查证的来源、资料站与权威名单
+│  └─ sources.md                   ← 中文译名与剧情内容来源
 └─ threads/                        ← 各串的翻译工作目录（按需创建）
    └─ board-<boardId>-<short>/     ← 每个串一个子目录
       ├─ source-A.md               ← 油猴脚本导出的标准输入
@@ -31,6 +35,7 @@ gakumasu/
 ## 使用惯例
 
 - 强 agent 翻译时，默认只加载：
+  - `workflows/thread-translation.md`
   - `stable/style-guide.md`
   - `stable/translation-decisions.md`
   - `stable/characters.md`
@@ -45,4 +50,4 @@ gakumasu/
 
 ## 调研资料
 
-建设过程、来源名单与调研记录保留在 `docs/` 或 git 历史中，不进入默认翻译上下文。
+建设过程与调研记录保留在 `docs/` 或 git 历史中，不进入默认翻译上下文。译名来源和权威名单放在 `reference/`，只在需要查证来源等级、译名冲突或资料站时读取。

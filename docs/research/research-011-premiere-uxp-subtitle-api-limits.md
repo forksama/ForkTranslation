@@ -1,6 +1,6 @@
-# 调研档案 008：Premiere UXP 字幕 API 边界
+# 调研档案 011：Premiere UXP 字幕 API 边界
 
-- 档案编号：Research-008
+- 档案编号：Research-011
 - 建档日期：2026-07-14
 - 状态：试验插件已并入 Premiere UXP 工作流面板
 - 现役路径：`scripts/premiere-uxp-workflow-panel/features/pr-subtitles.js`

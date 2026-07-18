@@ -1,6 +1,6 @@
 # 立绘处理流程
 
-这份文档记录 `怪文书素材/1.立绘` 下角色立绘的批处理流程。脚本统一放在 [scripts/standing_images](../scripts/standing_images) 目录里；下一次继续维护时，建议先读 [scripts/README.md](../scripts/README.md) 和 [scripts/standing_images/README.md](../scripts/standing_images/README.md)。
+这份文档记录 `怪文书素材/1.立绘` 下角色立绘的批处理流程。脚本统一放在本目录里；下一次继续维护时，建议先读 [scripts/README.md](../README.md) 和 [README.md](README.md)。
 
 脚本默认根目录已经指向：
 
@@ -20,7 +20,7 @@ C:\Repositories\ForkTranslation\怪文书素材\1.立绘
 
 ## 第一步：裁掉透明边
 
-脚本：[scripts/standing_images/trim_alpha_edges.py](../scripts/standing_images/trim_alpha_edges.py)
+脚本：[trim_alpha_edges.py](trim_alpha_edges.py)
 
 用途：
 
@@ -56,7 +56,7 @@ python scripts/standing_images/trim_alpha_edges.py --execute --backup-dir "C:\Re
 
 ## 第二步：从七分像生成半身像-2
 
-脚本：[scripts/standing_images/generate_half_body_2.py](../scripts/standing_images/generate_half_body_2.py)
+脚本：[generate_half_body_2.py](generate_half_body_2.py)
 
 用途：
 
@@ -86,7 +86,7 @@ python scripts/standing_images/generate_half_body_2.py --character-dir "C:\Repos
 
 ## 第三步：审核后回归半身像
 
-脚本：[scripts/standing_images/promote_half_body_2.py](../scripts/standing_images/promote_half_body_2.py)
+脚本：[promote_half_body_2.py](promote_half_body_2.py)
 
 用途：
 

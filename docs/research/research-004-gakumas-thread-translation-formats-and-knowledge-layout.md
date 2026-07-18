@@ -258,7 +258,7 @@ ForkTranslation/
 ├─ docs/
 │  ├─ research-001-gakumas-thread-translation-overview.md
 │  ├─ research-002-animanch-rinha-unvideoized-threads.md
-│  ├─ research-003-animanch-ss-research-workflow.md
+│  ├─ workflows/animanch-ss-research.md
 │  └─ research-004-gakumas-thread-translation-formats-and-knowledge-layout.md
 ├─ shared/
 │  ├─ schemas/

@@ -4,7 +4,7 @@
 
 - 建档日期：2026-07-13
 - 状态：首版
-- 上游规格：[Research-005 §12.2](../../../docs/research-005-gakumas-stable-knowledge-first-version-spec.md#122-具体权威-up-主--汉化组名单已定)
+- 上游规格：[Research-005 §12.2](../../../docs/research/research-005-gakumas-stable-knowledge-first-version-spec.md#122-具体权威-up-主--汉化组名单已定)
 
 ## 1. 定位与使用原则
 
@@ -87,7 +87,7 @@
 
 ## 6. 二创搬运/翻译 UP 主（社区表达语料源）
 
-以下 UP 主主要翻译 あにまん / X 上的怪文书类二创，是 [`community-expressions.md`](community-expressions.md) 的**语料来源**，**不**作为官方译名权威源。
+以下 UP 主主要翻译 あにまん / X 上的怪文书类二创，是 [`community-expressions.md`](../stable/community-expressions.md) 的**语料来源**，**不**作为官方译名权威源。
 
 | UP 主 | 主要方向 | 备注 |
 |---|---|---|
