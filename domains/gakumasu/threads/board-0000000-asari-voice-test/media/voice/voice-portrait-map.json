@@ -1,0 +1,205 @@
+{
+  "schemaVersion": 1,
+  "threadPathBase": "thread",
+  "portraitPathBase": "repo",
+  "items": [
+    {
+      "order": 1,
+      "audioFileName": "1-1535_こんばんはプロデューサーくん.wav",
+      "audioRelPath": "media/voice/audio/1-1535_こんばんはプロデューサーくん.wav",
+      "portraitRelPath": "开心-欣慰.png",
+      "role": "9 亚纱里老师立绘",
+      "engine": "gpt-sovits",
+      "text": "こんばんは、プロデューサーくん。"
+    },
+    {
+      "order": 2,
+      "audioFileName": "2-1639_今日もプロデュースお疲れ様でした.wav",
+      "audioRelPath": "media/voice/audio/2-1639_今日もプロデュースお疲れ様でした.wav",
+      "portraitRelPath": "开心-欣慰 (3).png",
+      "role": "9 亚纱里老师立绘",
+      "engine": "gpt-sovits",
+      "text": "今日もプロデュース、お疲れ様でした。"
+    },
+    {
+      "order": 3,
+      "audioFileName": "3-1837_はつもにあもH.I.Fの選抜試験も.wav",
+      "audioRelPath": "media/voice/audio/3-1837_はつもにあもH.I.Fの選抜試験も.wav",
+      "portraitRelPath": "自然.png",
+      "role": "9 亚纱里老师立绘",
+      "engine": "gpt-sovits",
+      "text": "はつも、にあも、H.I.Fの選抜試験も。"
+    },
+    {
+      "order": 4,
+      "audioFileName": "4-2321_きみはいつも難しい道を選んで進もうとしますね.wav",
+      "audioRelPath": "media/voice/audio/4-2321_きみはいつも難しい道を選んで進もうとしますね.wav",
+      "portraitRelPath": "开心-害羞 (3).png",
+      "role": "9 亚纱里老师立绘",
+      "engine": "gpt-sovits",
+      "text": "きみはいつも、難しい道を選んで進もうとしますね。"
+    },
+    {
+      "order": 5,
+      "audioFileName": "5-2515_条件は厳しくて結果に胸が痛む日もある.wav",
+      "audioRelPath": "media/voice/audio/5-2515_条件は厳しくて結果に胸が痛む日もある.wav",
+      "portraitRelPath": "害羞-困惑 (2).png",
+      "role": "9 亚纱里老师立绘",
+      "engine": "gpt-sovits",
+      "text": "条件は厳しくて、結果に胸が痛む日もある。"
+    },
+    {
+      "order": 6,
+      "audioFileName": "6-3003_それでも担当アイドルの未来を思い浮かべて.wav",
+      "audioRelPath": "media/voice/audio/6-3003_それでも担当アイドルの未来を思い浮かべて.wav",
+      "portraitRelPath": "特殊-自然-开心.png",
+      "role": "9 亚纱里老师立绘",
+      "engine": "gpt-sovits",
+      "text": "……それでも、担当アイドルの未来を思い浮かべて、"
+    },
+    {
+      "order": 7,
+      "audioFileName": "7-3054_もう一度スケジュールを開く.wav",
+      "audioRelPath": "media/voice/audio/7-3054_もう一度スケジュールを開く.wav",
+      "portraitRelPath": "特殊-自然-开心.png",
+      "role": "9 亚纱里老师立绘",
+      "engine": "gpt-sovits",
+      "text": "もう一度スケジュールを開く。"
+    },
+    {
+      "order": 8,
+      "audioFileName": "8-3353_先生はそういうところをちゃんと見ています.wav",
+      "audioRelPath": "media/voice/audio/8-3353_先生はそういうところをちゃんと見ています.wav",
+      "portraitRelPath": "自然-困惑 (3).png",
+      "role": "9 亚纱里老师立绘",
+      "engine": "gpt-sovits",
+      "text": "先生は、そういうところをちゃんと見ています。"
+    },
+    {
+      "order": 9,
+      "audioFileName": "9-3916_それにしても.wav",
+      "audioRelPath": "media/voice/audio/9-3916_それにしても.wav",
+      "portraitRelPath": "困惑 (2).png",
+      "role": "9 亚纱里老师立绘",
+      "engine": "gpt-sovits",
+      "text": "それにしても――"
+    },
+    {
+      "order": 10,
+      "audioFileName": "10-4316_この台本先生の声を確かめるためのものですよね.wav",
+      "audioRelPath": "media/voice/audio/10-4316_この台本先生の声を確かめるためのものですよね.wav",
+      "portraitRelPath": "困惑 (2).png",
+      "role": "9 亚纱里老师立绘",
+      "engine": "gpt-sovits",
+      "text": "この台本…先生の声を確かめるためのもの……ですよね？"
+    },
+    {
+      "order": 11,
+      "audioFileName": "11-5018_えええっそそんなにまっすぐ聞かれると緊張しますー.wav",
+      "audioRelPath": "media/voice/audio/11-5018_えええっそそんなにまっすぐ聞かれると緊張しますー.wav",
+      "portraitRelPath": "震惊 (3).png",
+      "role": "9 亚纱里老师立绘",
+      "engine": "gpt-sovits",
+      "text": "えええっ、そ、そんなにまっすぐ聞かれると緊張しますー！"
+    },
+    {
+      "order": 12,
+      "audioFileName": "12-5410_でもいいでしょう.wav",
+      "audioRelPath": "media/voice/audio/12-5410_でもいいでしょう.wav",
+      "portraitRelPath": "开心-害羞 (3).png",
+      "role": "9 亚纱里老师立绘",
+      "engine": "gpt-sovits",
+      "text": "でも、、いいでしょう。"
+    },
+    {
+      "order": 13,
+      "audioFileName": "13-5755_優しく説明する声も驚いた声も.wav",
+      "audioRelPath": "media/voice/audio/13-5755_優しく説明する声も驚いた声も.wav",
+      "portraitRelPath": "开心-害羞.png",
+      "role": "9 亚纱里老师立绘",
+      "engine": "gpt-sovits",
+      "text": "優しく説明する声も。驚いた声も、"
+    },
+    {
+      "order": 14,
+      "audioFileName": "14-5858_少しだけ真剣な声も今日の課題にしてあげます.wav",
+      "audioRelPath": "media/voice/audio/14-5858_少しだけ真剣な声も今日の課題にしてあげます.wav",
+      "portraitRelPath": "开心-欣慰 (3).png",
+      "role": "9 亚纱里老师立绘",
+      "engine": "gpt-sovits",
+      "text": "少しだけ真剣な声も、今日の課題にしてあげます。"
+    },
+    {
+      "order": 15,
+      "audioFileName": "15-0158_根緒あさりとははたして何者なのか.wav",
+      "audioRelPath": "media/voice/audio/15-0158_根緒あさりとははたして何者なのか.wav",
+      "portraitRelPath": "自然.png",
+      "role": "9 亚纱里老师立绘",
+      "engine": "gpt-sovits",
+      "text": "根緒あさりとは、はたして何者なのか。"
+    },
+    {
+      "order": 16,
+      "audioFileName": "16-0258_その答えはレポートだけではたりません.wav",
+      "audioRelPath": "media/voice/audio/16-0258_その答えはレポートだけではたりません.wav",
+      "portraitRelPath": "特殊-目移-困惑.png",
+      "role": "9 亚纱里老师立绘",
+      "engine": "gpt-sovits",
+      "text": "その答えは、レポートだけではたりません。"
+    },
+    {
+      "order": 17,
+      "audioFileName": "17-0403_きみが誰かの光景を現実にしようとするたびに.wav",
+      "audioRelPath": "media/voice/audio/17-0403_きみが誰かの光景を現実にしようとするたびに.wav",
+      "portraitRelPath": "特殊-目移-困惑.png",
+      "role": "9 亚纱里老师立绘",
+      "engine": "gpt-sovits",
+      "text": "きみが誰かの光景を現実にしようとするたびに、"
+    },
+    {
+      "order": 18,
+      "audioFileName": "18-0453_0414_先生も少しずつ答えを返しているんです.wav",
+      "audioRelPath": "media/voice/audio/18-0453_0414_先生も少しずつ答えを返しているんです.wav",
+      "portraitRelPath": "开心-害羞.png",
+      "role": "9 亚纱里老师立绘",
+      "engine": "gpt-sovits",
+      "text": "先生も、少しずつ答えを返しているんです。"
+    },
+    {
+      "order": 19,
+      "audioFileName": "19-0637_では本日の授業はここまで.wav",
+      "audioRelPath": "media/voice/audio/19-0637_では本日の授業はここまで.wav",
+      "portraitRelPath": "自然-开心-自信-撒娇.png",
+      "role": "9 亚纱里老师立绘",
+      "engine": "gpt-sovits",
+      "text": "では、本日の授業はここまで。"
+    },
+    {
+      "order": 20,
+      "audioFileName": "20-0936_あたたかいものを飲んで休んでくださいね.wav",
+      "audioRelPath": "media/voice/audio/20-0936_あたたかいものを飲んで休んでくださいね.wav",
+      "portraitRelPath": "特殊-自然-开心.png",
+      "role": "9 亚纱里老师立绘",
+      "engine": "gpt-sovits",
+      "text": "あたたかいものを飲んで、休んでくださいね。"
+    },
+    {
+      "order": 21,
+      "audioFileName": "21-1042_おやすみなさいプロデューサーくん.wav",
+      "audioRelPath": "media/voice/audio/21-1042_おやすみなさいプロデューサーくん.wav",
+      "portraitRelPath": "开心-欣慰.png",
+      "role": "9 亚纱里老师立绘",
+      "engine": "gpt-sovits",
+      "text": "おやすみなさい、プロデューサーくん。"
+    },
+    {
+      "order": 22,
+      "audioFileName": "22-1142_明日も先生は応援していますから.wav",
+      "audioRelPath": "media/voice/audio/22-1142_明日も先生は応援していますから.wav",
+      "portraitRelPath": "自然-撒娇.png",
+      "role": "9 亚纱里老师立绘",
+      "engine": "gpt-sovits",
+      "text": "明日も、先生は応援していますから。"
+    }
+  ]
+}
