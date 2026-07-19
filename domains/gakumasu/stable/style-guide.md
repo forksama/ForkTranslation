@@ -208,6 +208,10 @@ S 从 `pr-subtitles-C.md` 读取 Markdown cue，输出 `pr-subtitles-D.json`。D
       "role": "旁白",
       "source": "P0001",
       "sourceRefs": ["P0001"],
+      "jaText": "去年まで中等部のトップユニットにいた賀陽燐羽が、初星学園に来るらしい。",
+      "jaBlocks": [
+        "去年まで中等部のトップユニットにいた賀陽燐羽が、初星学園に来るらしい。"
+      ],
       "line1": "去年还在中等部顶级组合里的贺阳燐羽，",
       "line2": "好像要来初星学园了。",
       "lines": [
@@ -226,6 +230,8 @@ S 从 `pr-subtitles-C.md` 读取 Markdown cue，输出 `pr-subtitles-D.json`。D
 - `cues` 按播放顺序排列；PR 脚本应优先按数组顺序读取，也可用 `order` 交叉检查。
 - `role` 是 PR 样式匹配用的角色名。
 - `source` 保留 C 标题中的原始 source 字段；`sourceRefs` 是 S 拆出的可追溯引用数组。
+- `jaText` 是从 `ja-read` / `jp-read` / `read-ja` 提取出的日语原文，供语音工具读取；多个块按原顺序拼接。
+- `jaBlocks` 保留原始日语块数组，便于调试、回查和外部工具按块处理。
 - `line1` / `line2` 方便 PR 脚本直接取字幕行；`lines` 和 `text` 用于通用处理与调试。
 
 当前 S 脚本路径为 `scripts/convert-pr-subtitles.js`。基本用法：
@@ -247,7 +253,7 @@ S 至少应校验：
 
 - C 的 cue 标题是否符合 `## <cue_id> | <role> | <source>`。
 - cue ID 是否唯一并按顺序递增。
-- 每个 cue 是否至少包含一个 `ja-read` / `jp-read` / `read-ja` fenced block；缺失属于错误，即使 B 中已有原文对照也不能豁免。
+- 每个 cue 是否至少包含一个 `ja-read` / `jp-read` / `read-ja` fenced block；缺失属于错误，即使 B 中已有原文对照也不能豁免。S 会把这些块提取到 D 的 `jaText` / `jaBlocks`。
 - 每个 cue 是否 1–2 行字幕，每行是否大致落在 15–20 个中文字符范围。行长偏离属于警告；使用 `--strict` 时警告提升为错误。
 - `role` 是否非空，并符合本领域角色命名约定。
 - `source` 是否能追溯到 A/B 中的楼层、标题或备注位置；提供 `--source-a` 或 `--translation-b` 后执行交叉检查。

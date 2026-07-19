@@ -4,7 +4,7 @@
 
 ## convert-pr-subtitles.js
 
-字幕流程里的 C -> D 转换脚本。它读取 `pr-subtitles-C.md`，校验 cue 顺序、角色、来源引用和 `ja-read` 审校块，然后输出给 Premiere 工具读取的 `pr-subtitles-D.json`。
+字幕流程里的 C -> D 转换脚本。它读取 `pr-subtitles-C.md`，校验 cue 顺序、角色、来源引用和 `ja-read` 审校块，然后输出给 Premiere 工具读取的 `pr-subtitles-D.json`。同时会把 `ja-read` 提取成 D 内的 `jaText` / `jaBlocks`，供后续语音工具读取。
 
 这个脚本不由 UXP 插件直接调用；通常由 agent 或人工在生成/审校 C 后运行：
 

@@ -73,6 +73,11 @@ node scripts\convert-pr-subtitles.js domains\gakumasu\threads\board-xxx\pr-subti
 
 默认输出同目录 `pr-subtitles-D.json`。D 的 schema 固定为 `fork-pr-subtitles-d/v1`，由脚本生成，agent 不手写。
 
+除了字幕字段，D 还会保留每个 cue 提取出的日语原文：
+
+- `jaText`：从 `ja-read` / `jp-read` / `read-ja` block 提取并拼接的日语文本，供语音工具读取。
+- `jaBlocks`：原始日语 block 数组，供调试和回查。
+
 转换脚本会校验 cue 标题、cue 顺序、角色/source 非空、`ja-read` 是否存在、字幕行数、来源引用和 B 覆盖情况。行长偏离通常是 warning；格式错误和缺失 `ja-read` 是 error。
 
 ## 审校清单
