@@ -2,6 +2,8 @@
 
 仓库级辅助脚本说明。
 
+本目录放人工或正式工作流也会直接调用的脚本。主要给 agent 做取片、审校和交叉检查的工具放在 [`../tools/README.md`](../tools/README.md)，不要混在这里。
+
 ## convert-pr-subtitles.js
 
 字幕流程里的 C -> D 转换脚本。它读取 `pr-subtitles-C.md`，校验 cue 顺序、角色、来源引用和 `ja-read` 审校块，然后输出给 Premiere 工具读取的 `pr-subtitles-D.json`。同时会把 `ja-read` 提取成 D 内的 `jaText` / `jaBlocks`，供后续语音工具读取。

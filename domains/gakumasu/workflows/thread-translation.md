@@ -80,6 +80,18 @@ node scripts\convert-pr-subtitles.js domains\gakumasu\threads\board-xxx\pr-subti
 
 转换脚本会校验 cue 标题、cue 顺序、角色/source 非空、`ja-read` 是否存在、字幕行数、来源引用和 B 覆盖情况。行长偏离通常是 warning；格式错误和缺失 `ja-read` 是 error。
 
+## A/B/C 逐楼互审工具
+
+agent 做 A/B/C 互审、定位某一楼的原文、译文和字幕 cue 时，优先使用根目录 `tools/thread-floor-review.js`。该工具是 agent 专用取片工具，不放在 `scripts/`。
+
+```powershell
+node tools\thread-floor-review.js domains\gakumasu\threads\board-xxx --floor 5
+node tools\thread-floor-review.js domains\gakumasu\threads\board-xxx --floor 5-7 --json
+node tools\thread-floor-review.js domains\gakumasu\threads\board-xxx --post P0005
+```
+
+输出会同时列出 A 的楼层原文、B 的对应译文块、C 中所有引用该 post 的 cue，并给出轻量检查：A/B 日文是否对齐、C 中文是否来自 B、C 的 `ja-read` 是否能回到 A。
+
 ## 审校清单
 
 - A 中每个应翻译楼层都在 B 中出现。
