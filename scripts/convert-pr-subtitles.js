@@ -23,7 +23,7 @@ function usage() {
     "  -h, --help                  Show this help.",
     "",
     "Every cue must include at least one reference fenced block marked ```ja-read, ```jp-read, or ```read-ja.",
-    "These blocks are validated for presence, then ignored when building D subtitle text.",
+    "These blocks are validated for presence, then extracted into D's jaText / jaBlocks while omitted from subtitle lines.",
     "",
     "Use '-' as the input path to read C from stdin.",
   ].join("\n");
@@ -135,10 +135,11 @@ function parseCueMarkdown(text) {
         if (ignoredFence.cue == null) {
           issues.push(issue("error", "orphan-reference-block", "Reference fenced block must appear inside a cue.", { lineNumber: ignoredFence.lineNumber }));
         } else {
+          const blockText = normalizeFenceText(ignoredFence.lines.join("\n"));
           ignoredFence.cue.referenceBlocks.push({
             info: ignoredFence.info,
             lineNumber: ignoredFence.lineNumber,
-            text: ignoredFence.lines.join("\n"),
+            text: blockText,
           });
         }
         ignoredFence = null;
@@ -214,6 +215,20 @@ function parseIgnoredFenceStart(trimmed) {
 function isFenceClose(trimmed, fence) {
   const match = trimmed.match(/^(`{3,}|~{3,})\s*$/u);
   return Boolean(match && match[1][0] === fence.char && match[1].length >= fence.length);
+}
+
+function normalizeFenceText(text) {
+  const normalized = String(text == null ? "" : text).replace(/\r\n?/g, "\n");
+  const lines = normalized.split("\n");
+
+  while (lines.length > 0 && lines[0].trim().length === 0) {
+    lines.shift();
+  }
+  while (lines.length > 0 && lines[lines.length - 1].trim().length === 0) {
+    lines.pop();
+  }
+
+  return lines.join("\n");
 }
 
 function splitSourceRefs(source) {
@@ -380,12 +395,21 @@ function buildD(cues, options) {
       role: cue.role,
       source: cue.source,
       sourceRefs: cue.sourceRefs,
+      jaText: buildJapaneseText(cue.referenceBlocks),
+      jaBlocks: cue.referenceBlocks.map((block) => block.text),
       line1: cue.lines[0] ?? "",
       line2: cue.lines[1] ?? "",
       lines: cue.lines,
       text: cue.lines.join("\n"),
     })),
   };
+}
+
+function buildJapaneseText(referenceBlocks) {
+  return referenceBlocks
+    .map((block) => block.text)
+    .filter((text) => String(text).length > 0)
+    .join("\n");
 }
 
 function normalizePath(filePath) {
