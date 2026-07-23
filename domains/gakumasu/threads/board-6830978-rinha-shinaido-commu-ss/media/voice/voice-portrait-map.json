@@ -4316,8 +4316,8 @@
     },
     {
       "order": 480,
-      "audioFileName": "480-480-玄野武宏（ノーマル）_あれが賀陽燐羽……？.wav",
-      "audioRelPath": "media/voice/audio/480-480-玄野武宏（ノーマル）_あれが賀陽燐羽……？.wav",
+      "audioFileName": "480-480-白上虎太郎（ふつう）_あれが賀陽燐羽……？.wav",
+      "audioRelPath": "media/voice/audio/480-480-白上虎太郎（ふつう）_あれが賀陽燐羽……？.wav",
       "portraitRelPath": "0.P剪影/未命名1.png",
       "role": "旁白",
       "engine": "voicevox",
@@ -4334,8 +4334,8 @@
     },
     {
       "order": 482,
-      "audioFileName": "482-482-白上虎太郎（ふつう）_中等部の頃の、あの….wav",
-      "audioRelPath": "media/voice/audio/482-482-白上虎太郎（ふつう）_中等部の頃の、あの….wav",
+      "audioFileName": "482-482-玄野武宏（ノーマル）_中等部の頃の、あの….wav",
+      "audioRelPath": "media/voice/audio/482-482-玄野武宏（ノーマル）_中等部の頃の、あの….wav",
       "portraitRelPath": "0.P剪影/51a739cc138373365527f9d47fa6257a1.png",
       "role": "旁白",
       "engine": "voicevox",
